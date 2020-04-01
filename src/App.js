@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Login from './auth/Login'
 
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'; 
 
@@ -24,9 +25,13 @@ class App extends Component {
   render(){
 
     return (
+      <Router>
+
       <div className="App">
       App Component 
+        <Login/>
     </div>
+      </Router>
   );
 }
 }
