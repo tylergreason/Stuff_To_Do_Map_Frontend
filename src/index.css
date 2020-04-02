@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.AttractionList {
+  width:40%;
+  float: left;
+}
+
+#myMap {
+  height: 800px; 
+}

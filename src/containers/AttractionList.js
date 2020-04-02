@@ -6,17 +6,16 @@ import AttractionMapListCard from '../components/AttractionMapListCard'
 class AttractionList extends Component {   
     renderAttractionCards = () => {
         return this.props.attractions.map(attraction => {
-            console.log(attraction)
-            return <AttractionMapListCard attraction={attraction}/> 
+            return <AttractionMapListCard key={attraction.id} attraction={attraction}/> 
         })
     }
     render(){
-        return(<>
+        return(<div className="AttractionList">
             <h3>
                 attraction list
             </h3>
             {this.renderAttractionCards()}
-        </>)
+        </div>)
     }
 }
 

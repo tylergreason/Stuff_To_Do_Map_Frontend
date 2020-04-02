@@ -4,6 +4,7 @@ import { getAttractions } from '../actions/MapActions'
 
 // two containers to render 
 import AttractionList from './AttractionList'
+import Map from '../components/Map'
 
 class MapPage extends Component {   
     componentDidMount = () => {
@@ -13,9 +14,8 @@ class MapPage extends Component {
         return(
         <>
         <h1>Map Page</h1>
-            <AttractionList attractions={this.props.attractions}/>        
-        
-        
+            <AttractionList attractions={this.props.attractions}/>
+            <Map attractions={this.props.attractions}/>
         </>
         )
     }
