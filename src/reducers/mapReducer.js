@@ -7,7 +7,7 @@ const mapReducer = (state = {
                 console.log(action.boolean)
                 state = {
                     ...state, 
-                    loggedIn:true
+                    loggedIn:action.boolean
                 }
                 console.log(state)
         default: 
