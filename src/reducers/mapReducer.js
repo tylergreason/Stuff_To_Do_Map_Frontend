@@ -6,7 +6,10 @@ function checkAuthToken(){
     return false 
 }
 const mapReducer = (state = {
-                            loggedIn:checkAuthToken()
+                            loggedIn:checkAuthToken(), 
+                            map:{
+                                attractions:[]
+                            }
                         }, 
                         action) => {
     switch(action.type){
@@ -21,6 +24,14 @@ const mapReducer = (state = {
                 state ={
                     ...state, 
                     loggedIn:false
+                }
+        case 'GET_ATTRACTIONS': 
+                state = {
+                    ...state, 
+                    map: {
+                        ...state.map, 
+                        attractions: action.attractions
+                    }
                 }
         default: 
             return state

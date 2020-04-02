@@ -5,6 +5,9 @@ import Navbar from './containers/Navbar'
 import { connect } from 'react-redux'
 import { logout } from './actions/authActions'
 
+// for '/' route: 
+import MapPage from './containers/MapPage'
+
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'; 
 
 class App extends Component {
@@ -13,23 +16,24 @@ class App extends Component {
   }
 
 
-  componentDidMount = () => {
-    fetch('http://localhost:3000/attractions', {
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/json',
-        'Access-Token': localStorage.auth_token
-    }
-    })
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data)
-        this.setState({attractions:data});
-    })
-    .catch((error) => {
-    console.error('Error:', error);
-    });
-}
+//   componentDidMount = () => {
+//     fetch('http://localhost:3000/attractions', {
+//     method: 'GET',
+//     headers: {
+//         'Content-Type': 'application/json'
+//         // ,
+//         // 'Access-Token': localStorage.auth_token
+//     }
+//     })
+//     .then((response) => response.json())
+//     .then((data) => {
+//         console.log(data)
+//         this.setState({attractions:data});
+//     })
+//     .catch((error) => {
+//     console.error('Error:', error);
+//     });
+// }
 
 
   // handleLogout = () => {
@@ -58,6 +62,9 @@ class App extends Component {
               return <Signup />
             }
             }></Route>
+            <Route path="/" component={()=>{
+              return <MapPage />
+            }}></Route>
         </Switch>
       </Router>
   );
