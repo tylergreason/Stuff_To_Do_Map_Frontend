@@ -24,12 +24,19 @@ class Login extends Component{
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
-            localStorage.setItem('auth_token',data.token)
-            this.props.setLogin(true) 
-            // this.props.handleLogin()
-            this.props.history.push('/')
+            if (data.error){
+                console.log('login failed')
+            }else{
+                console.log(data)
+                localStorage.setItem('auth_token',data.token)
+                this.props.setLogin(true) 
+                // this.props.handleLogin()
+                this.props.history.push('/')
+            }
         })
+        .catch((error) => {
+            console.error('Error:', error);
+          });
     }
     render(){
         return (

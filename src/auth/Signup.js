@@ -34,12 +34,20 @@ class Signup extends Component {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
-            localStorage.setItem('auth_token',data.token)
-            this.props.setLogin(true) 
-            // this.props.handleLogin()
-            this.props.history.push('/')
+            if (data.error){
+                console.log(data.error)
+            }else{
+                console.log(data)
+                localStorage.setItem('auth_token',data.token)
+                this.props.setLogin(true) 
+                // this.props.handleLogin()
+                this.props.history.push('/')
+                
+            }
         })
+        .catch((error) => {
+            console.error('Error:', error);
+          });
     }
 
     render(){
