@@ -9,8 +9,28 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 
 class App extends Component {
   state = {
-
+    attractions: []
   }
+
+
+  componentDidMount = () => {
+    fetch('http://localhost:3000/attractions', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        'Access-Token': localStorage.auth_token
+    }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data)
+        this.setState({attractions:data});
+    })
+    .catch((error) => {
+    console.error('Error:', error);
+    });
+}
+
 
   // handleLogout = () => {
   //   localStorage.clear() 

@@ -11,7 +11,6 @@ const mapReducer = (state = {
                         action) => {
     switch(action.type){
         case 'LOGIN': 
-                console.log(action.boolean)
                 state = {
                     ...state, 
                     loggedIn:true
