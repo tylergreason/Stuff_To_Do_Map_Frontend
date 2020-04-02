@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Login from './auth/Login'
 import { connect } from 'react-redux'
-import { setLogin } from './actions/authActions'
+import { login, logout } from './actions/authActions'
 import Signup from './auth/Signup'
 
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'; 
@@ -31,7 +31,7 @@ class App extends Component {
 
             {/* for logout route, set store state loggedIn to false and redirect to root  */}
             <Route path="/logout" component={()=>{
-              this.props.setLogin(false)
+              this.props.logout()
               return <Redirect to="/"></Redirect>
             }}></Route>
 
@@ -49,4 +49,4 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {loggedIn: state.loggedIn}
 }
-export default connect(mapStateToProps, { setLogin })(App);
+export default connect(mapStateToProps, { logout })(App);

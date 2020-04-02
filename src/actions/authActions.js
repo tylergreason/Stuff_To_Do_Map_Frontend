@@ -1,7 +1,12 @@
-export const setLogin = (boolean) => {
+export const login = () => {
     return {
-        type:'SET_LOGIN', 
-        boolean 
+        type:'LOGIN'
+    }
+}
+
+export const logout = () => {
+    return {
+        type: "LOGOUT"
     }
 }
     // return (dispatch) => {

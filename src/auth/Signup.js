@@ -1,6 +1,6 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux' 
-import { setLogin } from '../actions/authActions'
+import { login, logout } from '../actions/authActions'
 import { withRouter } from 'react-router'
 class Signup extends Component {
     state = {
@@ -39,7 +39,7 @@ class Signup extends Component {
             }else{
                 console.log(data)
                 localStorage.setItem('auth_token',data.token)
-                this.props.setLogin(true) 
+                this.props.login() 
                 // this.props.handleLogin()
                 this.props.history.push('/')
                 
@@ -68,4 +68,4 @@ class Signup extends Component {
     }
 }
 
-export default withRouter(connect(null,{setLogin})(Signup))
+export default withRouter(connect(null,{login, logout})(Signup))

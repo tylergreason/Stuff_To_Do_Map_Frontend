@@ -1,15 +1,27 @@
+// check if auth_token exists and base loggedIn off that 
+function checkAuthToken(){
+    if (localStorage.auth_token){
+        return true 
+    }
+    return false 
+}
 const mapReducer = (state = {
-                            loggedIn:false
+                            loggedIn:checkAuthToken()
                         }, 
                         action) => {
     switch(action.type){
-        case 'SET_LOGIN': 
-                console.log(action.boolean)
+        case 'LOGIN': 
+                // console.log(action.boolean)
                 state = {
                     ...state, 
-                    loggedIn:action.boolean
+                    loggedIn:true
                 }
                 console.log(state)
+        case 'LOGOUT': 
+                state ={
+                    ...state, 
+                    loggedIn:false
+                }
         default: 
             return state
     }
