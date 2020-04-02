@@ -11,13 +11,14 @@ const mapReducer = (state = {
                         action) => {
     switch(action.type){
         case 'LOGIN': 
-                // console.log(action.boolean)
+                console.log(action.boolean)
                 state = {
                     ...state, 
                     loggedIn:true
                 }
                 console.log(state)
         case 'LOGOUT': 
+                // localStorage.clear()
                 state ={
                     ...state, 
                     loggedIn:false

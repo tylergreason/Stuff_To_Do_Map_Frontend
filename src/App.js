@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Login from './auth/Login'
-import { connect } from 'react-redux'
-import { login, logout } from './actions/authActions'
 import Signup from './auth/Signup'
+import Navbar from './containers/Navbar'
+import { connect } from 'react-redux'
+import { logout } from './actions/authActions'
 
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'; 
 
@@ -11,19 +12,17 @@ class App extends Component {
 
   }
 
-  handleLogout = () => {
-    localStorage.clear() 
-    this.setState({
-      loggedIn:false 
-    })
-  }
+  // handleLogout = () => {
+  //   localStorage.clear() 
+  //   this.setState({
+  //     loggedIn:false 
+  //   })
+  // }
   render(){
-
     return (
       <Router>
-        <div className="App">
-        App Component 
-      </div>
+        STDM
+      <Navbar />
         <Switch>
             <Route path="/login" component={()=>{
               return <Login/>
