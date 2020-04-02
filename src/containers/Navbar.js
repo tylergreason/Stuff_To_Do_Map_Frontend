@@ -32,9 +32,9 @@ class Navbar extends Component {
     renderLoggedOutNavbar = () => {
         return (
             <div>
-                <button name='map'>Map</button>
-                <button name='about'>About</button>
-                <button name='signUp'>Sign Up</button>
+                <button value='/' name='map' onClick={this.handleNavbarClick}>Map</button>
+                <button value='/about' name='about' onClick={this.handleNavbarClick}>About</button>
+                <button value='/signup' name='signUp' onClick={this.handleNavbarClick}>Sign Up</button>
                 <button value="/login" name='login' onClick={this.handleNavbarClick}>Log In</button>
             </div>
         )
