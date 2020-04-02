@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route,Redirect } from 'react-router-dom'; 
 import { withRouter } from 'react-router'
-import Button from '../components/general/Button'
+// import Button from '../components/general/Button'
 import { logout } from '../actions/authActions'
 
 class Navbar extends Component {
@@ -13,8 +13,9 @@ class Navbar extends Component {
     }
 
     logout = () => {
-        this.props.logout()
         localStorage.clear()
+        this.props.changeAppLoggedIn(false)
+        this.props.logout()
     }
 
     renderLoggedInNavbar = () => {
@@ -41,12 +42,13 @@ class Navbar extends Component {
     }
 
     renderNavbar = () => {
-        return this.props.loggedIn===true
-        ? 
-        this.renderLoggedInNavbar() 
-        : 
-        this.renderLoggedOutNavbar() 
+        if (this.props.loggedIn){
+            return this.renderLoggedInNavbar() 
+        }else if (this.props.loggedIn===false){
+            return this.renderLoggedOutNavbar() 
+        }
     }
+
     render(){
         return(
             <>{this.renderNavbar()}</>
@@ -54,8 +56,8 @@ class Navbar extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {loggedIn: state.loggedIn}
-}
+// const mapStateToProps = (state) => {
+//     return {loggedIn: state.loggedIn}
+// }
 
-export default withRouter(connect(mapStateToProps, {logout})(Navbar))
+export default withRouter(connect(null, {logout})(Navbar))

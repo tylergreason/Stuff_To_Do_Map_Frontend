@@ -12,49 +12,40 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 
 class App extends Component {
   state = {
-    attractions: []
+    attractions: [],
+    loggedIn:false
   }
 
+  componentDidMount(){
+    if (localStorage.auth_token){
+      this.setState({
+        loggedIn:true
+      })
+    }
+  }
 
-//   componentDidMount = () => {
-//     fetch('http://localhost:3000/attractions', {
-//     method: 'GET',
-//     headers: {
-//         'Content-Type': 'application/json'
-//         // ,
-//         // 'Access-Token': localStorage.auth_token
-//     }
-//     })
-//     .then((response) => response.json())
-//     .then((data) => {
-//         console.log(data)
-//         this.setState({attractions:data});
-//     })
-//     .catch((error) => {
-//     console.error('Error:', error);
-//     });
-// }
+  changeAppLoggedIn = (boolean) =>{
+    this.setState({
+      loggedIn:boolean
+    })
+  }
 
-
-  // handleLogout = () => {
-  //   localStorage.clear() 
-  //   this.setState({
-  //     loggedIn:false 
-  //   })
-  // }
   render(){
+    console.log(this.state.loggedIn)
     return (
       <Router>
         STDM
-      <Navbar />
+      <Navbar loggedIn={this.state.loggedIn}
+              changeAppLoggedIn={this.changeAppLoggedIn}/>
         <Switch>
             <Route path="/login" component={()=>{
-              return <Login/>
+              return <Login changeAppLoggedIn={this.changeAppLoggedIn}/>
             }}></Route>
 
             {/* for logout route, set store state loggedIn to false and redirect to root  */}
             <Route path="/logout" component={()=>{
               this.props.logout()
+              this.changeAppLoggedIn(false)
               return <Redirect to="/"></Redirect>
             }}></Route>
 

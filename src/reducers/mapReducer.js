@@ -20,8 +20,7 @@ const mapReducer = (state = {
                 }
                 console.log(state)
         case 'LOGOUT': 
-                // localStorage.clear()
-                state ={
+                state = {
                     ...state, 
                     loggedIn:false
                 }

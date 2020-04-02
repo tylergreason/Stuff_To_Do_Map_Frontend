@@ -5,10 +5,17 @@ import AttractionMapListCard from '../components/AttractionMapListCard'
 
 class AttractionList extends Component {   
     renderAttractionCards = () => {
-        return this.props.attractions.map(attraction => {
-            return <AttractionMapListCard key={attraction.id} attraction={attraction}/> 
-        })
+        if (this.props.attractions){
+            return this.props.attractions.map(attraction => {
+                return <AttractionMapListCard key={attraction.id} attraction={attraction}/> 
+            })
+        }
     }
+    // componentDidUpdate = (prevProps) =>{
+    //     if (prevProps.attractions !== this.props.attractions){
+    //         this.renderAttractionCards() 
+    //     }
+    // }
     render(){
         return(<div className="AttractionList">
             <h3>

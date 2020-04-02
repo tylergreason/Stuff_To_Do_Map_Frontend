@@ -14,17 +14,24 @@ class Map extends Component {
 
     renderAttractionMarkers = (map) => {
         // iterate through attractions in props and make markers for each attraction 
-        return this.props.attractions.map(attraction => {
-            const lat = attraction.lat 
-            const lng = attraction.lng 
-            return L.marker([lat,lng]).addTo(map)
-        })
+        if (this.props.attractions){
+
+            return this.props.attractions.map(attraction => {
+                const lat = attraction.lat 
+                const lng = attraction.lng 
+                return L.marker([lat,lng]).addTo(map)
+            })
+        }
     }
 
     componentDidUpdate = (prevProps) => {
         if (prevProps.attractions !== this.props.attractions){
             this.renderAttractionMarkers(this.state.map)
         }
+    }
+
+    onMapChange = (e) => {
+        console.log(e.target.getBounds())
     }
 
     createMap = () => {
@@ -42,6 +49,10 @@ class Map extends Component {
             accessToken: this.state.mapBoxToken
         }).addTo(myMap);
         const marker = L.marker([51.505, -0.09]).addTo(myMap)
+
+        // create event listener for when map moves 
+        // myMap.on("moveend", this.onMapChange)
+
         this.setState({
             map:myMap
         })
@@ -56,7 +67,7 @@ class Map extends Component {
             <div className="Map">
                 <h4>Map</h4>
                 <div id='myMap'></div>
-                {this.addMarker()}
+                {/* {this.addMarker()} */}
             </div>
         )
     }
