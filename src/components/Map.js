@@ -1,6 +1,6 @@
 import React, { Component } from 'react' 
 import L from 'leaflet';
-
+import { connect } from 'react-redux'
 class Map extends Component {
 
     state = {
@@ -12,11 +12,26 @@ class Map extends Component {
         this.createMap()
     }
 
+    renderAttractionMarkers = (map) => {
+        // iterate through attractions in props and make markers for each attraction 
+        return this.props.attractions.map(attraction => {
+            const lat = attraction.lat 
+            const lng = attraction.lng 
+            return L.marker([lat,lng]).addTo(map)
+        })
+    }
+
+    componentDidUpdate = (prevProps) => {
+        if (prevProps.attractions !== this.props.attractions){
+            this.renderAttractionMarkers(this.state.map)
+        }
+    }
+
     createMap = () => {
         const myMap = L.map('myMap').setView([51.505, -0.09], 13);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution:'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 10,
+            maxZoom: 20,
             minZoom:1,
             preferCanvas: true,
             zoomSnap: 1,
@@ -46,5 +61,9 @@ class Map extends Component {
         )
     }
 }
-
-export default Map 
+const mapStateToProps = state => {
+    return {
+        attractions: state.map.attractions
+    }
+}
+export default connect(mapStateToProps)(Map) 
