@@ -5,7 +5,9 @@ class Map extends Component {
 
     state = {
         map:"",
-        mapBoxToken:'pk.eyJ1IjoidHlsZXJncmVhc29uIiwiYSI6ImNrOGVnbzc2ODE0dWczbG8xYXY5eWE4Y3IifQ.dvMx_fsMixzS0VfGmR-fsA'
+        mapBoxToken:'pk.eyJ1IjoidHlsZXJncmVhc29uIiwiYSI6ImNrOGVnbzc2ODE0dWczbG8xYXY5eWE4Y3IifQ.dvMx_fsMixzS0VfGmR-fsA',
+        southWestBounds:'', 
+        northEastBounds:''
     }
 
     componentDidMount = () => {
@@ -31,7 +33,13 @@ class Map extends Component {
     }
 
     onMapChange = (e) => {
-        console.log(e.target.getBounds())
+        const bounds = e.target.getBounds() 
+        this.setState({
+            southWestBounds:bounds._southWest, 
+            northEastBounds:bounds._northEast
+        })
+        const boundsToReturn = [bounds._southWest, bounds._northEast] 
+        this.props.setBounds(boundsToReturn)
     }
 
     createMap = () => {
@@ -51,15 +59,24 @@ class Map extends Component {
         const marker = L.marker([51.505, -0.09]).addTo(myMap)
 
         // create event listener for when map moves 
-        // myMap.on("moveend", this.onMapChange)
+        myMap.on("moveend", this.onMapChange)
 
+        // set the state with the map's initial values 
+        this.props.parseBounds(myMap.getBounds())
         this.setState({
-            map:myMap
+            map:myMap, 
+            southWestBounds:myMap.getBounds()._southWest,
+            northEastBounds:myMap.getBounds()._northEast
         })
+        this.props.setBounds(this.props.parseBounds(myMap.getBounds()))
     }
 
-    addMarker = () => {
-        // marker.addTo(this.state.map)
+    // addMarker = (attraction) => {
+    //     // marker.addTo(this.state.map)
+    // }
+
+    getNewAttractions = () => {
+
     }
 
     render(){

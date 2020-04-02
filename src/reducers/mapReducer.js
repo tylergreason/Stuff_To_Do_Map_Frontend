@@ -8,7 +8,9 @@ function checkAuthToken(){
 const mapReducer = (state = {
                             loggedIn:checkAuthToken(), 
                             map:{
-                                attractions:[]
+                                attractions:[], 
+                                southWestBounds:'', 
+                                northEastBounds:''
                             }
                         }, 
                         action) => {
