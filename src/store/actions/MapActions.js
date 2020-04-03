@@ -42,3 +42,24 @@ export const getMyAttractions = () => {
             });
     }
 }
+
+export const deleteAttraction = (id) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/attractions/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Token': localStorage.auth_token
+            }
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                dispatch({type:'DELETE_ATTRACTION', myAttractions: data})
+            })
+            .catch((error) => {
+            console.error('Error:', error);
+            });
+    }
+}
+

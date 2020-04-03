@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import MyAttractionListCard from '../components/MyAttractionListCard'
 
+
 import { connect } from 'react-redux' 
 import { getMyAttractions } from '../store/actions/MapActions'
 
