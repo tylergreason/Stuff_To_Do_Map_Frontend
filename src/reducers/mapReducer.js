@@ -20,7 +20,6 @@ const mapReducer = (state = {
                     ...state, 
                     loggedIn:true
                 }
-                console.log(state)
         case 'LOGOUT': 
                 state = {
                     ...state, 

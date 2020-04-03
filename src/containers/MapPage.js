@@ -8,26 +8,34 @@ import Map from '../components/Map'
 
 class MapPage extends Component {  
     state = {
-        southWestBounds:'', 
-        northEastBounds:''
+        bounds:''
     }
 
     // make function to return bounds and set them to this state, then fire getAttractions with those bounds as the argument 
     setBounds = (bounds) => {
+        this.props.getAttractions(bounds)
         this.setState({
-            southWestBounds:bounds[0], 
-            northEastBounds:bounds[1]
+            bounds:bounds
         })
     }
 
     // function to parse what's brought back by getBounds() into useable format 
     parseBounds = (bounds) => {
+        
         return [bounds._southWest, bounds._northEast]
     }
 
     componentDidMount = () => {
-        this.props.getAttractions()
+        this.props.getAttractions(this.state.bounds)
     }
+    // get new attractions whenever the MapPage state updates 
+    // componenetDidUpdate = (prevState)=>{
+    //     debugger
+    //     if (prevState.bounds !== this.state.bounds){
+    //         console.log('props changed ')
+    //         return this.props.getAttractions(this.state.bounds)
+    //     }
+    // }
     render(){
         return(
         <>
