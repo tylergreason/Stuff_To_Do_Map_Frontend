@@ -6,16 +6,16 @@ function checkAuthToken(){
     return false 
 }
 
+const defaultState = {
+                        loggedIn:checkAuthToken(), 
+                        map:{
+                            attractions:[], 
+                            southWestBounds:'', 
+                            northEastBounds:''
+                        }
+                    }
 
-const mapReducer = (state = {
-                            loggedIn:checkAuthToken(), 
-                            map:{
-                                attractions:[], 
-                                southWestBounds:'', 
-                                northEastBounds:''
-                            }
-                        }, 
-                        action) => {
+const mapReducer = (state = defaultState, action) => {
     switch(action.type){
         case 'LOGIN': 
                 state = {

@@ -2,11 +2,14 @@ export const getAttractions = (bounds) => {
     return (dispatch) => {
         console.log(bounds)
         const data = {bounds}
-        fetch('http://localhost:3000/attractions?testpar=23', {
+        fetch('http://localhost:3000/attractions', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json', 
-                'bounds':bounds
+                'south': bounds.south,
+                'north': bounds.north,
+                'east': bounds.east, 
+                'west': bounds.west
             }, 
             // body: JSON.stringify(data)
             })

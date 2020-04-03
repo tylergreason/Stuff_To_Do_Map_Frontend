@@ -13,29 +13,30 @@ class MapPage extends Component {
 
     // make function to return bounds and set them to this state, then fire getAttractions with those bounds as the argument 
     setBounds = (bounds) => {
-        this.props.getAttractions(bounds)
+        const attractionBounds = this.parseBounds(bounds)
+        this.props.getAttractions(attractionBounds)
         this.setState({
-            bounds:bounds
+            bounds:attractionBounds
         })
     }
 
     // function to parse what's brought back by getBounds() into useable format 
     parseBounds = (bounds) => {
-        
-        return [bounds._southWest, bounds._northEast]
+        const newBounds =  { 
+            south: bounds._southWest.lng,
+            north: bounds._northEast.lng,
+            east: bounds._northEast.lat, 
+            west: bounds._southWest.lat
+        }
+        console.log(bounds)
+        return newBounds
+        // return [bounds._southWest, bounds._northEast]
     }
 
     componentDidMount = () => {
         this.props.getAttractions(this.state.bounds)
     }
-    // get new attractions whenever the MapPage state updates 
-    // componenetDidUpdate = (prevState)=>{
-    //     debugger
-    //     if (prevState.bounds !== this.state.bounds){
-    //         console.log('props changed ')
-    //         return this.props.getAttractions(this.state.bounds)
-    //     }
-    // }
+
     render(){
         return(
         <>

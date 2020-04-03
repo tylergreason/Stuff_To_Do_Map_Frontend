@@ -17,7 +17,6 @@ class Map extends Component {
     renderAttractionMarkers = (map) => {
         // iterate through attractions in props and make markers for each attraction 
         if (this.props.attractions){
-
             return this.props.attractions.map(attraction => {
                 const lat = attraction.lat 
                 const lng = attraction.lng 
@@ -38,8 +37,8 @@ class Map extends Component {
             southWestBounds:bounds._southWest, 
             northEastBounds:bounds._northEast
         })
-        const boundsToReturn = [bounds._southWest, bounds._northEast] 
-        this.props.setBounds(boundsToReturn)
+        // const boundsToReturn = [bounds._southWest, bounds._northEast] 
+        this.props.setBounds(bounds)
     }
 
     createMap = () => {
@@ -62,13 +61,13 @@ class Map extends Component {
         myMap.on("moveend", this.onMapChange)
 
         // set the state with the map's initial values 
-        this.props.parseBounds(myMap.getBounds())
+        // this.props.parseBounds(myMap.getBounds())
         this.setState({
             map:myMap, 
             southWestBounds:myMap.getBounds()._southWest,
             northEastBounds:myMap.getBounds()._northEast
         })
-        this.props.setBounds(this.props.parseBounds(myMap.getBounds()))
+        this.props.setBounds(myMap.getBounds())
     }
 
     // addMarker = (attraction) => {
