@@ -27,7 +27,13 @@ class Map extends Component {
             return this.props.attractions.map(attraction => {
                 const lat = attraction.lat 
                 const lng = attraction.lng 
-                this.marker = L.marker([lat,lng]).addTo(this.attractionLayer)
+
+                // create node for marker to have 
+                // const popup = L.popup().
+
+                this.marker = L.marker([lat,lng])
+                this.marker.bindPopup('<div>text</div>').openPopup()
+                this.marker.addTo(this.attractionLayer)
             })
         }
     }
