@@ -40,6 +40,7 @@ class Signup extends Component {
                 console.log(data)
                 localStorage.setItem('auth_token',data.token)
                 this.props.login() 
+                this.props.changeAppLoggedIn(true)
                 // this.props.handleLogin()
                 this.props.history.push('/')
                 
