@@ -54,6 +54,11 @@ const mapReducer = (state = defaultState, action) => {
                     ...state, 
                     myAttractions:action.myAttractions
                 }
+        case 'ADD_ATTRACTION': 
+                state = { 
+                    ...state, 
+                    myAttractions:action.myAttractions
+                }
         default: 
             return state
     }

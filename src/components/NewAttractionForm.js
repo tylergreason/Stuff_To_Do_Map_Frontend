@@ -1,9 +1,10 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux' 
+import { addAttraction } from '../store/actions/MapActions'
 // import make new attraction action and edit attraction actions 
 
 
-class NewEditAttractionForm extends Component {
+class NewAttractionForm extends Component {
     state = {
         attraction:""
     }
@@ -33,7 +34,7 @@ class NewEditAttractionForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault() 
-        
+        this.props.addAttraction(this.state.attraction)
     }
 
     render(){
@@ -91,4 +92,4 @@ class NewEditAttractionForm extends Component {
     }
 }
 
-export default NewEditAttractionForm
+export default connect(null, { addAttraction })(NewAttractionForm)

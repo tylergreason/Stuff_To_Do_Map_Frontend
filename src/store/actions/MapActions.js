@@ -85,11 +85,11 @@ export const updateAttraction = (attraction) => {
     }
 }
 
-export const updateAttraction = (attraction) => {
+export const addAttraction = (attraction) => {
     console.log(attraction)
     return (dispatch) => {
-        fetch(`http://localhost:3000/attractions/${attraction.id}`, {
-            method: 'PATCH',
+        fetch(`http://localhost:3000/attractions/`, {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Token': localStorage.auth_token
@@ -99,7 +99,7 @@ export const updateAttraction = (attraction) => {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data)
-                dispatch({type:'UPDATE_ATTRACTION', myAttractions: data})
+                dispatch({type:'ADD_ATTRACTION', myAttractions: data})
             })
             .catch((error) => {
                 console.error('Error:', error);
