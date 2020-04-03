@@ -5,6 +5,8 @@ function checkAuthToken(){
     }
     return false 
 }
+
+
 const mapReducer = (state = {
                             loggedIn:checkAuthToken(), 
                             map:{

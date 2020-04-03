@@ -3,7 +3,7 @@ import Login from './auth/Login'
 import Signup from './auth/Signup'
 import Navbar from './containers/Navbar'
 import { connect } from 'react-redux'
-import { logout } from './actions/authActions'
+import { logout } from './store/actions/authActions'
 
 // for '/' route: 
 import MapPage from './containers/MapPage'

@@ -1,6 +1,6 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux'
-import { getAttractions } from '../actions/MapActions'
+import { getAttractions } from '../store/actions/MapActions'
 
 // two containers to render 
 import AttractionList from './AttractionList'
