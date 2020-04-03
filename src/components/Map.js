@@ -41,11 +41,12 @@ class Map extends Component {
     }
 
     handleMarkerClick = e => {
-        console.log(e.target) 
         //scroll this attractions card into view 
+        console.log(e.target._latlng)
+        const latLng = e.target._latlng
+        this.map.panTo(latLng)
         const cardId = `attractionMapListCard${e.target.id}`
         const cardToView = document.getElementById(cardId) 
-        console.log(cardToView)
         cardToView.scrollIntoView()
     }
 
