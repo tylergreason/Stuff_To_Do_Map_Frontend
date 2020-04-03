@@ -15,6 +15,7 @@ class MapPage extends Component {
     setBounds = (bounds) => {
         const attractionBounds = this.parseBounds(bounds)
         this.props.getAttractions(attractionBounds)
+        console.log(attractionBounds)
         this.setState({
             bounds:attractionBounds
         })
@@ -23,10 +24,10 @@ class MapPage extends Component {
     // function to parse what's brought back by getBounds() into useable format 
     parseBounds = (bounds) => {
         const newBounds =  { 
-            south: bounds._southWest.lng,
-            north: bounds._northEast.lng,
-            east: bounds._northEast.lat, 
-            west: bounds._southWest.lat
+            south: bounds._southWest.lat,
+            north: bounds._northEast.lat,
+            east: bounds._northEast.lng, 
+            west: bounds._southWest.lng
         }
         console.log(bounds)
         return newBounds
