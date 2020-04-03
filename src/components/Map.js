@@ -18,7 +18,7 @@ class Map extends Component {
         // add layer to this.map so we can control the attractions that are rendered 
         this.attractionLayer = L.layerGroup().addTo(this.map)
         // get user location and set view to it 
-        // this.map.locate({setView:true})
+        this.map.locate({setView:true})
     }
 
     renderAttractionMarkers = (map) => {
@@ -42,6 +42,11 @@ class Map extends Component {
 
     handleMarkerClick = e => {
         console.log(e.target) 
+        //scroll this attractions card into view 
+        const cardId = `attractionMapListCard${e.target.id}`
+        const cardToView = document.getElementById(cardId) 
+        console.log(cardToView)
+        cardToView.scrollIntoView()
     }
 
     // create popup marker 
