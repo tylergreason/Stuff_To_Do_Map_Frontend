@@ -1,7 +1,5 @@
 export const getAttractions = (bounds) => {
     return (dispatch) => {
-        console.log(bounds)
-        const data = {bounds}
         fetch('http://localhost:3000/attractions', {
             method: 'GET',
             headers: {
@@ -15,7 +13,6 @@ export const getAttractions = (bounds) => {
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data)
                 dispatch({type:'GET_ATTRACTIONS', attractions: data})
             })
             .catch((error) => {

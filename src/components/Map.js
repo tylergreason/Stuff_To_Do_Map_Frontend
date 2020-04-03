@@ -55,7 +55,6 @@ class Map extends Component {
             zoomOffset: -1,
             accessToken: this.state.mapBoxToken
         }).addTo(myMap);
-        const marker = L.marker([51.505, -0.09]).addTo(myMap)
 
         // create event listener for when map moves 
         myMap.on("moveend", this.onMapChange)
@@ -73,10 +72,6 @@ class Map extends Component {
     // addMarker = (attraction) => {
     //     // marker.addTo(this.state.map)
     // }
-
-    getNewAttractions = () => {
-
-    }
 
     render(){
         return (
