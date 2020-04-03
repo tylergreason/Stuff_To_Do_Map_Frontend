@@ -1,5 +1,6 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux' 
+import { updateAttraction } from '../store/actions/MapActions'
 // import make new attraction action and edit attraction actions 
 
 
@@ -20,21 +21,15 @@ class EditAttractionForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        this.props.updateAttraction(this.state.attraction)
+        this.props.backToList()
     }
 
     componentDidMount = () =>{
             // set state to attraction so the form is already filled 
             if (this.props.attraction !== undefined){
                 this.setState({
-                    attraction:{
-                        name:this.props.attraction.name,
-                        description:this.props.attraction.description,
-                        house_number:this.props.attraction.house_number, 
-                        road:this.props.attraction.road,
-                        city:this.props.attraction.city, 
-                        state:this.props.attraction.state, 
-                        country:this.props.attraction.country
-                    }
+                    attraction:this.props.attraction
                 })
             }
         }
@@ -42,7 +37,7 @@ class EditAttractionForm extends Component {
     render(){
         return (
             <>
-            <button onClick={this.props.backButton}>Go Back</button>
+            <button onClick={this.props.backToList}>Go Back</button>
             <form>
                 <input 
                     name="name" 
@@ -94,4 +89,4 @@ class EditAttractionForm extends Component {
     }
 }
 
-export default EditAttractionForm
+export default connect(null,{ updateAttraction })(EditAttractionForm)

@@ -7,6 +7,19 @@ class NewEditAttractionForm extends Component {
     state = {
         attraction:""
     }
+    componentDidMount = () =>{
+        this.setState({ 
+            attraction:{
+                name:'Attraction name',
+                description:'Description',
+                house_number:'House number', 
+                road:'Road',
+                city:'City', 
+                state:'State', 
+                country:'Country'
+            }
+        })
+    }
 
     handleInput = (e) => {
         this.setState({
@@ -18,44 +31,62 @@ class NewEditAttractionForm extends Component {
         })
     }
 
-    componentDidMount = () =>{
-        if (this.props.attraction){
-            // set state to attraction so the form is already filled 
-            this.setState({
-                attraction:{
-                    name:this.props.attraction.name,
-                    description:this.props.attraction.description,
-                    house_number:this.props.attraction.house_number, 
-                    road:this.props.attraction.road,
-                    city:this.props.attraction.city, 
-                    state:this.props.attraction.state, 
-                    country:this.props.attraction.country
-                }
-            })
-        }else{ 
-            // make an object for placeholder values 
-            this.setState({ 
-                attraction:{
-                    name:'Attraction name',
-                    description:'Description',
-                    house_number:'House number', 
-                    road:'Road',
-                    city:'City', 
-                    state:'State', 
-                    country:'Country'
-                }
-            })
-        }
+    handleSubmit = (e) => {
+        e.preventDefault() 
+        
     }
+
     render(){
         return (
+            <>
+            <button onClick={this.props.backToList}>Go Back</button>
             <form>
                 <input 
                     name="name" 
                     placeholder={this.state.attraction.name}
                     onChange={this.handleInput}
-                    ></input>
+                ></input>
+                <br></br>
+                <input 
+                    name="description" 
+                    placeholder={this.state.attraction.description}
+                    onChange={this.handleInput}
+                ></input>
+                <br></br>
+                <input 
+                    name="house_number" 
+                    placeholder={this.state.attraction.house_number}
+                    onChange={this.handleInput}
+                ></input>
+                <input 
+                    name="road" 
+                    placeholder={this.state.attraction.road}
+                    onChange={this.handleInput}
+                ></input>
+                <br></br>
+                <input 
+                    name="city" 
+                    placeholder={this.state.attraction.city}
+                    onChange={this.handleInput}
+                ></input>
+                <input 
+                    name="state" 
+                    placeholder={this.state.attraction.state}
+                    onChange={this.handleInput}
+                ></input>
+                <br></br>
+                <input 
+                    name="country" 
+                    placeholder={this.state.attraction.country}
+                    onChange={this.handleInput}
+                ></input>
+                <br></br>
+                <button 
+                    type='submit'
+                    onClick={this.handleSubmit}
+                >Save Changes</button>
             </form>
+            </>
         )
     }
 }

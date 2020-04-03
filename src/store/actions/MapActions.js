@@ -63,3 +63,47 @@ export const deleteAttraction = (id) => {
     }
 }
 
+export const updateAttraction = (attraction) => {
+    console.log(attraction)
+    return (dispatch) => {
+        fetch(`http://localhost:3000/attractions/${attraction.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Token': localStorage.auth_token
+            },
+            body: JSON.stringify(attraction),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                dispatch({type:'UPDATE_ATTRACTION', myAttractions: data})
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+}
+
+export const updateAttraction = (attraction) => {
+    console.log(attraction)
+    return (dispatch) => {
+        fetch(`http://localhost:3000/attractions/${attraction.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Token': localStorage.auth_token
+            },
+            body: JSON.stringify(attraction),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                dispatch({type:'UPDATE_ATTRACTION', myAttractions: data})
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+}
+

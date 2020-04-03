@@ -6,6 +6,7 @@ import NewAttractionForm from '../components/NewAttractionForm'
 
 import { connect } from 'react-redux' 
 import { getMyAttractions } from '../store/actions/MapActions'
+import NewEditAttractionForm from '../components/NewAttractionForm'
 
 class  MyAttractionList extends Component {
 
@@ -38,18 +39,28 @@ class  MyAttractionList extends Component {
             formToRender:'edit',
             attractionToEdit: attractionToEdit[0]
         })
+    }
 
+    handleNewAttractionClick = (e) => {
+        e.preventDefault() 
+        this.setState({
+            formToRender:'new'
+        })
     }
 
     renderAttractionEditForm = () =>{
             return <EditAttractionForm 
                         attraction={this.state.attractionToEdit}
-                        backButton={this.buttonBackToList}
+                        backToList={this.backToList}
                     />
     }
 
+    renderNewAttractionForm = () => {
+        return <NewEditAttractionForm/>
+    }
+
     // create button to go back to list 
-    buttonBackToList = () =>{
+    backToList = () =>{
         // return <button onClick={this.setState({formToRender:'list'})}>Go Back</button>
         this.setState({
             formToRender:'list'
@@ -62,13 +73,14 @@ class  MyAttractionList extends Component {
             return this.renderMyAttractions()
         } else if (this.state.formToRender === 'edit'){
             return this.renderAttractionEditForm()
-        } else {
-            
+        } else if (this.state.formToRender === 'new'){
+            return this.renderNewAttractionForm()
         }
     }
     render(){
         return(
             <>
+            <button onClick={this.handleNewAttractionClick}>New Attraction</button>
                 {this.renderStateForm()}
                 {/* <h2>My Attractions</h2>
                 {this.state.modifyingAttraction 
