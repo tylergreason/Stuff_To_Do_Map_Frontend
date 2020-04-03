@@ -16,10 +16,16 @@ const MyAttractionListCard = (props) => {
         {props.attraction.name}
         <br></br>
         {props.attraction.description}
+        <br></br>
         {<Button 
             text={"delete attraction"}
             name={props.attraction.id}
             onClick={deleteAttraction}
+        ></Button>}
+        {<Button 
+            text={"edit attraction"}
+            name={props.attraction.id}
+            onClick={props.editClick}
         ></Button>}
     </div>)
 }
