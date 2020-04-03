@@ -20,3 +20,25 @@ export const getAttractions = (bounds) => {
             });
     }
 }
+
+
+export const getMyAttractions = () => {
+    return (dispatch) => {
+        fetch('http://localhost:3000/myAttractions', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Token': localStorage.auth_token
+            }, 
+            // body: JSON.stringify(data)
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                dispatch({type:'GET_MY_ATTRACTIONS', myAttractions: data})
+            })
+            .catch((error) => {
+            console.error('Error:', error);
+            });
+    }
+}

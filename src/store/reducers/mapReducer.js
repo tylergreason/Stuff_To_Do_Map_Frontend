@@ -12,7 +12,8 @@ const defaultState = {
                             attractions:[], 
                             southWestBounds:'', 
                             northEastBounds:''
-                        }
+                        },
+                        myAttractions:[]
                     }
 
 const mapReducer = (state = defaultState, action) => {
@@ -22,11 +23,13 @@ const mapReducer = (state = defaultState, action) => {
                     ...state, 
                     loggedIn:true
                 }
+            // break
         case 'LOGOUT': 
                 state = {
                     ...state, 
                     loggedIn:false
                 }
+            // break
         case 'GET_ATTRACTIONS': 
                 state = {
                     ...state, 
@@ -34,6 +37,12 @@ const mapReducer = (state = defaultState, action) => {
                         ...state.map, 
                         attractions: action.attractions
                     }
+                }
+            // break
+        case 'GET_MY_ATTRACTIONS':
+                state = {
+                    ...state, 
+                    myAttractions:action.myAttractions
                 }
         default: 
             return state

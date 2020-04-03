@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import L from 'leaflet';
 import { connect } from 'react-redux'
 
-import PopupCard from './PopupCard'
+
 class Map extends Component {
 
     state = {

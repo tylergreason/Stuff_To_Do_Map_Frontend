@@ -3,6 +3,7 @@ import Login from './auth/Login'
 import Signup from './auth/Signup'
 import Navbar from './containers/Navbar'
 import About from './components/About'
+import MyAttractionsList from './containers/MyAttractionsList'
 import { connect } from 'react-redux'
 import { logout } from './store/actions/authActions'
 
@@ -54,6 +55,9 @@ class App extends Component {
             }}></Route>
             <Route path='/about' component={()=>{
               return <About />
+            }}></Route>
+            <Route path="/myAttractions" component={()=>{
+              return <MyAttractionsList />
             }}></Route>
             <Route path="/" component={()=>{
               return <MapPage />
