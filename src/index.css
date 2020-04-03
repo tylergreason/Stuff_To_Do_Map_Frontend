@@ -21,3 +21,7 @@ code {
 #myMap {
   height: 800px; 
 }
+
+.leaflet-popup-content {
+  font-size: 2em;
+}

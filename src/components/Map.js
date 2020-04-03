@@ -1,6 +1,8 @@
 import React, { Component } from 'react' 
 import L from 'leaflet';
 import { connect } from 'react-redux'
+
+import PopupCard from './PopupCard'
 class Map extends Component {
 
     state = {
@@ -16,7 +18,7 @@ class Map extends Component {
         // add layer to this.map so we can control the attractions that are rendered 
         this.attractionLayer = L.layerGroup().addTo(this.map)
         // get user location and set view to it 
-        this.map.locate({setView:true})
+        // this.map.locate({setView:true})
     }
 
     renderAttractionMarkers = (map) => {
@@ -28,14 +30,28 @@ class Map extends Component {
                 const lat = attraction.lat 
                 const lng = attraction.lng 
 
-                // create node for marker to have 
-                // const popup = L.popup().
-
-                this.marker = L.marker([lat,lng])
-                this.marker.bindPopup('<div>text</div>').openPopup()
+                this.marker = L.marker([lat,lng],{title:attraction.name})
+                // set click function 
+                this.marker.on('click', this.handleMarkerClick)
+                this.marker.id = attraction.id 
+                this.marker.bindPopup(this.renderPopupText(attraction)).openPopup()
                 this.marker.addTo(this.attractionLayer)
             })
         }
+    }
+
+    handleMarkerClick = e => {
+        console.log(e.target) 
+    }
+
+    // create popup marker 
+    renderPopupText = (attraction) => {
+        // console.log(attraction.name)
+        // return <div>{attraction.name}</div>
+        // return <PopupCard attraction={attraction} />
+        return `<div className="popupName">${attraction.name}</div>
+
+        ${attraction.description}`
     }
 
     componentDidUpdate = (prevProps) => {
