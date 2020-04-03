@@ -9,8 +9,8 @@ class AttractionList extends Component {
     }
     renderAttractionCards = () => {
 
-        if (this.props.attractions !== undefined){
-            return this.props.attractions.map(attraction => {
+        if (this.state.attractions !== undefined){
+            return this.state.attractions.map(attraction => {
                 return <AttractionMapListCard key={attraction.id} attraction={attraction}/> 
             })
         }
