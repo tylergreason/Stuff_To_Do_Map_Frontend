@@ -11,16 +11,21 @@ class Map extends Component {
     }
 
     componentDidMount = () => {
-        this.createMap()
+        // map must be set to this.map to access Leaflet functions 
+        this.map = this.createMap()
+        // add layer to this.map so we can control the attractions that are rendered 
+        this.attractionLayer = L.layerGroup().addTo(this.map)
     }
 
     renderAttractionMarkers = (map) => {
+        // clear the layer of attractions before rendering new attractions 
+        this.attractionLayer.clearLayers()
         // iterate through attractions in props and make markers for each attraction 
         if (this.props.attractions){
             return this.props.attractions.map(attraction => {
                 const lat = attraction.lat 
                 const lng = attraction.lng 
-                return L.marker([lat,lng]).addTo(map)
+                this.marker = L.marker([lat,lng]).addTo(this.attractionLayer)
             })
         }
     }
@@ -59,6 +64,8 @@ class Map extends Component {
         // create event listener for when map moves 
         myMap.on("moveend", this.onMapChange)
 
+
+
         // set the state with the map's initial values 
         // this.props.parseBounds(myMap.getBounds())
         this.setState({
@@ -67,11 +74,8 @@ class Map extends Component {
             northEastBounds:myMap.getBounds()._northEast
         })
         this.props.setBounds(myMap.getBounds())
+        return myMap 
     }
-
-    // addMarker = (attraction) => {
-    //     // marker.addTo(this.state.map)
-    // }
 
     render(){
         return (
