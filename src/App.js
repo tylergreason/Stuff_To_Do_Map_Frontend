@@ -5,6 +5,7 @@ import CheckLogin from './auth/CheckLogin'
 import Navbar from './containers/Navbar'
 import About from './components/About'
 import MyAttractionsList from './containers/MyAttractionsList'
+import MyAccount from './components/MyAccount'
 import { connect } from 'react-redux'
 import { logout } from './store/actions/authActions'
 
@@ -43,7 +44,6 @@ class App extends Component {
             <Route path="/login" component={()=>{
               return <Login changeAppLoggedIn={this.changeAppLoggedIn}/>
             }}></Route>
-
             {/* for logout route, set store state loggedIn to false and redirect to root  */}
             <Route path="/logout" component={()=>{
               this.props.logout()
@@ -53,16 +53,11 @@ class App extends Component {
             <Route path='/signup' component={()=>{
               return <Signup changeAppLoggedIn={this.changeAppLoggedIn}/>
             }}></Route>
-            <Route path='/about' component={()=>{
-              return <About />
-            }}></Route>
-            
+            <Route path='/about' component={()=>{ return <About /> }}></Route>
             {/* confirm user is logged in before going to myAttractions or myAccount */}
             <Route path="/myAttractions" component={() =>{ return <CheckLogin component={MyAttractionsList}/>}}/>
-            {/* <Route path="/myAccount" component={() =>{ return <CheckLogin component={myAccount}/>}}/> */}
-            <Route path="/" component={()=>{
-              return <MapPage />
-            }}></Route>
+            <Route path="/myAccount" component={() =>{ return <CheckLogin component={MyAccount}/>}}/>
+            <Route path="/" component={()=>{ return <MapPage /> }}></Route>
         </Switch>
       </Router>
   );

@@ -13,7 +13,8 @@ const defaultState = {
                             southWestBounds:'', 
                             northEastBounds:''
                         },
-                        myAttractions:[]
+                        myAttractions:[],
+                        user:''
                     }
 
 const mapReducer = (state = defaultState, action) => {
@@ -58,6 +59,15 @@ const mapReducer = (state = defaultState, action) => {
                 state = { 
                     ...state, 
                     myAttractions:action.myAttractions
+                }
+        case 'GET_USER': 
+                state = {
+                    ...state, 
+                    user:action.user
+                }
+        case 'UPDATE_USER': 
+                state = {
+                    ...state
                 }
         default: 
             return state
