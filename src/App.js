@@ -49,16 +49,17 @@ class App extends Component {
               this.changeAppLoggedIn(false)
               return <Redirect to="/"></Redirect>
             }}></Route>
-
             <Route path='/signup' component={()=>{
               return <Signup changeAppLoggedIn={this.changeAppLoggedIn}/>
             }}></Route>
             <Route path='/about' component={()=>{
               return <About />
             }}></Route>
-            <Route path="/myAttractions" component={()=>{
-              return <MyAttractionsList />
-            }}></Route>
+            {/* if user is logged in and goes to myAttractions  */}
+            {this.state.loggedIn==true && <Route path="/myAttractions" component={()=>{ return <MyAttractionsList />}}></Route>}
+            {/* if user is logged OUT and goes to my attractions, redirect to main page  */}
+            {this.state.loggedIn==false && <Route path="/myAttractions" component={()=>{ return <MapPage />}}></Route>}
+
             <Route path="/" component={()=>{
               return <MapPage />
             }}></Route>
