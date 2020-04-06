@@ -21,7 +21,7 @@ export const getUser = () => {
 export const updateUser = (user) => {
     console.log(user)
     return (dispatch) => {
-        
+
         // fetch(`http://localhost:3000/attractions/${attraction.id}`, {
         fetch(`http://localhost:3000/users/${user.id}`, {
             method: 'PATCH',
@@ -42,5 +42,4 @@ export const updateUser = (user) => {
             });
     }
 }
-
 

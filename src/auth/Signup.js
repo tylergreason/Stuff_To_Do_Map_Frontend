@@ -4,65 +4,130 @@ import { login, logout } from '../store/actions/authActions'
 import { withRouter } from 'react-router'
 class Signup extends Component {
     state = {
-        email:'', 
-        password:'', 
-        confirmPassword:''
+        newUser:{
+
+            first_name:'',
+            last_name:'',
+            username:'',
+            city:'',
+            state:'',
+            country:'',
+            email:'', 
+            password:'', 
+            password_confirmation:''
+        }
     }
     handleInput = (e) => {
         this.setState({
-            [e.target.name]:e.target.value
+            ...this.state, 
+            user:{
+                ...this.state.user,
+                [e.target.name]:e.target.value
+            }
         })
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        if (this.state.email !== "" && this.state.password === this.state.confirmPassword){
+        if (this.state.email !== "" && this.state.password === this.state.password_confirmation){
             console.log("they match! ")
-            this.submitSignupData()
+            this.createNewUser(this.state.user)
         }else{
             console.log("they don't match!")
         }
     }
-    submitSignupData = () => {
-        // attempt to log in with the backend 
-        fetch('http://localhost:3000/signup',{
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ user: this.state })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.error){
-                console.log(data.error)
-            }else{
+    
+    createNewUser = user => {
+        // attempt to log in with the backend             
+            fetch('http://localhost:3000/signup',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            })
+            .then(res => res.json())
+            .then(data => {
                 console.log(data)
-                localStorage.setItem('auth_token',data.token)
-                this.props.login() 
-                this.props.changeAppLoggedIn(true)
-                // this.props.handleLogin()
-                this.props.history.push('/')
-                
-            }
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-          });
-    }
+                    localStorage.setItem('auth_token',data.token)
+                    this.props.login() 
+                    this.props.changeAppLoggedIn(true)
+                    this.props.history.push('/')
+                })
+        
+                .catch((error) => {
+                    console.error('Error:', error);
+                    return false; 
+            })
+        }
 
     render(){
         return (
             <span className={'form-outer'}>
             <h2> Sign Up </h2>
-            <form className={'add-book'} onSubmit={this.handleSubmit}>
-                <input type="text" name="email" placeholder="Email" onChange={this.handleInput} value={this.state.email} />
+            <form>
+                 <label>First Name: </label>
+                <input  name='first_name' 
+                    value={this.state.first_name} 
+                    onChange={this.handleInput}>
+                </input>
                 <br></br>
-                <input type="password" name="password" placeholder="Password" onChange={this.handleInput} value={this.state.password} />
+                <label>Last Name: </label>
+                <input  name='last_name' 
+                        value={this.state.last_name} 
+                        onChange={this.handleInput}>
+                </input>
                 <br></br>
-                <input type="password" name="confirmPassword" placeholder="Confirm password" onChange={this.handleInput} value={this.state.confirmPassword} />
+                <label>Username: </label>
+                <input  name='username' 
+                        value={this.state.username} 
+                        onChange={this.handleInput}>
+                </input>
                 <br></br>
-                <input id="submit" type="submit" value="Submit" />
+                <label>Email: </label>
+                <input  name='email' 
+                        value={this.state.email} 
+                        onChange={this.handleInput}>
+                </input>
+                <br></br>
+                <label>City </label>
+                <input  name='city' 
+                        value={this.state.city} 
+                        onChange={this.handleInput}>
+                </input>
+                <br></br>
+                <label>State: </label>
+                <input  name='state' 
+                        value={this.state.state} 
+                        onChange={this.handleInput}>
+                </input>
+                <br></br>
+                <label>Country: </label>
+                <input  name='country' 
+                        value={this.state.country} 
+                        onChange={this.handleInput}>
+                </input>
+                <br></br>
+                <label>Password: </label>
+                <input type="password" 
+                        name="password_digest" 
+                        onChange={this.handleInput} 
+                        value={this.state.password} 
+                />
+                <br></br>
+                <label>Confirm Password:</label>
+                <input type="password" 
+                        name="password_confirmation" 
+                        onChange={this.handleInput} 
+                        value={this.state.password_confirmation} 
+                />
+                <br></br>
+                <input  id="submit" 
+                        type="submit" 
+                        value="Sign Up" 
+                        onClick={this.handleSubmit}
+                />
+
             </form>
         </span>
         ) 
