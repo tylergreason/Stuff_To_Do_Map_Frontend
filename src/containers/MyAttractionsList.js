@@ -3,7 +3,6 @@ import MyAttractionListCard from '../components/MyAttractionListCard'
 import EditAttractionForm from '../components/EditAttractionForm'
 import NewAttractionForm from '../components/NewAttractionForm'
 import AttractionFormMap from '../components/AttractionFormMap'
-import Map from '../components/Map'
 
 
 import { connect } from 'react-redux' 

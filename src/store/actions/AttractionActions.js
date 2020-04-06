@@ -6,7 +6,6 @@ export const  fillAttractionForm = (attraction,lat,lng) => {
 }
 
 export const addAttraction = (attraction) => {
-    console.log(attraction)
     return (dispatch) => {
         fetch(`http://localhost:3000/attractions/`, {
             method: 'POST',
