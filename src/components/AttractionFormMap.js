@@ -10,7 +10,8 @@ class AttractionFormMap extends Component {
     }
     // create map on mounting 
     componentDidMount = () => {
-        this.createMap()
+        this.map = this.createMap()
+        this.attractionLayer = L.layerGroup().addTo(this.map)
     }
 
     // create map 
@@ -30,6 +31,7 @@ class AttractionFormMap extends Component {
         }).addTo(myMap);
 
         myMap.on('click', this.onMapClick)
+        return myMap
     }
 
     onMapClick = e => {
@@ -40,9 +42,17 @@ class AttractionFormMap extends Component {
         .then(data => {
             this.props.fillAttractionForm(data.address, data.lat, data.lon)
         }) 
+        // clear attractionLayer 
+        this.attractionLayer.clearLayers()
+        // create marker where click was 
+        this.marker = L.marker([lat,lng])
+        this.marker.addTo(this.attractionLayer)
 
     }
 
+    createMarker = (lat,lng) => {
+
+    }
     render(){
         return(
         <>
