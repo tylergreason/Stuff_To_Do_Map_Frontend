@@ -91,4 +91,10 @@ class NewAttractionForm extends Component {
     }
 }
 
-export default connect(null, { addAttraction })(NewAttractionForm)
+const mapStateToProps = state => {
+    return {
+        newAttraction: state.newAttraction
+    }
+}
+
+export default connect(mapStateToProps, { addAttraction })(NewAttractionForm)

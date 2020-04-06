@@ -5,8 +5,6 @@ class AttractionFormMap extends Component {
     state = {
         map:"",
         mapBoxToken:'pk.eyJ1IjoidHlsZXJncmVhc29uIiwiYSI6ImNrOGVnbzc2ODE0dWczbG8xYXY5eWE4Y3IifQ.dvMx_fsMixzS0VfGmR-fsA',
-        southWestBounds:'', 
-        northEastBounds:''
     }
     // create map on mounting 
     componentDidMount = () => {
@@ -47,6 +45,8 @@ class AttractionFormMap extends Component {
     render(){
         return(
         <>
+            <h3>Adding a new attraction:</h3>
+            <div>Click on the map where your attraction should appear. The address will populate the fields to the left. Then, you can further edit the attraction.</div>
             <div id='myMap'></div>
         </>
         )

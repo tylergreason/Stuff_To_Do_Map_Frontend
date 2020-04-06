@@ -14,7 +14,8 @@ const defaultState = {
                             northEastBounds:''
                         },
                         myAttractions:[],
-                        user:''
+                        user:'',
+                        newAttraction:{}
                     }
 
 const mapReducer = (state = defaultState, action) => {
@@ -68,6 +69,11 @@ const mapReducer = (state = defaultState, action) => {
         case 'UPDATE_USER': 
                 state = {
                     ...state
+                }
+        case 'FILL_ATTRACTION_FORM': 
+                state = { 
+                    ...state, 
+                    newAttraction:action.attraction
                 }
         default: 
             return state
