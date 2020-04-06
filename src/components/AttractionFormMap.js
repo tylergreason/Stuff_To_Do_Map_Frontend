@@ -1,5 +1,7 @@
 import React, { Component } from 'react' 
 import L from 'leaflet' 
+import { connect } from 'react-redux'
+import { fillAttractionForm } from '../store/actions/AttractionActions'
 
 class AttractionFormMap extends Component {
     state = {
@@ -31,15 +33,14 @@ class AttractionFormMap extends Component {
     }
 
     onMapClick = e => {
-        console.log(e.latlng) 
         let lat = e.latlng.lat
         let lng = e.latlng.lng
         fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`)
         .then(resp => resp.json())
         .then(data => {
-            console.log(data)
-            console.log(data.address)
+            this.props.fillAttractionForm(data.address, data.lat, data.lon)
         }) 
+
     }
 
     render(){
@@ -53,4 +54,4 @@ class AttractionFormMap extends Component {
     }
 }
 
-export default AttractionFormMap
+export default connect(null, { fillAttractionForm })(AttractionFormMap)

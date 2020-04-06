@@ -15,7 +15,7 @@ const defaultState = {
                         },
                         myAttractions:[],
                         user:'',
-                        newAttraction:{}
+                        newAddress:{}
                     }
 
 const mapReducer = (state = defaultState, action) => {
@@ -73,7 +73,7 @@ const mapReducer = (state = defaultState, action) => {
         case 'FILL_ATTRACTION_FORM': 
                 state = { 
                     ...state, 
-                    newAttraction:action.attraction
+                    newAddress:action.newAddress, 
                 }
         default: 
             return state
