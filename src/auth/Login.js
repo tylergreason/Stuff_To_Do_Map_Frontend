@@ -58,7 +58,7 @@ class Login extends Component{
             return(
                     <span className={'form-outer'}>
                         <h2> Login </h2>
-                        <form className={'add-book'} onSubmit={this.handleSubmit}>
+                        <form onSubmit={this.handleSubmit}>
                         <input type="text" name='email' placeholder="Email" onChange={this.handleInput} value={this.state.email} />
                         <br></br>
                         
