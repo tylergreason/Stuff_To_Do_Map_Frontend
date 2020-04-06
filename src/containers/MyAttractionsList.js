@@ -56,12 +56,13 @@ class  MyAttractionList extends Component {
     }
 
     renderNewAttractionForm = () => {
-        return <NewEditAttractionForm/>
+        return <NewEditAttractionForm 
+                        backToList={this.backToList}
+                    />
     }
 
     // create button to go back to list 
     backToList = () =>{
-        // return <button onClick={this.setState({formToRender:'list'})}>Go Back</button>
         this.setState({
             formToRender:'list'
         })
@@ -80,7 +81,10 @@ class  MyAttractionList extends Component {
     render(){
         return(
             <>
-            <button onClick={this.handleNewAttractionClick}>New Attraction</button>
+            {/* only render new attraction button if at the list page  */}
+            {this.state.formToRender === 'list' ? <button onClick={this.handleNewAttractionClick}>New Attraction</button> : <></> }
+            {/* render backToList button if not on list */}
+            {this.state.formToRender !== 'list' ? <button onClick={this.backToList}>Go Back</button> : <></>}
                 {this.renderStateForm()}
                 {/* <h2>My Attractions</h2>
                 {this.state.modifyingAttraction 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Login from './auth/Login'
 import Signup from './auth/Signup'
+import CheckLogin from './auth/CheckLogin'
 import Navbar from './containers/Navbar'
 import About from './components/About'
 import MyAttractionsList from './containers/MyAttractionsList'
@@ -55,11 +56,10 @@ class App extends Component {
             <Route path='/about' component={()=>{
               return <About />
             }}></Route>
-            {/* if user is logged in and goes to myAttractions  */}
-            {this.state.loggedIn==true && <Route path="/myAttractions" component={()=>{ return <MyAttractionsList />}}></Route>}
-            {/* if user is logged OUT and goes to my attractions, redirect to main page  */}
-            {this.state.loggedIn==false && <Route path="/myAttractions" component={()=>{ return <MapPage />}}></Route>}
-
+            
+            {/* confirm user is logged in before going to myAttractions or myAccount */}
+            <Route path="/myAttractions" component={() =>{ return <CheckLogin component={MyAttractionsList}/>}}/>
+            {/* <Route path="/myAccount" component={() =>{ return <CheckLogin component={myAccount}/>}}/> */}
             <Route path="/" component={()=>{
               return <MapPage />
             }}></Route>

@@ -40,7 +40,6 @@ class NewAttractionForm extends Component {
     render(){
         return (
             <>
-            <button onClick={this.props.backToList}>Go Back</button>
             <form>
                 <input 
                     name="name" 
