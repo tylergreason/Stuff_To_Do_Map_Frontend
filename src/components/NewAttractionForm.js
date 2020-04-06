@@ -39,7 +39,7 @@ class NewAttractionForm extends Component {
 
     render(){
         return (
-            <>
+            <div className="newAttraction">
             <form>
                 <input 
                     name="name" 
@@ -86,7 +86,7 @@ class NewAttractionForm extends Component {
                     onClick={this.handleSubmit}
                 >Save Changes</button>
             </form>
-            </>
+            </div>
         )
     }
 }

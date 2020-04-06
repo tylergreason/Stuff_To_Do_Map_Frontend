@@ -2,16 +2,17 @@ import React, { Component } from 'react'
 import MyAttractionListCard from '../components/MyAttractionListCard'
 import EditAttractionForm from '../components/EditAttractionForm'
 import NewAttractionForm from '../components/NewAttractionForm'
+import AttractionFormMap from '../components/AttractionFormMap'
+import Map from '../components/Map'
 
 
 import { connect } from 'react-redux' 
 import { getMyAttractions } from '../store/actions/MapActions'
-import NewEditAttractionForm from '../components/NewAttractionForm'
 
 class  MyAttractionList extends Component {
 
     state = {
-        formToRender:'list'
+        formToRender:'new'
     }
 
     componentDidMount = () => {
@@ -56,9 +57,14 @@ class  MyAttractionList extends Component {
     }
 
     renderNewAttractionForm = () => {
-        return <NewEditAttractionForm 
+        return (<>
+                <NewAttractionForm 
                         backToList={this.backToList}
-                    />
+                />
+                <AttractionFormMap
+
+                />
+                </>)
     }
 
     // create button to go back to list 

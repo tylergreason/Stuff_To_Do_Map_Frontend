@@ -18,6 +18,11 @@ code {
   overflow-y: scroll; 
 }
 
+.newAttraction { 
+  width:40%;  
+  float: left; 
+}
+
 #myMap {
   height: 800px; 
 }
