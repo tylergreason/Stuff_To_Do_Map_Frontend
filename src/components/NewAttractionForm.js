@@ -1,7 +1,6 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux' 
-import { addAttraction } from '../store/actions/MapActions'
-// import make new attraction action and edit attraction actions 
+import { addAttraction } from '../store/actions/AttractionActions'
 
 
 class NewAttractionForm extends Component {
@@ -30,39 +29,33 @@ class NewAttractionForm extends Component {
     }
 
     updateNewAttractionAddress = newAddress => {
-
         // create variable to hold bridgeObjectData 
         const bridgeObject = {} 
-
         // create an array of data points we want from the new address 
         let keys = ['house_number','road','city','state','country','lat','lng']; 
-        
         // set all the bridge objects keys that we want from the API equal to this state's data so none goes missing 
         keys.forEach(key => bridgeObject[key] = this.state.attraction[key])
         //  loop through keys, and for each key that newAddress has that isn't undefined, set this.state.key to that 
         keys.forEach(key => { 
             if (newAddress[key] !== undefined && newAddress[key] !== "" && newAddress[key] !== this.state.attraction[key]){
-                // debugger
-                // console.log(`newAddress's ${key} is ${newAddress[key]}`)
-                // console.log(`Current address's ${key} is ${this.state.attraction[key]}`)
                 bridgeObject[key] = newAddress[key]
             }
         })
-        console.log(bridgeObject)
-                this.setState({
-                    ...this.state, 
-                    attraction:{
-                        ...this.state.attraction,
-                        house_number:bridgeObject.house_number,
-                        road:bridgeObject.road,
-                        city:bridgeObject.city, 
-                        state: bridgeObject.state, 
-                        country: bridgeObject.country,
-                        lat:bridgeObject.lat,
-                        lng:bridgeObject.lng
-                        // [key]:newAddress[key]
-                    }
-                })
+        // console.log(bridgeObject)
+        this.setState({
+            ...this.state, 
+            attraction:{
+                ...this.state.attraction,
+                house_number:bridgeObject.house_number,
+                road:bridgeObject.road,
+                city:bridgeObject.city, 
+                state: bridgeObject.state, 
+                country: bridgeObject.country,
+                lat:bridgeObject.lat,
+                lng:bridgeObject.lng
+                // [key]:newAddress[key]
+            }
+        })
     }
 
     handleInput = (e) => {
@@ -81,6 +74,7 @@ class NewAttractionForm extends Component {
         if (this.state.attraction.lat !== '' && this.state.attraction.lng !== ''){
             this.props.addAttraction(this.state.attraction)
         }
+        this.props.backToList()
     }
 
     render(){

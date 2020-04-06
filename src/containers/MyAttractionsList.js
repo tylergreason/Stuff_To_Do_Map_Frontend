@@ -12,7 +12,7 @@ import { getMyAttractions } from '../store/actions/MapActions'
 class  MyAttractionList extends Component {
 
     state = {
-        formToRender:'new'
+        formToRender:'list'
     }
 
     componentDidMount = () => {
