@@ -37,7 +37,7 @@ class  MyAttractionList extends Component {
 
     handleAttractionEditClick = (e) => {
         // filter through myAttractions and find the one whose ID matches the ID of the attraction clicked 
-        const attractionToEdit = this.props.getMyAttractions.filter(attraction =>{ 
+        const attractionToEdit = this.props.myAttractions.filter(attraction =>{ 
             return attraction.id === parseInt(e.target.name)
         })
         this.setState({

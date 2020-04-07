@@ -39,11 +39,6 @@ const mapReducer = (state = defaultState, action) => {
                     errors:false,
                     success:true
                 }
-        case 'GET_USER': 
-                return state = {
-                    ...state, 
-                    user:action.user
-                }
         case 'UPDATE_USER': 
                 return state = {
                     ...state

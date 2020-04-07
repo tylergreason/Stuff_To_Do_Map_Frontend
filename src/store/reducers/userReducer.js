@@ -8,7 +8,8 @@ function checkAuthToken(){
 const defaultState = {
     loggedIn:checkAuthToken(),
     signupSuccess:false, 
-    signupErrors:false
+    signupErrors:false,
+    user:''
 }
 
 const userReducer = (state=defaultState,action)=>{
@@ -37,6 +38,11 @@ const userReducer = (state=defaultState,action)=>{
             ...state,
             success:false, 
             errors:false
+        }
+        case 'GET_USER': 
+        return state = {
+            ...state, 
+            user: action.user
         }
         default: 
             return state 

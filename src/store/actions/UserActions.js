@@ -19,7 +19,6 @@ export const getUser = () => {
 }
 
 export const updateUser = (user) => {
-    console.log(user)
     return (dispatch) => {
 
         // fetch(`http://localhost:3000/attractions/${attraction.id}`, {
@@ -33,7 +32,6 @@ export const updateUser = (user) => {
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data)
                 dispatch({type:'UPDATE_USER'})
                 // dispatch({type:'UPDATE_USER', user: data})
             })
