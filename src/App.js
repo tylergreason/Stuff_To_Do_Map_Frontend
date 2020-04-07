@@ -39,6 +39,7 @@ class App extends Component {
       <Router>
       <Navbar loggedIn={this.state.loggedIn}
               changeAppLoggedIn={this.changeAppLoggedIn}/>
+              <br></br>
         <Switch>
             <Route path="/login" component={()=>{
               return <Login changeAppLoggedIn={this.changeAppLoggedIn}/>

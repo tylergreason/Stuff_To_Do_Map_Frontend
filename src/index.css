@@ -1,6 +1,7 @@
 /* use root to hold variables */
 :root{ 
   --cardBGColor: 40, 114, 204,.6;
+  --hoverColor: 200,50,50,0.5;
 }
 
 body {
@@ -42,6 +43,27 @@ code {
   /* display: inline-flex; */
   /* justify-content: space-between; */
   border:none; 
+  border-radius: 110% 10% 110% 5%;
+  /* border-radius: 10; */
+  /* border-radius: 10px; */
+
+}
+.NavBar button:hover{
+  background-color: rgba(var(--hoverColor));
+  border-radius: 10px;
+  border-radius: 110% 10% 110% 5%;
+
+}
+
+.NavBar button:focus{
+  /* remove highlight when button is clicked */
+  outline:0;
+}
+
+
+.highlight{
+  background-color: rgba(var(--cardBGColor));
+  border-bottom: 1px solid black;
 }
 
 .AttractionList {
