@@ -41,3 +41,29 @@ export const updateUser = (user) => {
     }
 }
 
+
+export const login = (user) => {
+    fetch('http://localhost:3000/login',{
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ user: user })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.error){
+                console.log('login failed')
+            }else{
+                console.log(data)
+                localStorage.setItem('auth_token',data.token)
+                this.props.login() 
+                // this.props.handleLogin()
+                this.props.changeAppLoggedIn(true)
+                this.props.history.push('/')
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+    });
+}

@@ -40,43 +40,43 @@ class MyAccount extends Component {
             <form>
                 <label>First Name: </label>
                 <input  name='first_name' 
-                    value={this.state.user.first_name} 
+                    value={this.state.user.first_name || ''} 
                     onChange={this.handleInput}>
                 </input>
                 <br></br>
                 <label>Last Name: </label>
                 <input  name='last_name' 
-                        value={this.state.user.last_name} 
+                        value={this.state.user.last_name || ''} 
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
                 <label>Username: </label>
                 <input  name='username' 
-                        value={this.state.user.username} 
+                        value={this.state.user.username || ''} 
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
                 <label>Email: </label>
                 <input  name='email' 
-                        value={this.state.user.email} 
+                        value={this.state.user.email || ''} 
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
                 <label>City </label>
                 <input  name='city' 
-                        value={this.state.user.city} 
+                        value={this.state.user.city || ''} 
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
                 <label>State: </label>
                 <input  name='state' 
-                        value={this.state.user.state} 
+                        value={this.state.user.state || ''} 
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
                 <label>Country: </label>
                 <input  name='country' 
-                        value={this.state.user.country} 
+                        value={this.state.user.country || ''} 
                         onChange={this.handleInput}>
                 </input>
                 <br></br>

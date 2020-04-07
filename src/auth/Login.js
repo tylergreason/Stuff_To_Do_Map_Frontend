@@ -25,7 +25,7 @@ class Login extends Component{
         .then(res => res.json())
         .then(data => {
             if (data.error){
-                console.log('login failed')
+                console.log(data.error)
             }else{
                 console.log(data)
                 localStorage.setItem('auth_token',data.token)
@@ -35,9 +35,6 @@ class Login extends Component{
                 this.props.history.push('/')
             }
         })
-        .catch((error) => {
-            console.error('Error:', error);
-    });
     }
 
 
@@ -79,6 +76,11 @@ class Login extends Component{
     }
 }
 const mapStateToProps = (state) => {
-    return {loggedIn: state.loggedIn}
+    return {
+        loggedIn: state.user.loggedIn,
+        success: state.user.success, 
+        errors: state.user.errors
+    
+    }
 }
 export default withRouter(connect(mapStateToProps, {login, logout})(Login))

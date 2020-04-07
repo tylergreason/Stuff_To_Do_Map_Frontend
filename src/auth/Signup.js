@@ -46,8 +46,10 @@ class Signup extends Component {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                    if (data.token){
+                if (data.error){
+                    console.log(data.error)
+                }else if (data.token){
+                        // if a token was returned, signup was successful and we can redirect
                         localStorage.setItem('auth_token',data.token)
                         this.props.login() 
                         this.props.changeAppLoggedIn(true)

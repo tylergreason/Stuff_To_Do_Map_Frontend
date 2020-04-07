@@ -7,33 +7,40 @@ function checkAuthToken(){
 }
 const defaultState = {
     loggedIn:checkAuthToken(),
-    signupSuccess:false, 
-    signupErrors:false,
+    // use success and errors to check if logged in or if signup succeeded or if there are errors from the backend
+    success:false, 
+    errors:false,
     user:''
 }
 
 const userReducer = (state=defaultState,action)=>{
     switch(action.type){
         case 'LOGIN': 
+            console.log('login firing')
             return state = {
                 ...state, 
-                logginIn:true
+                loggedIn:true
             }
-        case 'SIGNUP_SUCCESS': 
+        case 'LOGOUT': 
+            return state = {
+                ...state, 
+                loggedIn:false
+            }
+        case 'LOGIN_SIGNUP_SUCCESS': 
             return state = {
                 ...state, 
                 loggedIn:true,
                 signupSuccess:true, 
                 signupErrors:false
             }
-        case 'SIGNUP_ERROR': 
+        case 'LOGIN_SIGNUP_ERROR': 
         return state = {
             ...state, 
             loggedIn:false,
             signupSuccess:false, 
             signupErrors:true
         }
-        case 'RESET_SIGNUP_SUCCESS': 
+        case 'RESET_LOGIN_SIGNUP_SUCCESS': 
         return state = {
             ...state,
             success:false, 
