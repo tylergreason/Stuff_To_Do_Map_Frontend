@@ -19,6 +19,8 @@ export const getUser = () => {
 }
 
 export const updateUser = (user) => {
+    console.log(`User to update is`)
+    console.log(user)
     return (dispatch) => {
 
         // fetch(`http://localhost:3000/attractions/${attraction.id}`, {
@@ -28,12 +30,16 @@ export const updateUser = (user) => {
                 'Content-Type': 'application/json',
                 'Access-Token': localStorage.auth_token
             }, 
-            body: JSON.stringify(user)
+            body: JSON.stringify({user: user})
             })
             .then((response) => response.json())
             .then((data) => {
                 console.log(data)
-                dispatch({type:'UPDATE_USER'})
+                if (data.error){
+
+                }else{
+                    dispatch({type:'UPDATE_USER'})
+                }
                 // dispatch({type:'UPDATE_USER', user: data})
             })
             .catch((error) => {

@@ -80,22 +80,28 @@ class MyAccount extends Component {
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
-                {/* <label>Current Password: </label>
-                <input  name='password_digest' 
-                        onChange={this.handleInput}>
-                </input>
-                <br></br> */}
-                {/* <label>New Password: </label>
-                <input  name='password' 
+                <label>New Password: </label>
+                <input  name='new_password' 
+                        type='password'
+                        placeholder='not being used yet'
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
-                <label>Confirm Password: </label>
-                <input  name='password_confirmation' 
+                <label>Confirm New Password: </label>
+                <input  name='new_password_confirmation' 
+                        type='password'
+                        placeholder='not being used yet'
                         // value={this.state.user.country} 
                         onChange={this.handleInput}>
                 </input>
-                <br></br> */}
+                <br></br>
+                <label>Current Password: </label>
+                <input  name='password' 
+                        type='password'
+                        value={this.state.user.password || ''}
+                        onChange={this.handleInput}>
+                </input>
+                        <br></br>
                 <button 
                     type='submit'
                     onClick={this.handleSubmit}

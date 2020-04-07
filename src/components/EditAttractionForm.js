@@ -38,19 +38,22 @@ class EditAttractionForm extends Component {
         return (
             <>
             <form>
+                <label>Name: </label>
                 <input 
                     name="name" 
                     value={this.state.attraction.name}
                     onChange={this.handleInput}
                 ></input>
                 <br></br>
+                <label>Description:</label>
                 <input 
                     name="description" 
                     value={this.state.attraction.description}
                     onChange={this.handleInput}
                 ></input>
                 <br></br>
-                <input 
+                {/* removed ability to edit attraction location */}
+                {/* <input 
                     name="house_number" 
                     value={this.state.attraction.house_number}
                     onChange={this.handleInput}
@@ -76,7 +79,7 @@ class EditAttractionForm extends Component {
                     name="country" 
                     value={this.state.attraction.country}
                     onChange={this.handleInput}
-                ></input>
+                ></input> */}
                 <br></br>
                 <button 
                     type='submit'

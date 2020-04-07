@@ -17,7 +17,7 @@ class Map extends Component {
         // add layer to this.map so we can control the attractions that are rendered 
         this.attractionLayer = L.layerGroup().addTo(this.map)
         // get user location and set view to it 
-        this.map.locate({setView:true})
+        this.map.locate({setView:true, enableHighAccuracy:true})
     }
 
     renderAttractionMarkers = (map) => {
