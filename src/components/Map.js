@@ -7,7 +7,6 @@ class Map extends Component {
 
     state = {
         map:"",
-        mapBoxToken:'pk.eyJ1IjoidHlsZXJncmVhc29uIiwiYSI6ImNrOGVnbzc2ODE0dWczbG8xYXY5eWE4Y3IifQ.dvMx_fsMixzS0VfGmR-fsA',
         southWestBounds:'', 
         northEastBounds:''
     }
@@ -80,7 +79,7 @@ class Map extends Component {
             id: 'mapbox/streets-v11',
             tileSize: 512,
             zoomOffset: -1,
-            accessToken: this.state.mapBoxToken
+            accessToken: process.env.REACT_APP_MAPBOX_API_KEY
         }).addTo(myMap);
 
         // create event listener for when map moves 

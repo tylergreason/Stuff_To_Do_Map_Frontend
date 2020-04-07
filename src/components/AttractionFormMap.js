@@ -5,8 +5,7 @@ import { fillAttractionForm } from '../store/actions/AttractionActions'
 
 class AttractionFormMap extends Component {
     state = {
-        map:"",
-        mapBoxToken:'pk.eyJ1IjoidHlsZXJncmVhc29uIiwiYSI6ImNrOGVnbzc2ODE0dWczbG8xYXY5eWE4Y3IifQ.dvMx_fsMixzS0VfGmR-fsA',
+        map:""
     }
     // create map on mounting 
     componentDidMount = () => {
@@ -27,7 +26,7 @@ class AttractionFormMap extends Component {
             id: 'mapbox/streets-v11',
             tileSize: 512,
             zoomOffset: -1,
-            accessToken: this.state.mapBoxToken
+            accessToken: process.env.REACT_APP_MAPBOX_API_KEY
         }).addTo(myMap);
 
         myMap.on('click', this.onMapClick)

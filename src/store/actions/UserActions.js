@@ -32,6 +32,7 @@ export const updateUser = (user) => {
             })
             .then((response) => response.json())
             .then((data) => {
+                console.log(data)
                 dispatch({type:'UPDATE_USER'})
                 // dispatch({type:'UPDATE_USER', user: data})
             })
