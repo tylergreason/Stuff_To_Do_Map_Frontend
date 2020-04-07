@@ -2,7 +2,7 @@ import React from 'react'
 
 const About = () => {
     return(
-        <div>
+        <div className='About'>
             <h2>About</h2>
             <div>Hi, and thanks for visiting my site!</div>
             <div>This web application was built for my final project for Flatiron's Software Engineering program. It was made to show off what we learned during our 12 weeks leading up to beginning the project. You can find out more at the two Github repos below. Feel free to contact me if you'd like to discuss the project, employment, or anything else! </div>
