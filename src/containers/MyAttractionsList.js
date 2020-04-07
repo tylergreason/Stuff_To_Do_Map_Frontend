@@ -19,7 +19,8 @@ class  MyAttractionList extends Component {
     }
 
     renderMyAttractions = () => {
-        if (this.props.myAttractions !== undefined){
+        if (this.props.getMyAttractions !== undefined){
+            // debugger
             return this.props.myAttractions.map(attraction => {
                 return <MyAttractionListCard 
                             key={attraction.id} 
@@ -32,7 +33,7 @@ class  MyAttractionList extends Component {
 
     handleAttractionEditClick = (e) => {
         // filter through myAttractions and find the one whose ID matches the ID of the attraction clicked 
-        const attractionToEdit = this.props.myAttractions.filter(attraction =>{ 
+        const attractionToEdit = this.props.getMyAttractions.filter(attraction =>{ 
             return attraction.id === parseInt(e.target.name)
         })
         this.setState({
@@ -90,7 +91,7 @@ class  MyAttractionList extends Component {
             {this.state.formToRender === 'list' ? <button onClick={this.handleNewAttractionClick}>New Attraction</button> : <></> }
             {/* render backToList button if not on list */}
             {this.state.formToRender !== 'list' ? <button onClick={this.backToList}>Go Back</button> : <></>}
-                {this.renderStateForm()}
+                {this.renderStateForm()}    
                 {/* <h2>My Attractions</h2>
                 {this.state.modifyingAttraction 
                 ?

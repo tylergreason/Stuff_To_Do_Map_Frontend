@@ -13,6 +13,7 @@ export const getAttractions = (bounds) => {
             })
             .then((response) => response.json())
             .then((data) => {
+                console.log(data)
                 dispatch({type:'GET_ATTRACTIONS', attractions: data})
             })
             .catch((error) => {

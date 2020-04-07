@@ -6,6 +6,7 @@ export const  fillAttractionForm = (attraction,lat,lng) => {
 }
 
 export const addAttraction = (attraction) => {
+    console.log('addAttraction fired ')
     return (dispatch) => {
         fetch(`http://localhost:3000/attractions/`, {
             method: 'POST',
@@ -18,10 +19,25 @@ export const addAttraction = (attraction) => {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data)
-                dispatch({type:'ADD_ATTRACTION', myAttractions: data})
+                if (data.error){
+                    console.log(data.error)
+                    dispatch({type:'ADD_ATTRACTION_ERRORS', errors:data.error})
+                }else{
+                    console.log(data)
+                    dispatch({type:'ADD_ATTRACTION', myAttractions: data})
+                }
             })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+    }
+}
+
+export const addAttractionErrors = errors => {
+    return {
+        type:'ADD_ATTRACTION_ERRORS', errors:errors
+    }
+}
+
+export const resetNewAttractionSuccess = () =>{
+    return {
+        type:'RESET_NEW_ATTRACTION_SUCCESS'
     }
 }

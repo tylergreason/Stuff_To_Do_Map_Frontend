@@ -1,6 +1,6 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux' 
-import { addAttraction } from '../store/actions/AttractionActions'
+import { addAttraction, resetNewAttractionSuccess } from '../store/actions/AttractionActions'
 
 
 class NewAttractionForm extends Component {
@@ -26,6 +26,14 @@ class NewAttractionForm extends Component {
                 return this.updateNewAttractionAddress(this.props.newAttraction)
             }
         }
+        // check if success changed
+        // if (prevProps !== this.props){
+            // if success is true and errors are false, go back 
+            if (this.props.success === true && this.props.errors === false){
+                this.props.resetNewAttractionSuccess()
+                this.props.backToList()
+            }
+        // }
     }
 
     updateNewAttractionAddress = newAddress => {
@@ -59,6 +67,7 @@ class NewAttractionForm extends Component {
     }
 
     handleInput = (e) => {
+        console.log('something')
         this.setState({
             ...this.state, 
             attraction: {
@@ -70,17 +79,20 @@ class NewAttractionForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault() 
+        console.log(this.state.attraction)
         // verify lat and lng aren't blank 
-        if (this.state.attraction.lat !== '' && this.state.attraction.lng !== ''){
+        // if (this.state.attraction.lat !== '' && this.state.attraction.lng !== ''){
             this.props.addAttraction(this.state.attraction)
-        }
-        this.props.backToList()
+        // }
+        // this.props.backToList()
     }
 
     render(){
         return (
             <div className="newAttraction">
-            <form>
+            <form
+                onSubmit={this.handleSubmit}
+            >
                 <label>Name</label>
                 <input 
                     name="name" 
@@ -130,7 +142,6 @@ class NewAttractionForm extends Component {
                 <br></br>
                 <button 
                     type='submit'
-                    onClick={this.handleSubmit}
                 >Save Changes</button>
             </form>
             </div>
@@ -140,8 +151,10 @@ class NewAttractionForm extends Component {
 
 const mapStateToProps = state => {
     return {
-        newAttraction: state.newAddress
+        newAttraction: state.newAddress, 
+        success: state.success, 
+        errors: state.errors
     }
 }
 
-export default connect(mapStateToProps, { addAttraction })(NewAttractionForm)
+export default connect(mapStateToProps, { addAttraction, resetNewAttractionSuccess })(NewAttractionForm)

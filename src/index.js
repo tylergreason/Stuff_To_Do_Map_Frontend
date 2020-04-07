@@ -10,11 +10,13 @@ import mapReducer from './store/reducers/mapReducer'
 import thunk from 'redux-thunk'
 
  
-// const store = createStore(mapReducer, applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+// const store = createStore(mapReducer, applyMiddleware(thunk))
+// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(mapReducer, undefined, composeEnhancers(applyMiddleware(thunk)))
+
 
 
 

@@ -15,66 +15,80 @@ const defaultState = {
                         },
                         myAttractions:[],
                         user:'',
-                        newAddress:{}
+                        newAddress:{},
+                        success:false, 
+                        errors:false
                     }
 
 const mapReducer = (state = defaultState, action) => {
     switch(action.type){
         case 'LOGIN': 
-                state = {
+                return state = {
                     ...state, 
                     loggedIn:true
                 }
-            // break
         case 'LOGOUT': 
-                state = {
+                return state = {
                     ...state, 
                     loggedIn:false
                 }
-            // break
         case 'GET_ATTRACTIONS': 
-                state = {
+                return state = {
                     ...state, 
                     map: {
                         ...state.map, 
                         attractions: action.attractions
                     }
                 }
-            // break
         case 'GET_MY_ATTRACTIONS':
-                state = {
+                return state = {
                     ...state, 
                     myAttractions:action.myAttractions
                 }
         case 'DELETE_ATTRACTION': 
-                state = {
+                return state = {
                     ...state, 
                     myAttractions:action.myAttractions
                 }
         case 'UPDATE_ATTRACTION':
-                state = {
+                return state = {
                     ...state, 
                     myAttractions:action.myAttractions
                 }
+                // debugger
         case 'ADD_ATTRACTION': 
-                state = { 
+                return state = { 
                     ...state, 
-                    myAttractions:action.myAttractions
+                    myAttractions:action.myAttractions,
+                    errors:false,
+                    success:true
                 }
         case 'GET_USER': 
-                state = {
+                return state = {
                     ...state, 
                     user:action.user
                 }
         case 'UPDATE_USER': 
-                state = {
+                return state = {
                     ...state
                 }
         case 'FILL_ATTRACTION_FORM': 
-                state = { 
+                return state = { 
                     ...state, 
                     newAddress:action.newAddress, 
                 }
+        case 'ADD_ATTRACTION_ERRORS':
+                return state = {
+                ...state, 
+                success:false,
+                errors: action.errors
+            }
+        case 'RESET_NEW_ATTRACTION_SUCCESS':
+            return state = {
+                ...state, 
+                success:false, 
+                errors:false
+            }
         default: 
             return state
     }
