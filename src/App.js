@@ -37,7 +37,6 @@ class App extends Component {
   render(){
     return (
       <Router>
-        Stuff To Do Map
       <Navbar loggedIn={this.state.loggedIn}
               changeAppLoggedIn={this.changeAppLoggedIn}/>
         <Switch>

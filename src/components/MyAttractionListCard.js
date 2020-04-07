@@ -12,7 +12,7 @@ const MyAttractionListCard = (props) => {
     }
 
     return(
-    <div>
+    <div class="MyAttractionListCard animated slideInLeft">
         {props.attraction.name}
         <br></br>
         {props.attraction.description}

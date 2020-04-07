@@ -17,7 +17,7 @@ class Map extends Component {
         // add layer to this.map so we can control the attractions that are rendered 
         this.attractionLayer = L.layerGroup().addTo(this.map)
         // get user location and set view to it 
-        this.map.locate({setView:true, enableHighAccuracy:true})
+        // this.map.locate({setView:true, enableHighAccuracy:true})
     }
 
     renderAttractionMarkers = (map) => {
@@ -100,9 +100,8 @@ class Map extends Component {
 
     render(){
         return (
-            <div className="Map">
-                <h4>Map</h4>
-                <div id='myMap'></div>
+            <div class="Map">
+                <div id='myMap' class="animated fadeIn"></div>
                 {/* {this.addMarker()} */}
             </div>
         )

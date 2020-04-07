@@ -19,24 +19,24 @@ class Navbar extends Component {
 
     renderLoggedInNavbar = () => {
         return (
-            <div>
+            <>
                 <button value='/' name='map' onClick={this.handleNavbarClick}>Map</button>
                 <button value='/about' name='about' onClick={this.handleNavbarClick}>About</button>
                 <button value="/myAttractions" name='myAttractions' onClick={this.handleNavbarClick}>My Attractions</button>
                 <button value="/myAccount" name='myAccount' onClick={this.handleNavbarClick}>My Account</button>
                 <button value="/logout" name='logout' onClick={this.logout}>Log Out</button>
-            </div>
+            </>
         )
     }
 
     renderLoggedOutNavbar = () => {
         return (
-            <div>
+            <>
                 <button value='/' name='map' onClick={this.handleNavbarClick}>Map</button>
                 <button value='/about' name='about' onClick={this.handleNavbarClick}>About</button>
                 <button value='/signup' name='signUp' onClick={this.handleNavbarClick}>Sign Up</button>
                 <button value="/login" name='login' onClick={this.handleNavbarClick}>Log In</button>
-            </div>
+            </>
         )
     }
 
@@ -50,7 +50,12 @@ class Navbar extends Component {
 
     render(){
         return(
-            <>{this.renderNavbar()}</>
+            <span class="NavbarParent">
+            <h1 class='title'>Stuff To Do Map</h1>
+            <span class="NavBar">
+                {this.renderNavbar()}
+            </span>
+            </span>
         )
     }
 }

@@ -1,8 +1,14 @@
+/* use root to hold variables */
+:root{ 
+  --cardBGColor: 40, 114, 204,.6;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif; */
+  font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -11,11 +17,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.title{ 
+  font-family: Yellowtail; 
+  font-size: 2.5rem;
+  display: inline;
+}
+
+.NavBar { 
+  float:right;
+}
+
+.NavBarParent {
+  display: inline-grid; 
+}
+
+.NavBar button {
+  font-family: Yellowtail;
+  font-size: 1.1rem;
+  padding: 10px;
+  margin:10px;
+  /* display: inline-flex; */
+  /* justify-content: space-between; */
+  border:none; 
+}
+
 .AttractionList {
   width:40%;
-  height: 800px; 
+  /* height: 100vh;  */
+  height: 100vh;
   float: left;
-  overflow-y: scroll; 
+  overflow-y: auto; 
+  overflow-x: hidden;
 }
 
 .newAttraction { 
@@ -24,9 +57,42 @@ code {
 }
 
 #myMap {
-  height: 800px; 
+  height: 80vh; 
+  /* width: 100%; */
+  border: 2px solid black;
+  margin: 10px;
 }
 
 .leaflet-popup-content {
   /* font-size: 2em; */
 }
+
+.AttractionListCard {
+  border: 1px solid black; 
+  background-color: rgba(var(--cardBGColor));
+  border-radius: 10px;
+  max-width: 95%;
+  margin: 5px;
+  padding: 7px;
+}
+
+
+.name {
+  text-transform: capitalize;
+  margin:0px;
+  display: inline;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif
+}
+
+.address {
+  
+  font-size: 0.8rem;
+  font-style: italic;
+  /* margin-top: 0px; */
+}
+
+.description { 
+  /* overflow-y:auto;  */
+  /* margin-top: 5px; */
+}
+

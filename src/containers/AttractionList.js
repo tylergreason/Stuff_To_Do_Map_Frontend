@@ -8,16 +8,13 @@ class AttractionList extends Component {
         attractions:this.props.attractions
     }
     renderAttractionCards = () => {
-
         if (this.state.attractions !== undefined){
             return this.state.attractions.map(attraction => {
                 return <AttractionMapListCard key={attraction.id} attraction={attraction}/> 
             })
         }
     }
-    // componentDidMount = () =>{
-    //     this.renderAttractionCards()
-    // }
+
     componentDidUpdate = (prevProps) =>{ 
         if (prevProps !== this.props){
                 this.setState({
@@ -27,9 +24,6 @@ class AttractionList extends Component {
     }
     render(){
         return(<div className="AttractionList">
-            <h3>
-                attraction list
-            </h3>
             {this.renderAttractionCards()}
         </div>)
     }

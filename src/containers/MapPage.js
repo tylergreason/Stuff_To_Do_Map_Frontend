@@ -42,8 +42,7 @@ class MapPage extends Component {
 
     render(){
         return(
-        <>
-        <h3>Map Page</h3>
+        <div>
             <AttractionList 
                 attractions={this.state.attractions}
             />
@@ -52,7 +51,7 @@ class MapPage extends Component {
                 setBounds={this.setBounds}
                 parseBounds={this.parseBounds}
             />
-        </>
+        </div>
         )
     }
 }
