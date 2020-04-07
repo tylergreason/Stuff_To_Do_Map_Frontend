@@ -100,8 +100,8 @@ class Map extends Component {
 
     render(){
         return (
-            <div class="Map">
-                <div id='myMap' class="animated fadeIn"></div>
+            <div className="Map">
+                <div id='myMap' className="animated fadeIn"></div>
                 {/* {this.addMarker()} */}
             </div>
         )

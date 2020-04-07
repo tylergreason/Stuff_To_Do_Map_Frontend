@@ -4,13 +4,15 @@
 }
 
 body {
-  margin: 0;
+  /* margin: 0; */
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif; */
   font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: '../public/istanbul1.jpeg';
+  /* background-color: brown; */
 }
 
 code {
@@ -25,7 +27,7 @@ code {
 }
 
 .NavBar { 
-  float:right;
+  /* float:right; */
 }
 
 .NavBarParent {
