@@ -35,7 +35,7 @@ export const getMyAttractions = () => {
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data)
+                console.log(data)  
                 dispatch({type:'GET_MY_ATTRACTIONS', myAttractions: data})
             })
             .catch((error) => {

@@ -151,9 +151,9 @@ class NewAttractionForm extends Component {
 
 const mapStateToProps = state => {
     return {
-        newAttraction: state.newAddress, 
-        success: state.success, 
-        errors: state.errors
+        newAttraction: state.map.newAddress, 
+        success: state.map.success, 
+        errors: state.map.errors
     }
 }
 

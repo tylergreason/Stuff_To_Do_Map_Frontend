@@ -18,8 +18,12 @@ class  MyAttractionList extends Component {
         this.props.getMyAttractions()
     }
 
+    // componentDidUpdate = () => {
+    //     this.props.getMyAttractions()
+    // }
+
     renderMyAttractions = () => {
-        if (this.props.getMyAttractions !== undefined){
+        if (this.props.myAttractions !== undefined){
             // debugger
             return this.props.myAttractions.map(attraction => {
                 return <MyAttractionListCard 
@@ -105,7 +109,7 @@ class  MyAttractionList extends Component {
 }
 
 const mapStateToProps = state => {
-    return {myAttractions: state.myAttractions}
+    return {myAttractions: state.map.myAttractions}
 }
 
 export default connect(mapStateToProps, { getMyAttractions })(MyAttractionList)

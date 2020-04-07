@@ -1,20 +1,9 @@
-// check if auth_token exists and base loggedIn off that 
-function checkAuthToken(){
-    if (localStorage.auth_token){
-        return true 
-    }
-    return false 
-}
-
 const defaultState = {
-                        loggedIn:checkAuthToken(), 
-                        map:{
-                            attractions:[], 
-                            southWestBounds:'', 
-                            northEastBounds:''
-                        },
+                        
+                        attractions:[], 
+                        southWestBounds:'', 
+                        northEastBounds:'',
                         myAttractions:[],
-                        user:'',
                         newAddress:{},
                         success:false, 
                         errors:false
@@ -22,23 +11,10 @@ const defaultState = {
 
 const mapReducer = (state = defaultState, action) => {
     switch(action.type){
-        case 'LOGIN': 
-                return state = {
-                    ...state, 
-                    loggedIn:true
-                }
-        case 'LOGOUT': 
-                return state = {
-                    ...state, 
-                    loggedIn:false
-                }
         case 'GET_ATTRACTIONS': 
                 return state = {
                     ...state, 
-                    map: {
-                        ...state.map, 
-                        attractions: action.attractions
-                    }
+                    attractions: action.attractions
                 }
         case 'GET_MY_ATTRACTIONS':
                 return state = {
