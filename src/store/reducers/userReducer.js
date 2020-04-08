@@ -40,6 +40,13 @@ const userReducer = (state=defaultState,action)=>{
                 }
             }
         }
+        case 'DELETE_USER': {
+            return state = {
+                ...state, 
+                loggedIn:false,
+                user:{}
+            }
+        }
         // case 'LOGIN_SIGNUP_SUCCESS': 
         //     return state = {
         //         ...state, 

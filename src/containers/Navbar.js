@@ -1,8 +1,6 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux'
-// import { BrowserRouter as Router, Route,Redirect } from 'react-router-dom'; 
 import { withRouter } from 'react-router'
-// import Button from '../components/general/Button'
 import { logout } from '../store/actions/authActions'
 
 class Navbar extends Component {
@@ -110,8 +108,8 @@ class Navbar extends Component {
     }
 }
 
-// const mapStateToProps = (state) => {
-//     return {loggedIn: state.loggedIn}
-// }
+const mapStateToProps = (state) => {
+    return {loggedIn: state.user.loggedIn}
+}
 
-export default withRouter(connect(null, {logout})(Navbar))
+export default withRouter(connect(mapStateToProps, {logout})(Navbar))

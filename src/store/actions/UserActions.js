@@ -105,6 +105,33 @@ export const updateEmail = (email, returnMessage) => {
             });
     }
 }
+
+export const deleteUser = (user,returnMessage) => {
+    console.log({user})
+    return (dispatch) => {
+        fetch(`http://localhost:3000/users/${user.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Token': localStorage.auth_token
+            },
+            body: JSON.stringify({user})
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                if (data.error){
+                    returnMessage(data.error)
+                }else{
+                    dispatch({type:'DELETE_USER', user: data})
+                    returnMessage(data.success)
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+}
 // wanted to move the login action here but it works better in the Login.js component for now 
 // since nothing else is using it and it depends on functions imported there 
 // export const login = (user) => {

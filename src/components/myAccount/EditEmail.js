@@ -30,7 +30,7 @@ class EditEmail extends Component {
                 <label>Update Email Address</label>
                 <form className="informationBox">
                 <label>Current Email Address</label>
-                <span> - {this.props.currentEmail}</span>
+                <label> - {this.props.currentEmail}</label>
                 <br></br>
                     <label>New Email: </label>
                     <br></br>

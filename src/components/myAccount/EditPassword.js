@@ -28,7 +28,7 @@ class EditPassword extends Component {
             <>
                 <label>Change Password</label>
                 <form className="informationBox">
-                    <label>Current Password: </label>
+                    <label>Current Password</label>
                     <br></br>
                 <input  name='password' 
                         type='password'
@@ -43,7 +43,7 @@ class EditPassword extends Component {
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
-                <label>Confirm New Password: </label>
+                <label>Confirm New Password</label>
                 <br></br>
                 <input  name='password_confirmation' 
                         type='password'

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import EditPassword from './myAccount/EditPassword'
 import EditEmail from './myAccount/EditEmail'
 import EditInfo from './myAccount/EditInfo'
+import DeleteAccount from './myAccount/DeleteAccount'
+
 
 import { connect } from 'react-redux'
 import { getUser, updateUser, updatePassword } from '../store/actions/UserActions'
@@ -55,6 +57,7 @@ class MyAccount extends Component {
                 {/* {this.renderChangePasswordForm()} */}
                 <EditPassword userId={this.state.user.id}/>
                 <EditEmail userId={this.state.user.id}/>
+                <DeleteAccount userId={this.state.user.id}/>
             </div>
         )
     }
