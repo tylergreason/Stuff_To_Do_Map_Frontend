@@ -102,9 +102,23 @@ code {
   margin: 10px;
 }
 
+/* popup */
+.leaflet-popup-content-wrapper {
+  background-color: var(--cardBGColor);
+  border: 2px solid var(--borderColor)
+}
 .leaflet-popup-content {
   /* font-size: 2em; */
-  background-color: transparent;
+  font-size: 1em;
+}
+
+.popupName {
+  font-size:2em;
+  font-family: Yellowtail;
+}
+
+.popupText{
+  font-size:1.5em;  
 }
 
 .AttractionListCard {

@@ -18,7 +18,7 @@ export const getUser = () => {
     }
 }
 
-export const updateUser = (user) => {
+export const updateUser = (user,returnMessage) => {
     console.log(`User to update is`)
     console.log(user)
     return (dispatch) => {
@@ -34,9 +34,10 @@ export const updateUser = (user) => {
             .then((data) => {
                 console.log(data)
                 if (data.error){
-
+                    returnMessage(data.error)
                 }else{
-                    dispatch({type:'UPDATE_USER'})
+                    dispatch({type:'UPDATE_USER', user:data.user})
+                    returnMessage(data.success)
                 }
                 // dispatch({type:'UPDATE_USER', user: data})
             })

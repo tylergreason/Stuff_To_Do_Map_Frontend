@@ -25,6 +25,12 @@ const userReducer = (state=defaultState,action)=>{
         case 'UPDATE_PASSWORD': {
             return state
         }
+        case 'UPDATE_USER':{
+            return state = {
+                ...state, 
+                user: action.user
+            }
+        }
         case 'UPDATE_EMAIL': {
             return state = {
                 ...state, 
