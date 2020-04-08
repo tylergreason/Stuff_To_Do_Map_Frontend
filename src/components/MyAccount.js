@@ -1,4 +1,5 @@
 import React, { Component } from 'react' 
+import EditPassword from './myAccount/EditPassword'
 import { connect } from 'react-redux'
 import { getUser, updateUser, updatePassword } from '../store/actions/UserActions'
 class MyAccount extends Component { 
@@ -108,47 +109,6 @@ class MyAccount extends Component {
         )
     }
 
-    renderChangePasswordForm = () =>{
-        return (
-            <>
-                <label>Change Password</label>
-                <form className="informationBox">
-                    <label>Current Password: </label>
-                    <br></br>
-                <input  name='password' 
-                        type='password'
-                        value={this.state.user.password || ''}
-                        onChange={this.handleInput}>
-                </input>
-                        <br></br>
-                <label>New Password: </label>
-                <br></br>
-                <input  name='new_password' 
-                        type='password'
-                        onChange={this.handleInput}>
-                </input>
-                <br></br>
-                <label>Confirm New Password: </label>
-                <br></br>
-                <input  name='password_confirmation' 
-                        type='password'
-                        onChange={this.handleInput}>
-                </input>
-                <br></br>
-                <div>{`${this.state.returnMessage}`}</div>
-                <button 
-                    type='submit'
-                    onClick={this.handleUpdatePasswordSubmit}
-                    >Change Password</button>
-                </form>
-            </>
-        )
-    }
-
-    handleUpdatePasswordSubmit = e => {
-        e.preventDefault() 
-        this.props.updatePassword(this.state.user, this.returnMessage)
-    }
 
     renderUpdateEmailForm = () =>{
         return(
@@ -186,11 +146,21 @@ class MyAccount extends Component {
         )
     }
 
+    editPasswordProps = (user) => {
+        return {
+                id:user.id, 
+                current_password:user.password, 
+                password:user.new_password, 
+                password_confirmation: user.password_confirmation
+        }
+    }
+
     render(){
         return( 
             <div className="MyAccount animated ">
                 {this.renderUpdateAccountForm()}
-                {this.renderChangePasswordForm()}
+                {/* {this.renderChangePasswordForm()} */}
+                <EditPassword user={this.editPasswordProps(this.state.user)}/>
                 {this.renderUpdateEmailForm()}
             </div>
         )
