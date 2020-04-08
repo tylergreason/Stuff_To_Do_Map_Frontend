@@ -48,6 +48,39 @@ export const updateUser = (user) => {
     }
 }
 
+export const updatePassword = (user) => {
+    const userInfo = {
+        id:user.id, 
+        current_password:user.password, 
+        password:user.new_password, 
+        password_confirmation: user.password_confirmation
+    }
+
+    return (dispatch) => {
+        fetch(`http://localhost:3000/updatePassword/`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Token': localStorage.auth_token
+            }, 
+            body: JSON.stringify({user:userInfo})
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                if (data.error){
+
+                }else{
+                    dispatch({type:'UPDATE_PASSWORD'})
+                }
+                // dispatch({type:'UPDATE_USER', user: data})
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+}
+
 // wanted to move the login action here but it works better in the Login.js component for now 
 // since nothing else is using it and it depends on functions imported there 
 // export const login = (user) => {

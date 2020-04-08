@@ -28,6 +28,8 @@ body {
   background-color: var(--bodyBGColor);
   color: var(--textColor);
   line-height: 1.5em;
+  padding:20px;
+  padding-top:5px;
 }
 
 .mainContainer {
@@ -201,6 +203,7 @@ input:hover, input:focus, textarea:hover, textarea:focus{
 
 
 .MyAccount { 
+
   margin: auto; 
 }
 label {

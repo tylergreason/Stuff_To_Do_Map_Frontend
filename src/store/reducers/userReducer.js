@@ -22,6 +22,9 @@ const userReducer = (state=defaultState,action)=>{
                 ...state, 
                 loggedIn:false
             }
+        case 'UPDATE_PASSWORD': {
+            return state
+        }
         // case 'LOGIN_SIGNUP_SUCCESS': 
         //     return state = {
         //         ...state, 
