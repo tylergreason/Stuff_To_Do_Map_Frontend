@@ -135,6 +135,7 @@ class MyAccount extends Component {
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
+                <div>{`${this.state.returnMessage}`}</div>
                 <button 
                     type='submit'
                     onClick={this.handleUpdatePasswordSubmit}
