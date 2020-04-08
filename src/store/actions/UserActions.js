@@ -22,8 +22,6 @@ export const updateUser = (user) => {
     console.log(`User to update is`)
     console.log(user)
     return (dispatch) => {
-
-        // fetch(`http://localhost:3000/attractions/${attraction.id}`, {
         fetch(`http://localhost:3000/users/${user.id}`, {
             method: 'PATCH',
             headers: {
@@ -55,7 +53,6 @@ export const updatePassword = (user, returnMessage) => {
         password:user.new_password, 
         password_confirmation: user.password_confirmation
     }
-
     return (dispatch) => {
         fetch(`http://localhost:3000/updatePassword/`, {
             method: 'PATCH',
@@ -74,7 +71,6 @@ export const updatePassword = (user, returnMessage) => {
                     dispatch({type:'UPDATE_PASSWORD'})
                     returnMessage(data.success)
                 }
-                // dispatch({type:'UPDATE_USER', user: data})
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -82,6 +78,32 @@ export const updatePassword = (user, returnMessage) => {
     }
 }
 
+
+export const updateEmail = (email, returnMessage) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/updateEmail/`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Token': localStorage.auth_token
+            }, 
+            body: JSON.stringify({user:email})
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                if (data.error){
+                    returnMessage(data.error)
+                }else{
+                    dispatch({type:'UPDATE_EMAIL', email:data.email})
+                    returnMessage(data.success)
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+}
 // wanted to move the login action here but it works better in the Login.js component for now 
 // since nothing else is using it and it depends on functions imported there 
 // export const login = (user) => {

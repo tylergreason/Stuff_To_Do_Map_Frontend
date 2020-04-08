@@ -1,6 +1,6 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux' 
-import { updatePassword } from '../../store/actions/UserActions'
+import { updateEmail, getUser } from '../../store/actions/UserActions'
 class EditEmail extends Component {
         state={
             returnMessage:"",
@@ -29,6 +29,9 @@ class EditEmail extends Component {
             <>
                 <label>Update Email Address</label>
                 <form className="informationBox">
+                <label>Current Email Address</label>
+                <span> - {this.props.currentEmail}</span>
+                <br></br>
                     <label>New Email: </label>
                     <br></br>
                     <input  name='new_email' 
@@ -45,12 +48,15 @@ class EditEmail extends Component {
                     <br></br>
                     <label>*Current Password</label>
                 <br></br>
-                <input  name='password' 
+                <input  name='current_password' 
                         type='password'
                         // value={this.state.user.password || ''}
                         onChange={this.handleInput}>
                 </input>
                         <br></br>
+
+                        <div>{`${this.state.returnMessage}`}</div>
+
                 <button 
                     type='submit'
                     onClick={this.handleUpdateEmailSubmit}
@@ -67,7 +73,9 @@ class EditEmail extends Component {
             id:this.props.userId
         }
         console.log(dataToSubmit)
-        this.props.updatePassword(dataToSubmit, this.returnMessage)
+        this.props.updateEmail(dataToSubmit, this.returnMessage)
+        // run getUser so user info updates in the store and current email updates above 
+        this.props.getUser()
     }
 
     render(){
@@ -78,5 +86,9 @@ class EditEmail extends Component {
         )
     }
 }
-
-export default connect(null, {updatePassword})(EditEmail)
+const mapStateToProps = state => {
+    return {
+        currentEmail:state.user.user.email
+    }
+}
+export default connect(mapStateToProps, {updateEmail, getUser })(EditEmail)

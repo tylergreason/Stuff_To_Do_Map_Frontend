@@ -119,7 +119,8 @@ class MyAccount extends Component {
                 {this.renderUpdateAccountForm()}
                 {/* {this.renderChangePasswordForm()} */}
                 <EditPassword userId={this.state.user.id}/>
-                <EditEmail userId={this.state.user.id}/>
+                <EditEmail userId={this.state.user.id}
+                                />
             </div>
         )
     }
