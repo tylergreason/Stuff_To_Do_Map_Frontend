@@ -4,8 +4,17 @@ import { getUser, updateUser, updatePassword } from '../store/actions/UserAction
 class MyAccount extends Component { 
     state = {
         user:'', 
-        receivedProps:false
+        receivedProps:false,
+        returnMessage:''
     }
+    
+    // function for getting the message back from updating information 
+    returnMessage = message => {
+        this.setState({
+            returnMessage:message
+        })
+    }
+
     componentDidMount = () => {
         this.props.getUser()
     }
@@ -137,7 +146,7 @@ class MyAccount extends Component {
 
     handleUpdatePasswordSubmit = e => {
         e.preventDefault() 
-        this.props.updatePassword(this.state.user)
+        this.props.updatePassword(this.state.user, this.returnMessage)
     }
 
     renderUpdateEmailForm = () =>{

@@ -48,7 +48,7 @@ export const updateUser = (user) => {
     }
 }
 
-export const updatePassword = (user) => {
+export const updatePassword = (user, returnMessage) => {
     const userInfo = {
         id:user.id, 
         current_password:user.password, 
@@ -69,9 +69,10 @@ export const updatePassword = (user) => {
             .then((data) => {
                 console.log(data)
                 if (data.error){
-
+                    returnMessage(data.error)
                 }else{
                     dispatch({type:'UPDATE_PASSWORD'})
+                    returnMessage(data.success)
                 }
                 // dispatch({type:'UPDATE_USER', user: data})
             })
