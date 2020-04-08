@@ -1,5 +1,6 @@
 import React, { Component } from 'react' 
 import EditPassword from './myAccount/EditPassword'
+import EditEmail from './myAccount/EditEmail'
 import { connect } from 'react-redux'
 import { getUser, updateUser, updatePassword } from '../store/actions/UserActions'
 class MyAccount extends Component { 
@@ -110,58 +111,15 @@ class MyAccount extends Component {
     }
 
 
-    renderUpdateEmailForm = () =>{
-        return(
-            <>
-                <label>Update Email Address</label>
-                <form className="informationBox">
-                    <label>New Email: </label>
-                    <br></br>
-                    <input  name='email' 
-                            value={this.state.user.email || ''} 
-                            onChange={this.handleInput}>
-                    </input>
-                    <br></br>
-                    <label>Confirm New Email: </label>
-                    <br></br>
-                    <input  name='email' 
-                            value={this.state.user.email || ''} 
-                            onChange={this.handleInput}>
-                    </input>
-                    <br></br>
-                    <label>*Current Password</label>
-                <br></br>
-                <input  name='password' 
-                        type='password'
-                        value={this.state.user.password || ''}
-                        onChange={this.handleInput}>
-                </input>
-                        <br></br>
-                <button 
-                    type='submit'
-                    onClick={this.handleSubmit}
-                    >Update Email Address</button>
-                </form>
-            </>
-        )
-    }
 
-    editPasswordProps = (user) => {
-        return {
-                id:user.id, 
-                current_password:user.password, 
-                password:user.new_password, 
-                password_confirmation: user.password_confirmation
-        }
-    }
 
     render(){
         return( 
             <div className="MyAccount animated ">
                 {this.renderUpdateAccountForm()}
                 {/* {this.renderChangePasswordForm()} */}
-                <EditPassword user={this.editPasswordProps(this.state.user)}/>
-                {this.renderUpdateEmailForm()}
+                <EditPassword userId={this.state.user.id}/>
+                <EditEmail userId={this.state.user.id}/>
             </div>
         )
     }

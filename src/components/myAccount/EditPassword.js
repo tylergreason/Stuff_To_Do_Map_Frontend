@@ -64,7 +64,7 @@ class EditPassword extends Component {
         e.preventDefault() 
         const dataToSubmit = {
             ...this.state.user,
-            id:this.props.user.id
+            id:this.props.userId
         }
         console.log(dataToSubmit)
         this.props.updatePassword(dataToSubmit, this.returnMessage)
