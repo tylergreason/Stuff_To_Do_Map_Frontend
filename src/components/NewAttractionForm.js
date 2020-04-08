@@ -89,11 +89,12 @@ class NewAttractionForm extends Component {
 
     render(){
         return (
-            <div className="newAttraction">
+            <div className="informationBox newAttractionForm">
             <form
                 onSubmit={this.handleSubmit}
             >
                 <label>Name</label>
+                <br></br>
                 <input 
                     name="name" 
                     value={this.state.attraction.name}
@@ -101,19 +102,23 @@ class NewAttractionForm extends Component {
                 ></input>
                 <br></br>
                 <label>Description</label>
-                <input 
+                <br></br>
+                <textarea rows='4'
                     name="description" 
                     value={this.state.attraction.description}
                     onChange={this.handleInput}
-                ></input>
+                ></textarea>
                 <br></br>
                 <label>Building Number</label>
+                <br></br>
                 <input 
                     name="house_number" 
                     value={this.state.attraction.house_number}
                     onChange={this.handleInput}
                 ></input>
+                <br></br>
                 <label>Street</label>
+                <br></br>
                 <input 
                     name="road" 
                     value={this.state.attraction.road}
@@ -121,12 +126,15 @@ class NewAttractionForm extends Component {
                 ></input>
                 <br></br>
                 <label>City</label>
+                <br></br>
                 <input 
                     name="city" 
                     value={this.state.attraction.city}
                     onChange={this.handleInput}
                 ></input>
+                <br></br>
                 <label>State</label>
+                <br></br>
                 <input 
                     name="state" 
                     value={this.state.attraction.state}
@@ -134,6 +142,7 @@ class NewAttractionForm extends Component {
                 ></input>
                 <br></br>
                 <label>Country</label>
+                <br></br>
                 <input 
                     name="country" 
                     value={this.state.attraction.country}

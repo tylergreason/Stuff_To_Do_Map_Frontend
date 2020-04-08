@@ -65,8 +65,7 @@ class Signup extends Component {
 
     render(){
         return (
-            <span className={'form-outer'}>
-            <h2> Sign Up </h2>
+            <div className='informationBox'>
             <form>
                  <label>First Name: </label>
                 <input  name='first_name' 
@@ -87,30 +86,35 @@ class Signup extends Component {
                 </input>
                 <br></br>
                 <label>Email: </label>
+                <br></br>
                 <input  name='email' 
                         value={this.state.user.email} 
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
                 <label>City </label>
+                <br></br>
                 <input  name='city' 
                         value={this.state.user.city} 
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
                 <label>State: </label>
+                <br></br>
                 <input  name='state' 
                         value={this.state.user.state} 
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
                 <label>Country: </label>
+                <br></br>
                 <input  name='country' 
                         value={this.state.user.country} 
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
                 <label>Password: </label>
+                <br></br>
                 <input type="password" 
                         name="password" 
                         onChange={this.handleInput} 
@@ -118,20 +122,20 @@ class Signup extends Component {
                 />
                 <br></br>
                 <label>Confirm Password:</label>
+                <br></br>
                 <input type="password" 
                         name="password_confirmation" 
                         onChange={this.handleInput} 
-                        value={this.state.user.  password_confirmation} 
+                        value={this.state.user.password_confirmation} 
                 />
                 <br></br>
-                <input  id="submit" 
+                <button id="submit" 
                         type="submit" 
-                        value="Sign Up" 
-                        onClick={this.handleSubmit}
-                />
+                        onClick={this.handleSubmit}>
+                Sign Up</button>
 
             </form>
-        </span>
+        </div>
         ) 
     }
 }

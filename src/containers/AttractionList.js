@@ -23,9 +23,11 @@ class AttractionList extends Component {
         }
     }
     render(){
-        return(<div className="AttractionList">
+        return(
+        <div className="AttractionList">
             {this.renderAttractionCards()}
-        </div>)
+        </div>
+        )
     }
 }
 

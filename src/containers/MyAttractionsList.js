@@ -61,14 +61,15 @@ class  MyAttractionList extends Component {
     }
 
     renderNewAttractionForm = () => {
-        return (<>
+        return (<div>
+            <div>Click on the map where your attraction should appear. The address will populate the fields to the left. Then, you can further edit the attraction.</div>
                 <NewAttractionForm 
                         backToList={this.backToList}
                 />
                 <AttractionFormMap
-
+    
                 />
-                </>)
+                </div>)
     }
 
     // create button to go back to list 
@@ -90,7 +91,7 @@ class  MyAttractionList extends Component {
     }
     render(){
         return(
-            <>
+            <div className="MyAttractionList">
             {/* only render new attraction button if at the list page  */}
             {this.state.formToRender === 'list' ? <button onClick={this.handleNewAttractionClick}>New Attraction</button> : <></> }
             {/* render backToList button if not on list */}
@@ -103,7 +104,7 @@ class  MyAttractionList extends Component {
                 :
                 this.renderMyAttractions(this.props.myAttractions)
                 } */}
-            </>
+            </div>
     )
     }
 }

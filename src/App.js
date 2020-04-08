@@ -39,9 +39,11 @@ class App extends Component {
       <Router>
       <Navbar loggedIn={this.state.loggedIn}
               changeAppLoggedIn={this.changeAppLoggedIn}/>
-              <br></br>
+        <div id="mainContainer">
+
         <Switch>
-            <Route path="/login" component={()=>{
+            <Route path="/login" 
+              component={()=>{
               return <Login changeAppLoggedIn={this.changeAppLoggedIn}/>
             }}></Route>
             {/* for logout route, set store state loggedIn to false and redirect to root  */}
@@ -59,6 +61,7 @@ class App extends Component {
             <Route path="/myAccount" component={() =>{ return <CheckLogin component={MyAccount}/>}}/>
             <Route path="/" component={()=>{ return <MapPage /> }}></Route>
         </Switch>
+        </div>
       </Router>
   );
 }

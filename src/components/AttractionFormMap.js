@@ -34,8 +34,9 @@ class AttractionFormMap extends Component {
     }
 
     onMapClick = e => {
-        let lat = e.latlng.lat
-        let lng = e.latlng.lng
+        let lat = e.latlng.wrap().lat
+        let lng = e.latlng.wrap().lng
+        console.log(`${lat} and ${lng}`)
         fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`)
         .then(resp => resp.json())
         .then(data => {
@@ -54,11 +55,9 @@ class AttractionFormMap extends Component {
     }
     render(){
         return(
-        <>
-            <h3>Adding a new attraction:</h3>
-            <div>Click on the map where your attraction should appear. The address will populate the fields to the left. Then, you can further edit the attraction.</div>
+        <div className="Map">
             <div id='myMap'></div>
-        </>
+        </div>
         )
     }
 }

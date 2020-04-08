@@ -37,50 +37,59 @@ class MyAccount extends Component {
 
     render(){
         return( 
+            <div className="MyAccount informationBox animated ">
             <form>
                 <label>First Name: </label>
+                <br></br>
                 <input  name='first_name' 
                     value={this.state.user.first_name || ''} 
                     onChange={this.handleInput}>
                 </input>
                 <br></br>
                 <label>Last Name: </label>
+                <br></br>
                 <input  name='last_name' 
                         value={this.state.user.last_name || ''} 
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
                 <label>Username: </label>
+                <br></br>
                 <input  name='username' 
                         value={this.state.user.username || ''} 
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
                 <label>Email: </label>
+                <br></br>
                 <input  name='email' 
                         value={this.state.user.email || ''} 
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
                 <label>City </label>
+                <br></br>
                 <input  name='city' 
                         value={this.state.user.city || ''} 
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
                 <label>State: </label>
+                <br></br>
                 <input  name='state' 
                         value={this.state.user.state || ''} 
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
                 <label>Country: </label>
+                <br></br>
                 <input  name='country' 
                         value={this.state.user.country || ''} 
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
                 <label>New Password: </label>
+                <br></br>
                 <input  name='new_password' 
                         type='password'
                         placeholder='not being used yet'
@@ -88,6 +97,7 @@ class MyAccount extends Component {
                 </input>
                 <br></br>
                 <label>Confirm New Password: </label>
+                <br></br>
                 <input  name='new_password_confirmation' 
                         type='password'
                         placeholder='not being used yet'
@@ -96,6 +106,7 @@ class MyAccount extends Component {
                 </input>
                 <br></br>
                 <label>Current Password: </label>
+                <br></br>
                 <input  name='password' 
                         type='password'
                         value={this.state.user.password || ''}
@@ -107,6 +118,7 @@ class MyAccount extends Component {
                     onClick={this.handleSubmit}
                     >Submit</button>
             </form>
+            </div>
         )
     }
 }

@@ -44,16 +44,16 @@ class Login extends Component{
     }
     renderLoginForm = () => {
         if (this.props.loggedIn){
-
-            return (<div>You are already logged in
-                    <button onClick={this.logout}>log out</button>
-
-            </div>
-                    
+            return (
+                <div>You are already logged in
+                    <button onClick={this.logout}>
+                        log out
+                    </button>
+                </div>
                 )
         }else{
             return(
-                    <span className={'form-outer'}>
+                    <div className={'informationBox'}>
                         <h2> Login </h2>
                         <form onSubmit={this.handleSubmit}>
                         <input type="text" name='email' placeholder="Email" onChange={this.handleInput} value={this.state.email} />
@@ -62,9 +62,9 @@ class Login extends Component{
                         <input type="password" name='password' placeholder="password" onChange={this.handleInput} value={this.state.password} />
                         <br></br>
                         
-                        <input id="submit" type="submit" value="Submit" />
+                        <button id="submit" type="submit" value="Submit">Login</button>
                         </form>
-                    </span>
+                    </div>
         ) 
     }
     }

@@ -34,7 +34,7 @@ class Map extends Component {
                 this.marker.on('click', this.handleMarkerClick)
                 this.marker.id = attraction.id 
                 this.marker.bindPopup(this.renderPopupText(attraction)).openPopup()
-                this.marker.addTo(this.attractionLayer)
+                return this.marker.addTo(this.attractionLayer)
             })
         }
     }

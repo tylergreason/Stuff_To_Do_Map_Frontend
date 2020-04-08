@@ -36,9 +36,10 @@ class EditAttractionForm extends Component {
 
     render(){
         return (
-            <>
+            <div className="informationBox editAttractionForm">
             <form>
                 <label>Name: </label>
+                <br></br>
                 <input 
                     name="name" 
                     value={this.state.attraction.name}
@@ -46,11 +47,12 @@ class EditAttractionForm extends Component {
                 ></input>
                 <br></br>
                 <label>Description:</label>
-                <input 
+                <br></br>
+                <textarea rows='4'
                     name="description" 
                     value={this.state.attraction.description}
                     onChange={this.handleInput}
-                ></input>
+                ></textarea>
                 <br></br>
                 {/* removed ability to edit attraction location */}
                 {/* <input 
@@ -86,7 +88,7 @@ class EditAttractionForm extends Component {
                     onClick={this.handleSubmit}
                 >Save Changes</button>
             </form>
-            </>
+            </div>
         )
     }
 }

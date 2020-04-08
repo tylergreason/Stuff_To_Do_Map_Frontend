@@ -11,9 +11,13 @@ class Navbar extends Component {
     }
     componentDidMount = () =>{
         const buttons = this.allNavBarButtons()
-        console.log(buttons)
+        // debugger
+        this.setState({
+            path:this.props.location.pathname
+        })
+        this.addHighlightToButton(buttons)
     }
-
+    
     // in component did update, check to see if any buttons have a class that matches this state's path 
     componentDidUpdate = () => {
         //remove highlight from all buttons 
@@ -22,15 +26,15 @@ class Navbar extends Component {
         const buttons = this.allNavBarButtons() 
         this.addHighlightToButton(buttons)
     }
-
+    
     addHighlightToButton = buttons => {
         buttons.forEach(button => {
-            if (button.name === this.state.path){
+            if (button.value === this.state.path){
                 button.classList.add('highlight')
             }
         })
     }
-
+    
     handleNavbarClick = (e) => {
         const path = e.target.value
         this.props.history.push(path)
@@ -38,42 +42,43 @@ class Navbar extends Component {
         e.target.classList.add('highlight')
         console.log(e.target.classList)
         this.setState({
-            path:e.target.name
+            path:e.target.value
         })
         // e.target.classList.remove('blargh')
         // console.log(e.target.classList)
     }
-
+    
     logout = () => {
         localStorage.clear()
         this.props.changeAppLoggedIn(false)
         this.props.logout()
+        this.setState({path:'map'})
     }
-
+    
     // remove highlight class from all NavBar buttons
     removeHighlightClass = () =>{
         const buttons = this.allNavBarButtons()
         buttons.forEach(button => button.classList.remove('highlight'))
     }
-
+    
     allNavBarButtons = () => {
         const navBarButtons = document.getElementsByClassName('NavBarButton'); 
         return Array.from(navBarButtons) 
     }
-
-
+    
+    
     renderLoggedInNavbar = () => {
         return (
             <>
                 <button className='NavBarButton highlight' value='/' name='map' onClick={this.handleNavbarClick}>Map</button>
-                <button className='NavBarButton' value='/about' name='about' onClick={this.handleNavbarClick}>About</button>
+                <button className='NavBarButton' value='/about' name='/about' onClick={this.handleNavbarClick}>About</button>
                 <button className='NavBarButton' value="/myAttractions" name='myAttractions' onClick={this.handleNavbarClick}>My Attractions</button>
                 <button className='NavBarButton' value="/myAccount" name='myAccount' onClick={this.handleNavbarClick}>My Account</button>
                 <button className='NavBarButton' value="/logout" name='logout' onClick={this.logout}>Log Out</button>
             </>
         )
     }
-
+    
     renderLoggedOutNavbar = () => {
         return (
             <>
