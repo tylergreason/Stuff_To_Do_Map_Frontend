@@ -1,5 +1,6 @@
 /* use root to hold variables */
 :root{ 
+  --cardBGHoverColor: rgb(65, 119, 141);
   --cardBGColor: #8de4af;
   /* --cardBGColor: rgb(51, 115, 199); */
   --cardBGColorLighter: rgb(114, 154, 206);
@@ -128,6 +129,12 @@ button:focus{
   max-width: 95%;
   margin: 5px;
   padding: 7px;
+  transition: all 0.1s;
+}
+
+.AttractionListCard:hover{
+  background-color: var(--buttonTextColor);
+  /* color: var(--buttonTextColor) */
 }
 
 .MyAttractionListCard { 
