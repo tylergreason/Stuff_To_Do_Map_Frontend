@@ -41,3 +41,24 @@ export const resetNewAttractionSuccess = () =>{
         type:'RESET_NEW_ATTRACTION_SUCCESS'
     }
 }
+
+
+export const getAttraction = (attractionId, returnData) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/attractions/${attractionId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            returnData(data)
+            // dispatch({type:'GET_ATTRACTION', attraction: data})
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+}

@@ -1,12 +1,27 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux'
+import { getAttraction } from '../../store/actions/AttractionActions'
+import ReviewList from '../../containers/ReviewList'
 
 const cardClass = "AttractionCardLarge animated fadeIn"
 
 class AttractionCardLarge extends Component {
 
+    setAttraction = (attraction) => {
+        this.setState({
+            attraction:attraction 
+        })
+    }
+
     componentDidMount = () =>{
-        
+        this.props.getAttraction(this.props.attraction.id,this.setAttraction)
+    }
+
+    renderReviewList = () => {
+        // debugger
+        if (this.state !== null){
+            return <ReviewList attraction={this.state.attraction} />
+        }
     }
     render(){
         return (
@@ -20,9 +35,10 @@ class AttractionCardLarge extends Component {
                 {`${this.props.attraction.house_number} ${this.props.attraction.road}, ${this.props.attraction.city}, ${this.props.attraction.state}, ${this.props.attraction.country}`}
                 </span>
                 <p className="description">DESC {this.props.attraction.description}</p>
+            {this.renderReviewList()}
             </div>
         </div>)
     }
 }
 
-export default AttractionCardLarge
+export default connect(null, {getAttraction})(AttractionCardLarge)

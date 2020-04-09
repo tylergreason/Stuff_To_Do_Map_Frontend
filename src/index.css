@@ -274,3 +274,15 @@ label {
   margin: auto;  
   /* z-index: 1000; */
 }
+
+.ReviewList{
+  overflow-y: scroll;
+  height:60%;
+}
+
+.ReviewCard { 
+  width:90%;
+  max-width: none;
+  margin:10px;
+  /* border: 2px solid var(--borderColor) */
+}
