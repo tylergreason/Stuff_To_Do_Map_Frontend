@@ -10,7 +10,11 @@ class AttractionList extends Component {
     renderAttractionCards = () => {
         if (this.state.attractions !== undefined){
             return this.state.attractions.map(attraction => {
-                return <AttractionMapListCard key={attraction.id} attraction={attraction}/> 
+                return <AttractionMapListCard 
+                            key={attraction.id} 
+                            attraction={attraction}
+                            onClick={this.attractionCardClick}
+                            /> 
             })
         }
     }
@@ -22,6 +26,14 @@ class AttractionList extends Component {
                 })
         }
     }
+
+    // on click, fetch attraction's info, then render a big card for that attraction 
+    attractionCardClick = (e)=> {
+        // e.preventDefault()
+        console.log(e)
+        // debugger
+    }
+
     render(){
         return(
         <div className="AttractionList">
