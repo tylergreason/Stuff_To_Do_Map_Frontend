@@ -9,7 +9,7 @@ class DeleteAccount extends Component {
     state = {
         password:'',
         save_attractions:null,
-        returnMessage:"return message"
+        returnMessage:""
     }
 
     // redirect to login if deletion was successful 

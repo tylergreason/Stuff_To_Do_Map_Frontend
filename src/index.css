@@ -69,7 +69,7 @@ code {
   border:none;
 }
 
-.NavBarButton:focus{
+button:focus{
   /* remove highlight when button is clicked */
   outline:0;
 }
@@ -112,7 +112,7 @@ code {
   font-size: 1em;
 }
 
-.popupName {
+.popupName { 
   font-size:2em;
   font-family: Yellowtail;
 }
