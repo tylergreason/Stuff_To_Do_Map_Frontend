@@ -39,9 +39,21 @@ class AttractionList extends Component {
         // debugger
     }
 
+    // check if user clicked outside the large card box, and reset the large card state if so (if it's not already nothing)
+    handleClick = e => {
+        console.log(e.target.classList)
+        if (e.target.classList.contains("AttractionCardLargeInner") !== true){
+            if (this.state.attractionCardLargeToRender !== ""){
+                this.setState({
+                    attractionCardLargeToRender:""
+                })
+            }
+        }
+       // debugger
+    }
     render(){
         return(
-        <div className="AttractionList">
+        <div className="AttractionList" onClick={this.handleClick}>
             {this.renderAttractionCards()}
             {this.state.attractionCardLargeToRender !== "" 
             ? 

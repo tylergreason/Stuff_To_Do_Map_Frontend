@@ -101,6 +101,9 @@ button:focus{
   border: 5px solid var(--borderColor);
   border-radius: 10px;
   margin: 10px;
+  /* setting z index to less than 0 so the AttractionCardLarge can appear over it */
+  z-index: -1;
+
 }
 
 /* popup */
@@ -244,4 +247,30 @@ label {
 
 .editAttractionForm { 
   margin: 10px;
+}
+
+/* popup style taken from https://dev.to/skptricks/create-simple-popup-example-in-react-application-5g7f */
+.AttractionCardLarge {
+  /* darken background */
+  top: 0;  
+  left: 0;  
+  right: 0;  
+  bottom: 0;  
+  margin: auto; 
+  position: fixed;   
+  width: 100%;  
+  height: 100%;  
+  background-color: rgba(0,0,0, 0.5);
+}
+
+.AttractionCardLargeInner {
+  /* actual popup div */
+  position: absolute;  
+  width:100%;
+  left: 0%;  
+  right: 00%;  
+  top: 10%;  
+  bottom: 10%;  
+  margin: auto;  
+  /* z-index: 1000; */
 }
