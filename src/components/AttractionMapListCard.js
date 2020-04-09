@@ -7,7 +7,7 @@ const AttractionMapListCard = (props) => {
         <div 
             id={`attractionMapListCard${props.attraction.id}`}
             // feed the attraction's id back on click so the attraction list can fetch it and render its info  
-            onClick={() => props.onClick(props.attraction.id)}
+            onClick={() => props.onClick(props.attraction)}
                 className={cardClass}>
             <h4 className="name">{props.attraction.name}</h4>
             <span className="cardRating"> - {props.attraction.average_rating}⭐️</span>

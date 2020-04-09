@@ -1,11 +1,13 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux'
-// import { getAttractions } from '../store/actions/MapActions'
 import AttractionMapListCard from '../components/AttractionMapListCard'
+import AttractionCardLarge from '../components/attractionCards/AttractionCardLarge'
+
 
 class AttractionList extends Component {   
     state = {
-        attractions:this.props.attractions
+        attractions:this.props.attractions, 
+        attractionCardLargeToRender:''
     }
     renderAttractionCards = () => {
         if (this.state.attractions !== undefined){
@@ -31,6 +33,9 @@ class AttractionList extends Component {
     attractionCardClick = (e)=> {
         // e.preventDefault()
         console.log(e)
+        this.setState({
+            attractionCardLargeToRender:e
+        })
         // debugger
     }
 
@@ -38,6 +43,12 @@ class AttractionList extends Component {
         return(
         <div className="AttractionList">
             {this.renderAttractionCards()}
+            {this.state.attractionCardLargeToRender !== "" 
+            ? 
+            <AttractionCardLarge attraction={this.state.attractionCardLargeToRender} />
+            :
+            <></>
+            }
         </div>
         )
     }
