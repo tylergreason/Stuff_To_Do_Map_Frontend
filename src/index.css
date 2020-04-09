@@ -278,11 +278,13 @@ label {
 .ReviewList{
   overflow-y: scroll;
   height:60%;
+  max-width: 90%;
+  margin: auto;
 }
 
 .ReviewCard { 
+  /* max-width: none; */
   width:90%;
-  max-width: none;
   margin:10px;
   /* border: 2px solid var(--borderColor) */
 }

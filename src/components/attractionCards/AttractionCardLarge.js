@@ -35,6 +35,8 @@ class AttractionCardLarge extends Component {
                 {`${this.props.attraction.house_number} ${this.props.attraction.road}, ${this.props.attraction.city}, ${this.props.attraction.state}, ${this.props.attraction.country}`}
                 </span>
                 <p className="description">DESC {this.props.attraction.description}</p>
+                <label>Reviews</label>
+
             {this.renderReviewList()}
             </div>
         </div>)
