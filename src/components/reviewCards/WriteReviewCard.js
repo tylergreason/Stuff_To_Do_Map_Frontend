@@ -1,8 +1,13 @@
 import React, { Component } from 'react' 
 import {connect} from 'react-redux' 
+import { addReview } from '../../store/actions/ReviewActions'
 
 class WriteReviewCard extends Component {
-
+    state = {
+        text:'', 
+        rating:'', 
+        returnMessage:''
+    }
     handleInput = e =>{
         this.setState({
             [e.target.name]:e.target.value
@@ -21,9 +26,37 @@ class WriteReviewCard extends Component {
         }
     }
 
+    renderReturnMessage = () => {
+        return( 
+            <div>{this.state.returnMessage}</div>
+        )
+    }
+
+    returnMessage = message => {
+        this.setState({
+            returnMessage:message
+        })
+    }
+
+    componentDidUpdate = () => {
+        if (this.state.returnMessage === "Review added!"){
+            console.log('babana')
+            this.setState({
+                returnMessage:""
+            })
+        }
+    }
+
     submitReview = (e) => {
         e.preventDefault();
-        console.log(this.state)
+        const review = {
+            // format object keys the Ruby way (snake case)
+            attraction_id: this.props.attractionId, 
+            text: this.state.text, 
+            rating: this.state.rating 
+        }
+        // submit review and get return message to show 
+        addReview(review,this.returnMessage)
     }
 
     renderWriteReview = () => {
@@ -34,7 +67,7 @@ class WriteReviewCard extends Component {
                 <span className="ratingSelect">
                     <label>Rating</label>
                     <select name="rating" onChange={this.handleOptionSelect}>
-                        <option name="rating" selected value=""></option>
+                        <option name="rating" defaultValue value=""></option>
                         <option name="rating" value="1">1</option>
                         <option name="rating" value="2">2</option>
                         <option name="rating" value="3">3</option>
@@ -48,6 +81,7 @@ class WriteReviewCard extends Component {
                     onChange={this.handleInput}
                 ></textarea>
                 <br></br>
+                {this.renderReturnMessage()}
                 <button
                     onClick={this.submitReview}
                 >Submit Review</button>

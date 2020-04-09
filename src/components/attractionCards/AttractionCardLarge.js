@@ -26,7 +26,7 @@ class AttractionCardLarge extends Component {
     }
 
     renderWriteReviewCard = () => {
-        return <WriteReviewCard />
+        return <WriteReviewCard attractionId={this.props.attraction.id}/>
     }
 
     renderBackButton = () => {

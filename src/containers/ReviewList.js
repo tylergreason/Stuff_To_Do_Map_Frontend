@@ -7,7 +7,7 @@ const ReviewList = props => {
     return( 
         <div className={styleClasses}>
             {props.attraction.reviews.map(review => {
-                return <ReviewCard attraction={props.attraction} review={review}/>
+                return <ReviewCard attraction={props.attraction} review={review} key={review.id}/>
             })}
         </div>
     )
