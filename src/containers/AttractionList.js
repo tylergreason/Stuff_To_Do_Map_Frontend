@@ -9,6 +9,7 @@ class AttractionList extends Component {
         attractions:this.props.attractions, 
         attractionCardLargeToRender:''
     }
+
     renderAttractionCards = () => {
         if (this.state.attractions !== undefined){
             return this.state.attractions.map(attraction => {
@@ -51,13 +52,24 @@ class AttractionList extends Component {
         }
        // debugger
     }
+
+    backToAttractionListClick = (e) => {
+        e.preventDefault()
+        this.setState({
+            attractionCardLargeToRender:""
+        })
+    }
     render(){
         return(
-        <div className="AttractionList" onClick={this.handleClick}>
+        <div className="AttractionList" 
+            // onClick={this.handleClick}
+        >
             {this.renderAttractionCards()}
             {this.state.attractionCardLargeToRender !== "" 
             ? 
-            <AttractionCardLarge attraction={this.state.attractionCardLargeToRender} />
+            <AttractionCardLarge attraction={this.state.attractionCardLargeToRender} 
+                backClick={this.backToAttractionListClick}
+            />
             :
             <></>
             }

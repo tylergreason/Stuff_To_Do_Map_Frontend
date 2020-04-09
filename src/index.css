@@ -2,6 +2,7 @@
 :root{ 
   --cardBGHoverColor: rgb(65, 119, 141);
   --cardBGColor: #8de4af;
+
   /* --cardBGColor: rgb(51, 115, 199); */
   --cardBGColorLighter: rgb(114, 154, 206);
   --hoverColor: 200,50,50,0.5;
@@ -269,22 +270,42 @@ label {
   width:100%;
   left: 0%;  
   right: 00%;  
-  top: 10%;  
-  bottom: 10%;  
+  top: 5%;  
+  bottom: 5%;  
   margin: auto;  
   /* z-index: 1000; */
 }
 
 .ReviewList{
   overflow-y: scroll;
-  height:60%;
+  height:55%;
   max-width: 90%;
   margin: auto;
 }
 
 .ReviewCard { 
-  /* max-width: none; */
   width:90%;
-  margin:10px;
-  /* border: 2px solid var(--borderColor) */
+  margin: auto;
+  padding: 0px;
+  border-bottom: 2px solid var(--borderColor)
+}
+
+.writeReviewText {
+  background-color: var(--bodyBGColor);
+  border-radius: 10px;
+  max-width: 90%;
+  margin: auto auto;
+}
+
+.writeReviewText:hover {
+  border: 5px solid var(--borderColor)
+}
+
+.ratingSelect {
+  float: right;
+  margin: auto auto;
+}
+
+.WriteReviewCard {
+  padding-top: 10px;
 }

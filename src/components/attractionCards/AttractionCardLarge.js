@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getAttraction } from '../../store/actions/AttractionActions'
 import ReviewList from '../../containers/ReviewList'
+import WriteReviewCard from '../reviewCards/WriteReviewCard'
 
 const cardClass = "AttractionCardLarge animated fadeIn"
 
@@ -23,12 +24,23 @@ class AttractionCardLarge extends Component {
             return <ReviewList attraction={this.state.attraction} />
         }
     }
+
+    renderWriteReviewCard = () => {
+        return <WriteReviewCard />
+    }
+
+    renderBackButton = () => {
+        return (
+            <button onClick={this.props.backClick}>Back</button>
+        )
+    }
     render(){
         return (
         <div className={cardClass}>
             {/* <h1>ATTRACTION CARD LARGE</h1> */}
             <div className="AttractionCardLargeInner informationBox">
-
+                {this.renderBackButton()}
+                <br></br>
                 <h4 className="name">{this.props.attraction.name}</h4>
                 <span className="cardRating"> - {this.props.attraction.average_rating}⭐️</span>
                 <span className="address">
@@ -38,6 +50,7 @@ class AttractionCardLarge extends Component {
                 <label>Reviews</label>
 
             {this.renderReviewList()}
+            {this.renderWriteReviewCard()}
             </div>
         </div>)
     }
