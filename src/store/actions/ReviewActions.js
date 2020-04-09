@@ -1,12 +1,12 @@
-// this isn't actually an action, but I didn't know where else to put it so here it is 
 export const addReview = (review, returnMessage) => {
-    fetch(`http://localhost:3000/reviews/`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Access-Token': localStorage.auth_token
-        },
-        body: JSON.stringify(review),
+    return (dispatch) => {
+        fetch(`http://localhost:3000/reviews/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Token': localStorage.auth_token
+            },
+            body: JSON.stringify(review),
         })
         .then((response) => response.json())
         .then((data) => {
@@ -15,6 +15,31 @@ export const addReview = (review, returnMessage) => {
                 returnMessage(data.error)
             }else{
                 returnMessage(data.success)
+                dispatch({type:'ADD_REVIEW', attraction:data.attraction})
             }
         })
+    }
 }
+
+export const deleteReview = (review) => {
+    // debugger
+    return (dispatch) => {
+        fetch(`http://localhost:3000/reviews/${review.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Token': localStorage.auth_token
+            },
+            body: JSON.stringify(review)
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            if (data.error){
+            }else{
+                dispatch({type:'DELETE_REVIEW', attraction:data.attraction})
+            }
+        })
+    }
+}
+

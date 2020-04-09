@@ -43,7 +43,7 @@ export const resetNewAttractionSuccess = () =>{
 }
 
 
-export const getAttraction = (attractionId, returnData) => {
+export const getAttraction = (attractionId) => {
     return (dispatch) => {
         fetch(`http://localhost:3000/attractions/${attractionId}`, {
             method: 'GET',
@@ -54,8 +54,7 @@ export const getAttraction = (attractionId, returnData) => {
         .then((response) => response.json())
         .then((data) => {
             console.log(data)
-            returnData(data)
-            // dispatch({type:'GET_ATTRACTION', attraction: data})
+            dispatch({type:'GET_ATTRACTION', attraction: data})
         })
         .catch((error) => {
             console.error('Error:', error);

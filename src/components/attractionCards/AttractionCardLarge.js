@@ -4,24 +4,16 @@ import { getAttraction } from '../../store/actions/AttractionActions'
 import ReviewList from '../../containers/ReviewList'
 import WriteReviewCard from '../reviewCards/WriteReviewCard'
 
-const cardClass = "AttractionCardLarge animated fadeIn"
+const cardClass = "AttractionCardLarge "
 
 class AttractionCardLarge extends Component {
-
-    setAttraction = (attraction) => {
-        this.setState({
-            attraction:attraction 
-        })
-    }
-
     componentDidMount = () =>{
-        this.props.getAttraction(this.props.attraction.id,this.setAttraction)
+        this.props.getAttraction(this.props.attractionId)
     }
 
     renderReviewList = () => {
-        // debugger
-        if (this.state !== null){
-            return <ReviewList attraction={this.state.attraction} />
+        if (this.props.attraction !== ""){
+            return <ReviewList attraction={this.props.attraction} />
         }
     }
 
@@ -55,5 +47,9 @@ class AttractionCardLarge extends Component {
         </div>)
     }
 }
-
-export default connect(null, {getAttraction})(AttractionCardLarge)
+const mapStateToProps = state => {
+    return state = {
+        attraction:state.attraction.attraction
+    }
+}
+export default connect(mapStateToProps, {getAttraction})(AttractionCardLarge)

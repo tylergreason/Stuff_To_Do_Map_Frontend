@@ -9,6 +9,16 @@ const attractionReducer = (state=defaultState,action)=>{
                 ...state, 
                 attraction:action.attraction
             }
+        case 'ADD_REVIEW':
+            return state = {
+                ...state, 
+                attraction:action.attraction
+            }
+        case 'DELETE_REVIEW':
+            return state = {
+                ...state, 
+                attraction: action.attraction
+            }
         default: 
             return state 
     }

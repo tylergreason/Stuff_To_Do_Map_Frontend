@@ -15,12 +15,14 @@ const userReducer = (state=defaultState,action)=>{
         case 'LOGIN': 
             return state = {
                 ...state, 
-                loggedIn:true
+                loggedIn:true,
+                user:action.user
             }
         case 'LOGOUT': 
             return state = {
                 ...state, 
-                loggedIn:false
+                loggedIn:false, 
+                user:''
             }
         case 'UPDATE_PASSWORD': {
             return state
@@ -44,7 +46,7 @@ const userReducer = (state=defaultState,action)=>{
             return state = {
                 ...state, 
                 loggedIn:false,
-                user:{}
+                user:''
             }
         }
         case 'GET_USER': 

@@ -8,6 +8,7 @@ import MyAttractionsList from './containers/MyAttractionsList'
 import MyAccount from './components/MyAccount'
 import { connect } from 'react-redux'
 import { logout } from './store/actions/authActions'
+import { getUser } from './store/actions/UserActions'
 
 // for '/' route: 
 import MapPage from './containers/MapPage'
@@ -25,6 +26,7 @@ class App extends Component {
       this.setState({
         loggedIn:true
       })
+      this.props.getUser();
     }
   }
 
@@ -69,6 +71,9 @@ class App extends Component {
 
 
 const mapStateToProps = (state) => {
-  return {loggedIn: state.loggedIn}
+  return {
+          loggedIn: state.loggedIn,
+          user: state.user.user
+        }
 }
-export default connect(mapStateToProps, { logout })(App);
+export default connect(mapStateToProps, { logout,getUser })(App);

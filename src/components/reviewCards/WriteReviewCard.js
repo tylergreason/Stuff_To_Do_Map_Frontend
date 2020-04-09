@@ -22,7 +22,7 @@ class WriteReviewCard extends Component {
 
     renderNotLoggedIn = () =>{
         if (!this.props.loggedIn){
-            return <div>You're not logged in!</div>
+            return <div>You must be logged in to leave a review</div>
         }
     }
 
@@ -42,7 +42,8 @@ class WriteReviewCard extends Component {
         if (this.state.returnMessage === "Review added!"){
             console.log('babana')
             this.setState({
-                returnMessage:""
+                returnMessage:"Review submitted successfully",
+                text:""
             })
         }
     }
@@ -56,7 +57,7 @@ class WriteReviewCard extends Component {
             rating: this.state.rating 
         }
         // submit review and get return message to show 
-        addReview(review,this.returnMessage)
+        this.props.addReview(review,this.returnMessage)
     }
 
     renderWriteReview = () => {
@@ -109,4 +110,4 @@ const mapStateToProps = state =>{
     }
 }
 
-export default connect(mapStateToProps)(WriteReviewCard)
+export default connect(mapStateToProps, { addReview })(WriteReviewCard)

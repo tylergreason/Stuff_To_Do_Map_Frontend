@@ -103,7 +103,7 @@ button:focus{
   border-radius: 10px;
   margin: 10px;
   /* setting z index to less than 0 so the AttractionCardLarge can appear over it */
-  z-index: -1;
+  z-index: 0;
 
 }
 
@@ -262,6 +262,7 @@ label {
   width: 100%;  
   height: 100%;  
   background-color: rgba(0,0,0, 0.5);
+  z-index: 1;
 }
 
 .AttractionCardLargeInner {

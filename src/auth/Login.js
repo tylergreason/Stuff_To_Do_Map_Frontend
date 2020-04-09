@@ -29,9 +29,8 @@ class Login extends Component{
             }else{
                 console.log(data)
                 localStorage.setItem('auth_token',data.token)
-                this.props.login() 
-                // this.props.handleLogin()
-                this.props.changeAppLoggedIn(true)
+                this.props.login(data.user) 
+                // this.props.changeAppLoggedIn(true)
                 this.props.history.push('/')
             }
         })

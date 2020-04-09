@@ -37,7 +37,6 @@ class AttractionList extends Component {
         this.setState({
             attractionCardLargeToRender:e
         })
-        // debugger
     }
 
     // check if user clicked outside the large card box, and reset the large card state if so (if it's not already nothing)
@@ -50,7 +49,6 @@ class AttractionList extends Component {
                 })
             }
         }
-       // debugger
     }
 
     backToAttractionListClick = (e) => {
@@ -67,7 +65,7 @@ class AttractionList extends Component {
             {this.renderAttractionCards()}
             {this.state.attractionCardLargeToRender !== "" 
             ? 
-            <AttractionCardLarge attraction={this.state.attractionCardLargeToRender} 
+            <AttractionCardLarge attractionId={this.state.attractionCardLargeToRender.id} 
                 backClick={this.backToAttractionListClick}
             />
             :
