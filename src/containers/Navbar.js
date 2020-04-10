@@ -4,21 +4,13 @@ import { withRouter } from 'react-router'
 import { logout } from '../store/actions/authActions'
 
 class Navbar extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            path:this.props.location.pathname
-        }
+    state = {
+        path:this.props.location.pathname
     }
-    // state = {
-    //     path:''
-    // }
+    
     componentDidMount = () =>{
+        this.removeHighlightClass()
         const buttons = this.allNavBarButtons()
-        // // debugger
-        // this.setState({
-        //     path:this.props.location.pathname
-        // })
         this.addHighlightToButton(buttons)
     }
     

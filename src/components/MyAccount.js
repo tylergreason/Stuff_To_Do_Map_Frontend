@@ -1,8 +1,9 @@
-import React, { Component } from 'react' 
+import React from 'react' 
 import EditPassword from './myAccount/EditPassword'
 import EditEmail from './myAccount/EditEmail'
 import EditInfo from './myAccount/EditInfo'
 import DeleteAccount from './myAccount/DeleteAccount'
+
 
 
 import { connect } from 'react-redux'

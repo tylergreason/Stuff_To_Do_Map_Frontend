@@ -1,8 +1,6 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux' 
 import { updateAttraction } from '../store/actions/MapActions'
-// import make new attraction action and edit attraction actions 
-
 
 class EditAttractionForm extends Component {
     state = {

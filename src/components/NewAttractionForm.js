@@ -1,6 +1,6 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux' 
-import { addAttraction, resetNewAttractionSuccess } from '../store/actions/AttractionActions'
+import { addAttraction } from '../store/actions/AttractionActions'
 
 
 class NewAttractionForm extends Component {
@@ -15,7 +15,8 @@ class NewAttractionForm extends Component {
             country:'',
             lat:'',
             lng:''
-        }
+        }, 
+        returnMessage:""
     }
 
     componentDidUpdate = prevProps => {
@@ -26,14 +27,9 @@ class NewAttractionForm extends Component {
                 return this.updateNewAttractionAddress(this.props.newAttraction)
             }
         }
-        // check if success changed
-        // if (prevProps !== this.props){
-            // if success is true and errors are false, go back 
-            if (this.props.success === true && this.props.errors === false){
-                this.props.resetNewAttractionSuccess()
-                this.props.backToList()
-            }
-        // }
+        if (this.state.returnMessage === "Success"){
+            this.props.backToList();
+        }
     }
 
     updateNewAttractionAddress = newAddress => {
@@ -67,7 +63,6 @@ class NewAttractionForm extends Component {
     }
 
     handleInput = (e) => {
-        console.log('something')
         this.setState({
             ...this.state, 
             attraction: {
@@ -77,14 +72,16 @@ class NewAttractionForm extends Component {
         })
     }
 
+    returnMessage = (message) =>{
+        this.setState({
+            returnMessage:message
+        })
+    }
+
     handleSubmit = (e) => {
         e.preventDefault() 
         console.log(this.state.attraction)
-        // verify lat and lng aren't blank 
-        // if (this.state.attraction.lat !== '' && this.state.attraction.lng !== ''){
-            this.props.addAttraction(this.state.attraction)
-        // }
-        // this.props.backToList()
+        this.props.addAttraction(this.state.attraction,this.returnMessage)
     }
 
     render(){
@@ -160,10 +157,8 @@ class NewAttractionForm extends Component {
 
 const mapStateToProps = state => {
     return {
-        newAttraction: state.map.newAddress, 
-        success: state.map.success, 
-        errors: state.map.errors
+        newAttraction: state.map.newAddress
     }
 }
 
-export default connect(mapStateToProps, { addAttraction, resetNewAttractionSuccess })(NewAttractionForm)
+export default connect(mapStateToProps, { addAttraction })(NewAttractionForm)

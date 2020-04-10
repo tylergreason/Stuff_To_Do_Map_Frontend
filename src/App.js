@@ -22,7 +22,7 @@ class App extends Component {
   }
 
     componentDidMount=()=>{
-      // this.props.getUser()
+      this.props.getUser()
     }
 
 
@@ -37,7 +37,6 @@ class App extends Component {
       <Router>
       <Navbar />
         <div id="mainContainer">
-
         <Switch>
             <Route path="/login" 
               component={()=>{
