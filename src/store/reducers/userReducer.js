@@ -50,9 +50,9 @@ const userReducer = (state=defaultState,action)=>{
             }
         }
         case 'GET_USER': 
-        return state = {
-            ...state, 
-            user: action.user
+            return state = {
+                ...state, 
+                user: action.user
         }
         default: 
             return state 

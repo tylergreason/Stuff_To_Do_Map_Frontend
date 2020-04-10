@@ -30,13 +30,13 @@ class Signup extends Component {
         e.preventDefault();
         if (this.state.email !== "" && this.state.password === this.state.password_confirmation){
             console.log("they match! ")
-            this.createuser(this.state.user)
+            this.createUser(this.state.user)
         }else{
             console.log("they don't match!")
         }
     }
     
-    createuser = newUser => {
+    createUser = newUser => {
             fetch('http://localhost:3000/signup',{
                 method: 'POST',
                 headers: {

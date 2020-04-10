@@ -1,4 +1,5 @@
 export const getUser = () => {
+    console.log('get user called ')
     return (dispatch) => {
         fetch(`http://localhost:3000/myAccount`, {
             method: 'GET',
@@ -19,8 +20,6 @@ export const getUser = () => {
 }
 
 export const updateUser = (user,returnMessage) => {
-    console.log(`User to update is`)
-    console.log(user)
     return (dispatch) => {
         fetch(`http://localhost:3000/users/${user.id}`, {
             method: 'PATCH',

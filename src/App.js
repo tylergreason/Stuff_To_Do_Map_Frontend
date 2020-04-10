@@ -21,14 +21,10 @@ class App extends Component {
     loggedIn:false
   }
 
-  componentDidMount(){
-    if (localStorage.auth_token){
-      this.setState({
-        loggedIn:true
-      })
-      this.props.getUser();
+    componentDidMount=()=>{
+      this.props.getUser()
     }
-  }
+
 
   changeAppLoggedIn = (boolean) =>{
     this.setState({
@@ -39,8 +35,7 @@ class App extends Component {
   render(){
     return (
       <Router>
-      <Navbar loggedIn={this.state.loggedIn}
-              changeAppLoggedIn={this.changeAppLoggedIn}/>
+      <Navbar />
         <div id="mainContainer">
 
         <Switch>
@@ -59,8 +54,8 @@ class App extends Component {
             }}></Route>
             <Route path='/about' component={()=>{ return <About /> }}></Route>
             {/* confirm user is logged in before going to myAttractions or myAccount */}
-            <Route path="/myAttractions" component={() =>{ return <CheckLogin component={MyAttractionsList}/>}}/>
-            <Route path="/myAccount" component={() =>{ return <CheckLogin component={MyAccount}/>}}/>
+            <Route path="/myAttractions" render={() =>{ return <CheckLogin component={MyAttractionsList}/>}}/>
+            <Route path="/myAccount" render={() =>{ return <CheckLogin component={MyAccount}/>}}/>
             <Route path="/" component={()=>{ return <MapPage /> }}></Route>
         </Switch>
         </div>

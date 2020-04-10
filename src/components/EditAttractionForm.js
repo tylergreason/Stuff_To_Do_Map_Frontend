@@ -42,7 +42,7 @@ class EditAttractionForm extends Component {
                 <br></br>
                 <input 
                     name="name" 
-                    value={this.state.attraction.name}
+                    value={this.state.attraction.name || ""}
                     onChange={this.handleInput}
                 ></input>
                 <br></br>
@@ -50,7 +50,7 @@ class EditAttractionForm extends Component {
                 <br></br>
                 <textarea rows='4'
                     name="description" 
-                    value={this.state.attraction.description}
+                    value={this.state.attraction.description || ""}
                     onChange={this.handleInput}
                 ></textarea>
                 <br></br>

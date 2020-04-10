@@ -4,15 +4,21 @@ import { withRouter } from 'react-router'
 import { logout } from '../store/actions/authActions'
 
 class Navbar extends Component {
-    state = {
-        path:''
+    constructor(props){
+        super(props);
+        this.state = {
+            path:this.props.location.pathname
+        }
     }
+    // state = {
+    //     path:''
+    // }
     componentDidMount = () =>{
         const buttons = this.allNavBarButtons()
-        // debugger
-        this.setState({
-            path:this.props.location.pathname
-        })
+        // // debugger
+        // this.setState({
+        //     path:this.props.location.pathname
+        // })
         this.addHighlightToButton(buttons)
     }
     
@@ -48,7 +54,7 @@ class Navbar extends Component {
     
     logout = () => {
         localStorage.clear()
-        this.props.changeAppLoggedIn(false)
+        // this.props.changeAppLoggedIn(false)
         this.props.logout()
         this.setState({path:'map'})
     }

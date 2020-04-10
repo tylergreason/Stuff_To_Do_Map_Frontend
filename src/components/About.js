@@ -1,6 +1,7 @@
 import React from 'react' 
 
 const About = () => {
+    {console.log('component mounted')}
     return(
         <div className='About informationBox animated flipInX fast'>
             {/* <h2 className='title'>About</h2> */}
