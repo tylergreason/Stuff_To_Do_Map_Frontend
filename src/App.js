@@ -53,8 +53,20 @@ class App extends Component {
             }}></Route>
             <Route path='/about' component={()=>{ return <About /> }}></Route>
             {/* confirm user is logged in before going to myAttractions or myAccount */}
-            <Route path="/myAttractions" render={() =>{ return <CheckLogin component={MyAttractionsList}/>}}/>
-            <Route path="/myAccount" render={() =>{ return <CheckLogin component={MyAccount}/>}}/>
+            <Route path="/myAttractions" render={() =>{ return <CheckLogin 
+                                                                  render={()=>{
+                                                                    return <MyAttractionsList />
+                                                                  }
+                                                                  }
+            
+                                                                />}}/>
+            <Route path="/myAccount" render={() =>{ 
+                                                  return <CheckLogin 
+                                                            render={()=>{
+                                                              return <MyAccount />
+                                                            }}
+                                                        />
+                                                  }}/>
             <Route path="/" component={()=>{ return <MapPage /> }}></Route>
         </Switch>
         </div>

@@ -58,7 +58,7 @@ class Map extends Component {
     // create popup marker 
     renderPopupText = (attraction) => {
         return `<div class="popupName">${attraction.name}</div>
-        <div class=popupText>${attraction.description}</div>`
+        <div class=popupText></div>`
     }
 
     componentDidUpdate = (prevProps) => {

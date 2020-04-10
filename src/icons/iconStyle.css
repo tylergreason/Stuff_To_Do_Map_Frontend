@@ -1,5 +1,21 @@
 .userIcon {
-    color: green;
+    color: red;
+    transition:  0.1s;
     border-radius: 50%;
-    background-color: rgba(0,0,0,0.2);
+    transform: scale(1.5);
+}
+.userIcon:hover{
+    border: 2px solid red;
+    background:white;
+    transform: scale(2);
+    /* color:blue; */
+}
+
+.editIcon {
+    transform: scale(2);
+}
+
+.markerShadow{
+    background: none;
+    transform: scaleY(0.3);
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import L from 'leaflet' 
 import { connect } from 'react-redux'
 import { fillAttractionForm } from '../store/actions/AttractionActions'
+import { editIcon } from '../icons/Icons'
 
 class AttractionFormMap extends Component {
     state = {
@@ -45,7 +46,7 @@ class AttractionFormMap extends Component {
         // clear attractionLayer 
         this.attractionLayer.clearLayers()
         // create marker where click was 
-        this.marker = L.marker([lat,lng])
+        this.marker = L.marker([lat,lng], {icon: editIcon})
         this.marker.addTo(this.attractionLayer)
 
     }
