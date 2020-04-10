@@ -1,10 +1,20 @@
 import React, { Component } from 'react' 
 import L from 'leaflet';
 import { connect } from 'react-redux'
+import { userIcon } from '../icons/Icons'
+
+// const greenIcon = L.icon({
+//     iconUrl: icon,
+//     // iconSize:     [38, 95], // size of the icon
+//     shadowSize:   [50, 64], // size of the shadow
+//     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+//     shadowAnchor: [4, 62],  // the same for the shadow
+//     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+// });
+
 
 
 class Map extends Component {
-
     state = {
         map:"",
         southWestBounds:'', 
@@ -29,7 +39,7 @@ class Map extends Component {
                 const lat = attraction.lat 
                 const lng = attraction.lng 
 
-                this.marker = L.marker([lat,lng],{title:attraction.name})
+                this.marker = L.marker([lat,lng],{icon: userIcon, title:attraction.name})
                 // set click function 
                 this.marker.on('click', this.handleMarkerClick)
                 this.marker.id = attraction.id 
@@ -66,6 +76,7 @@ class Map extends Component {
         // const boundsToReturn = [bounds._southWest, bounds._northEast] 
         this.props.setBounds(bounds)
     }
+
 
     createMap = () => {
         const myMap = L.map('myMap').setView([33.86956036384148, -84.48491725891019], 11);
