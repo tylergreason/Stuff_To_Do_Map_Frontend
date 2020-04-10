@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import AttractionMapListCard from '../components/AttractionMapListCard'
 import AttractionCardLarge from '../components/attractionCards/AttractionCardLarge'
+import AttractionListCardLarge from '../components/attractionCards/AttractionListCardLarge'
+
 
 
 class AttractionList extends Component {   
@@ -11,31 +13,27 @@ class AttractionList extends Component {
     }
 
     renderAttractionCards = () => {
-        if (this.state.attractions !== undefined){
-            return this.state.attractions.map(attraction => {
-                return <AttractionMapListCard 
-                            key={attraction.id} 
-                            attraction={attraction}
-                            onClick={this.attractionCardClick}
-                            /> 
+        if (this.props.attractions !== undefined){
+            return this.props.attractions.map(attraction => {
+                if (attraction.id === this.props.attraction.id){
+                    return <AttractionListCardLarge
+                                attraction={attraction}
+                            />
+                }else{
+                    return <AttractionMapListCard 
+                    key={attraction.id} 
+                    attraction={attraction}
+                    onClick={this.attractionCardClick}
+                    /> 
+                }
             })
-        }
-    }
-
-    componentDidUpdate = (prevProps) =>{ 
-        if (prevProps !== this.props){
-                this.setState({
-                    attractions:this.props.attractions
-                })
         }
     }
 
     // on click, fetch attraction's info, then render a big card for that attraction 
     attractionCardClick = (e)=> {
-        // e.preventDefault()
-        console.log(e)
         this.setState({
-            attractionCardLargeToRender:e
+            // attractionCardLargeToRender:e
         })
     }
 
@@ -78,6 +76,9 @@ class AttractionList extends Component {
 
 
 const mapStateToProps = state => {
-    return {attractions: state.map.attractions}
+    return {
+            attractions: state.map.attractions,
+            attraction:state.attraction.attraction
+            }
 }
 export default connect(mapStateToProps)(AttractionList)

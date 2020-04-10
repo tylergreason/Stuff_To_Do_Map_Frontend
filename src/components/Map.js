@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import L from 'leaflet';
 import { connect } from 'react-redux'
 import { userIcon } from '../icons/Icons'
+import { getAttraction } from '../store/actions/AttractionActions'
 
 // const greenIcon = L.icon({
 //     iconUrl: icon,
@@ -50,9 +51,10 @@ class Map extends Component {
     }
 
     handleMarkerClick = e => {
-        const cardId = `attractionMapListCard${e.target.id}`
+        this.props.getAttraction(e.target.id)
+        const cardId = `attractionMapListCardLarge${e.target.id}`
         const cardToView = document.getElementById(cardId) 
-        cardToView.scrollIntoView()
+        // cardToView.scrollIntoView()
     }
 
     // create popup marker 
@@ -123,4 +125,4 @@ const mapStateToProps = state => {
         attractions: state.map.attractions
     }
 }
-export default connect(mapStateToProps)(Map) 
+export default connect(mapStateToProps, {getAttraction})(Map) 
