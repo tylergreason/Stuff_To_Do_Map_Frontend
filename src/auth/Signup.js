@@ -1,6 +1,6 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux' 
-import { login, logout } from '../store/actions/authActions'
+import { login, logout, signUp } from '../store/actions/authActions'
 import { withRouter } from 'react-router'
 class Signup extends Component {
     state = {
@@ -14,7 +14,8 @@ class Signup extends Component {
             email:'', 
             password:'', 
             password_confirmation:''
-        }
+        }, 
+        returnMessage:""
     }
     handleInput = (e) => {
         this.setState({
@@ -26,42 +27,47 @@ class Signup extends Component {
         })
     }
 
+    returnMessage = message => {
+        // debugger
+        this.setState({
+            returnMessage:message
+        })
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         if (this.state.email !== "" && this.state.password === this.state.password_confirmation){
-            console.log("they match! ")
-            this.createUser(this.state.user)
+            this.props.signUp(this.state.user, this.returnMessage)
         }else{
-            console.log("they don't match!")
         }
     }
     
-    createUser = newUser => {
-            fetch('http://localhost:3000/signup',{
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({user: newUser})
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.error){
-                    console.log(data.error)
-                }else if (data.token){
-                        // if a token was returned, signup was successful and we can redirect
-                        localStorage.setItem('auth_token',data.token)
-                        this.props.login() 
-                        this.props.changeAppLoggedIn(true)
-                        this.props.history.push('/')
-                    }
-                })
+    // createUser = newUser => {
+    //         fetch('http://localhost:3000/signup',{
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({user: newUser})
+    //         })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.error){
+    //                 console.log(data.error)
+    //             }else if (data.token){
+    //                     // if a token was returned, signup was successful and we can redirect
+    //                     localStorage.setItem('auth_token',data.token)
+    //                     this.props.login() 
+    //                     // this.props.changeAppLoggedIn(true)
+    //                     this.props.history.push('/')
+    //                 }
+    //             })
         
-                .catch((error) => {
-                    console.error('Error:', error);
-                    return false; 
-            })
-        }
+    //             .catch((error) => {
+    //                 console.error('Error:', error);
+    //                 return false; 
+    //         })
+    //     }
 
     render(){
         return (
@@ -140,4 +146,4 @@ class Signup extends Component {
     }
 }
 
-export default withRouter(connect(null,{login, logout})(Signup))
+export default withRouter(connect(null,{login, logout, signUp })(Signup))

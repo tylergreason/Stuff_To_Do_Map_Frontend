@@ -131,6 +131,8 @@ export const deleteUser = (user,returnMessage) => {
             });
     }
 }
+
+
 // wanted to move the login action here but it works better in the Login.js component for now 
 // since nothing else is using it and it depends on functions imported there 
 // export const login = (user) => {
