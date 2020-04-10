@@ -14,7 +14,7 @@ const MyAttractionListCard = (props) => {
     return(
     <div className="AttractionListCard MyAttractionListCard animated flipInX faster">
         <h4 className="name">{props.attraction.name}</h4>
-        <span> - {props.attraction.average_rating}⭐️</span>
+        <span> - {props.attraction.average_rating || 'No reviews yet'}⭐️</span>
         <span className="address">
             {`${props.attraction.house_number} ${props.attraction.road}, ${props.attraction.city}, ${props.attraction.state}, ${props.attraction.country}`}
             </span>

@@ -24,6 +24,7 @@ const userReducer = (state=defaultState,action)=>{
                 loggedIn:false, 
                 user:''
             }
+            // Removed signup for now because it was doing the same thing as login. 
         // case 'SIGNUP': 
         //     return state = {
         //         ...state, 
