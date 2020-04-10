@@ -36,7 +36,7 @@ class Login extends Component{
 
     renderLoginForm = () => {
         return(
-            <div className={'informationBox'}>
+            <div className='informationBox middlePageBox'>
                 <h2> Login </h2>
                 <form onSubmit={this.handleSubmit}>
                 <input type="text" name='email' placeholder="Email" onChange={this.handleInput} value={this.state.email} />

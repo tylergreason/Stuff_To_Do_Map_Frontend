@@ -49,7 +49,7 @@ class Signup extends Component {
     
     render(){
         return (
-            <div className='informationBox'>
+            <div className='informationBox middlePageBox'>
             {this.redirectToHomeIfLoggedIn()}
             <form>
                  <label>First Name: </label>

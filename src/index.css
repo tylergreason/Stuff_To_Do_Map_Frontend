@@ -13,7 +13,10 @@
   --buttonHoverColor: rgb(255, 255, 255);
   --buttonHoverTextColor: #575a54;
   --textColor: #332a2a;
+  
   --borderColor: #05396b;
+  --border-radius: 20px;
+
   --displayHeight: 88vh; 
 }
 
@@ -130,14 +133,17 @@ button:focus{
   border: 2px solid var(--borderColor); 
   background-color: var(--cardBGColor);
   border-radius: 10px;
-  max-width: 95%;
+  /* max-width: 95%; */
   margin: 5px;
+  margin-top: 10px; 
+  margin-bottom:10px;
   padding: 7px;
   transition: all 0.1s;
 }
 
 .AttractionListCard:hover{
   background-color: var(--buttonTextColor);
+  transform: scaleY(1.05);
   /* color: var(--buttonTextColor) */
 }
 
@@ -157,7 +163,7 @@ button:focus{
 .address {
   font-size: 0.8rem;
   font-style: italic;
-  float:right;
+  /* float:right; */
   /* margin-top: 0px; */
 }
 
@@ -173,10 +179,11 @@ button:focus{
   padding: 10px;
   border-radius: 20px;
   background-color: var(--cardBGColor);
-  max-width: 50%;
+  /* max-width: 50%; */
 }
 
-.About { 
+.middlePageBox { 
+  max-width: 50%;
   margin: auto; 
 }
 
@@ -265,6 +272,8 @@ label {
   z-index: 1;
 }
 
+
+
 .AttractionCardLargeInner {
   /* actual popup div */
   position: absolute;  
@@ -277,18 +286,35 @@ label {
   /* z-index: 1000; */
 }
 
+.AttractionListCardLarge { 
+  /* width: 100%; */
+  max-width: 100%;
+}
+
+.AttractionListCardLargeInner { 
+  background-color: var(--buttonTextColor);
+  border: 3px solid var(--borderColor);
+  border-radius: var(--border-radius);
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .ReviewList{
   overflow-y: scroll;
-  height:55%;
-  max-width: 90%;
+  max-height:50vh;
+  /* max-height:55%; */
+  max-width: 100%;
   margin: auto;
+  background-color: var(--buttonTextColor);
+  scrollbar-color: black;
 }
 
 .ReviewCard { 
   width:90%;
   margin: auto;
   padding: 0px;
-  border-bottom: 2px solid var(--borderColor)
+  border-bottom: 2px solid var(--borderColor); 
 }
 
 .writeReviewText {

@@ -12,7 +12,7 @@ const MyAttractionListCard = (props) => {
     }
 
     return(
-    <div className="AttractionListCard MyAttractionListCard animated flipInX faster">
+    <div className="AttractionListCard  animated fadeIn faster">
         <h4 className="name">{props.attraction.name}</h4>
         <span> - {props.attraction.average_rating || 'No reviews yet'}⭐️</span>
         <span className="address">

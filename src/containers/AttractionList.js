@@ -1,15 +1,13 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux'
 import AttractionMapListCard from '../components/AttractionMapListCard'
-import AttractionCardLarge from '../components/attractionCards/AttractionCardLarge'
 import AttractionListCardLarge from '../components/attractionCards/AttractionListCardLarge'
-
+import { getAttraction } from '../store/actions/AttractionActions'
 
 
 class AttractionList extends Component {   
     state = {
-        attractions:this.props.attractions, 
-        attractionCardLargeToRender:''
+        attractions:this.props.attractions
     }
 
     renderAttractionCards = () => {
@@ -17,6 +15,7 @@ class AttractionList extends Component {
             return this.props.attractions.map(attraction => {
                 if (attraction.id === this.props.attraction.id){
                     return <AttractionListCardLarge
+                                key={attraction.id}
                                 attraction={attraction}
                             />
                 }else{
@@ -32,22 +31,23 @@ class AttractionList extends Component {
 
     // on click, fetch attraction's info, then render a big card for that attraction 
     attractionCardClick = (e)=> {
-        this.setState({
-            // attractionCardLargeToRender:e
-        })
+        this.props.getAttraction(e.id)
+        // this.setState({
+        //     attractionCardLargeToRender:e
+        // })
     }
 
     // check if user clicked outside the large card box, and reset the large card state if so (if it's not already nothing)
-    handleClick = e => {
-        console.log(e.target.classList)
-        if (e.target.classList.contains("AttractionCardLargeInner") !== true){
-            if (this.state.attractionCardLargeToRender !== ""){
-                this.setState({
-                    attractionCardLargeToRender:""
-                })
-            }
-        }
-    }
+    // handleClick = e => {
+    //     console.log(e.target.classList)
+    //     if (e.target.classList.contains("AttractionCardLargeInner") !== true){
+    //         if (this.state.attractionCardLargeToRender !== ""){
+    //             this.setState({
+    //                 attractionCardLargeToRender:""
+    //             })
+    //         }
+    //     }
+    // }
 
     backToAttractionListClick = (e) => {
         e.preventDefault()
@@ -61,14 +61,13 @@ class AttractionList extends Component {
             // onClick={this.handleClick}
         >
             {this.renderAttractionCards()}
-            {this.state.attractionCardLargeToRender !== "" 
+            {/* {this.state.attractionCardLargeToRender !== "" 
             ? 
             <AttractionCardLarge attractionId={this.state.attractionCardLargeToRender.id} 
                 backClick={this.backToAttractionListClick}
             />
             :
-            <></>
-            }
+            <></> */}
         </div>
         )
     }
@@ -81,4 +80,4 @@ const mapStateToProps = state => {
             attraction:state.attraction.attraction
             }
 }
-export default connect(mapStateToProps)(AttractionList)
+export default connect(mapStateToProps, { getAttraction })(AttractionList)

@@ -4,7 +4,9 @@ import { getAttraction } from '../../store/actions/AttractionActions'
 import ReviewList from '../../containers/ReviewList'
 import WriteReviewCard from '../reviewCards/WriteReviewCard'
 
-const cardClass = "AttractionListCardLarge"
+// import './attractionCardStyle.css'
+
+const cardClass = "AttractionListCardLarge animated"
 
 class AttractionListCardLarge extends Component {
 
@@ -15,9 +17,16 @@ class AttractionListCardLarge extends Component {
         thisCard.scrollIntoView()
     }
 
-    renderReviewList = () => {
-        if (this.props.attraction !== ""){
-            return <ReviewList attraction={this.props.attraction} />
+    renderReviewList = (attraction) => {
+        if (attraction.reviews.length < 1){
+
+        }else{
+            return(
+                <>
+                    <label>Reviews</label>
+                    <ReviewList attraction={attraction} />
+                </>
+            ) 
         }
     }
 
@@ -30,22 +39,39 @@ class AttractionListCardLarge extends Component {
             <button onClick={this.props.backClick}>Back</button>
         )
     }
+
+    renderAddress = (attraction) =>{
+        return (
+            <span className="address">
+                {`${attraction.house_number} ${attraction.road}, ${attraction.city}, ${attraction.state}, ${attraction.country}`}
+            </span>
+        )
+    }
+
+    renderRating = (attraction) => {
+        if (attraction.average_rating === null){
+            return (
+                <span className="cardRating"> - not yet reviewed </span>    
+            )
+        }else {
+            return (
+                <span className="cardRating"> - {attraction.average_rating}⭐️</span>
+                )
+            }
+    }
     render(){
         return (
         <div className={cardClass} id={`attractionMapListCardLarge${this.props.attraction.id}`}>
             {/* <h1>ATTRACTION CARD LARGE</h1> */}
-            <div className="informationBox">
+            <div className="AttractionListCardLargeInner">
                 {/* {this.renderBackButton()} */}
                 <br></br>
                 <h4 className="name">{this.props.attraction.name}</h4>
-                <span className="cardRating"> - {this.props.attraction.average_rating}⭐️</span>
-                <span className="address">
-                {`${this.props.attraction.house_number} ${this.props.attraction.road}, ${this.props.attraction.city}, ${this.props.attraction.state}, ${this.props.attraction.country}`}
-                </span>
+                {this.renderRating(this.props.attraction)}
+                <br></br>
+                {this.renderAddress(this.props.attraction)}
                 <p className="description">DESC {this.props.attraction.description}</p>
-                <label>Reviews</label>
-
-            {this.renderReviewList()}
+                {this.renderReviewList(this.props.attraction)}
             {this.renderWriteReviewCard()}
             </div>
         </div>)
