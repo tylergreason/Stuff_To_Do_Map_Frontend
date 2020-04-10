@@ -17,6 +17,12 @@ class Signup extends Component {
         }, 
         returnMessage:""
     }
+
+    redirectToHomeIfLoggedIn = () => {
+        if (this.props.loggedIn === true){
+            this.props.history.push('/')
+        }
+    }
     handleInput = (e) => {
         this.setState({
             ...this.state, 
@@ -28,7 +34,6 @@ class Signup extends Component {
     }
 
     returnMessage = message => {
-        // debugger
         this.setState({
             returnMessage:message
         })
@@ -42,36 +47,10 @@ class Signup extends Component {
         }
     }
     
-    // createUser = newUser => {
-    //         fetch('http://localhost:3000/signup',{
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify({user: newUser})
-    //         })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data.error){
-    //                 console.log(data.error)
-    //             }else if (data.token){
-    //                     // if a token was returned, signup was successful and we can redirect
-    //                     localStorage.setItem('auth_token',data.token)
-    //                     this.props.login() 
-    //                     // this.props.changeAppLoggedIn(true)
-    //                     this.props.history.push('/')
-    //                 }
-    //             })
-        
-    //             .catch((error) => {
-    //                 console.error('Error:', error);
-    //                 return false; 
-    //         })
-    //     }
-
     render(){
         return (
             <div className='informationBox'>
+            {this.redirectToHomeIfLoggedIn()}
             <form>
                  <label>First Name: </label>
                 <input  name='first_name' 
@@ -145,5 +124,9 @@ class Signup extends Component {
         ) 
     }
 }
-
-export default withRouter(connect(null,{login, logout, signUp })(Signup))
+const mapStateToProps = state => {
+    return {
+        loggedIn:state.user.loggedIn
+    }
+}
+export default withRouter(connect(mapStateToProps,{login, logout, signUp })(Signup))

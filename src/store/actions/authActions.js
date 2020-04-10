@@ -1,9 +1,9 @@
-export const login = (user) => {
-    return {
-        type:'LOGIN',
-        user:user
-    }
-}
+// export const login = (user) => {
+//     return {
+//         type:'LOGIN',
+//         user:user
+//     }
+// }
 
 export const logout = () => {
     return {
@@ -28,7 +28,34 @@ export const signUp = (newUser, returnMessage) => {
         }else if (data.token){
                 localStorage.setItem('auth_token',data.token)
                 returnMessage(data.success)
-                dispatch({type:'SIGNUP', user:data.user})
+                dispatch({type:'LOGIN', user:data.user})
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        })
+    }
+}
+
+
+export const login = (user, returnMessage) => {
+    return dispatch => {
+        fetch('http://localhost:3000/login',{
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({user: user})
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data) 
+        if (data.error){
+            returnMessage(data.error)
+        }else if (data.token){
+                localStorage.setItem('auth_token',data.token)
+                returnMessage(data.success)
+                dispatch({type:'LOGIN', user:data.user})
             }
         })
         .catch((error) => {
