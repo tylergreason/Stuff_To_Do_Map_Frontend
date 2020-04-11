@@ -40,11 +40,11 @@ class WriteReviewCard extends Component {
 
     componentDidUpdate = () => {
         if (this.state.returnMessage === "Review added!"){
-            console.log('babana')
             this.setState({
-                returnMessage:"Review submitted successfully",
+                returnMessage:"",
                 text:""
             })
+            this.clearWriteReviewArea()
         }
     }
 
@@ -60,6 +60,13 @@ class WriteReviewCard extends Component {
         this.props.addReview(review,this.returnMessage)
     }
 
+    clearWriteReviewArea = () =>{
+        const textArea = document.getElementById('writeReviewTextArea')
+        textArea.value = ''
+        const reviewRatingOptionSelect = document.getElementById('rating')
+        reviewRatingOptionSelect.value = ''
+    }
+
     renderWriteReview = () => {
         return ( 
             <form className="WriteReviewCard">
@@ -67,7 +74,7 @@ class WriteReviewCard extends Component {
                 <label>Write Review</label>
                 <span className="ratingSelect">
                     <label>Rating</label>
-                    <select name="rating" onChange={this.handleOptionSelect}>
+                    <select name="rating" onChange={this.handleOptionSelect} id='rating'>
                         <option name="rating" defaultValue value=""></option>
                         <option name="rating" value="1">1</option>
                         <option name="rating" value="2">2</option>
@@ -80,6 +87,7 @@ class WriteReviewCard extends Component {
                     className="informationBox writeReviewText"
                     name="text"
                     onChange={this.handleInput}
+                    id="writeReviewTextArea"
                 ></textarea>
                 <br></br>
                 {this.renderReturnMessage()}

@@ -18,22 +18,20 @@ class  MyAttractionList extends Component {
         this.props.getMyAttractions()
     }
 
-    // componentDidUpdate = () => {
-    //     this.props.getMyAttractions()
-    // }
-
     renderMyAttractions = () => {
         if (this.props.myAttractions !== undefined){
-            // debugger
-            return this.props.myAttractions.map(attraction => {
-                return <MyAttractionListCard 
-                            key={attraction.id} 
-                            attraction={attraction} 
-                            editClick={this.handleAttractionEditClick}
-                            />
-            })
-        }
+            return (<div className="middlePageBox"> 
+                {this.props.myAttractions.map(attraction => {
+                    return <MyAttractionListCard 
+                        key={attraction.id} 
+                        attraction={attraction} 
+                        editClick={this.handleAttractionEditClick}
+                        />
+                })
+                }
+            </div>)
     }
+}
 
     handleAttractionEditClick = (e) => {
         // filter through myAttractions and find the one whose ID matches the ID of the attraction clicked 

@@ -1,13 +1,18 @@
+:root{
+    --userIconColor: #172b97;
+}
+
 .userIcon {
-    color: red;
+    color: var(--userIconColor);
     transition:  0.1s;
     border-radius: 50%;
     transform: scale(1.5);
 }
 .userIcon:hover{
-    border: 2px solid red;
+    border: 2px solid var(--userIconColor);
     background:white;
     transform: scale(2);
+    z-index: 1;
     /* color:blue; */
 }
 
@@ -15,7 +20,14 @@
     transform: scale(2);
 }
 
-.markerShadow{
-    background: none;
-    transform: scaleY(0.3);
+.iconText{
+    /* transform: scale(.1); */
+    /* z-index: -109; */
+    color: transparent;
+    transition: 0.5s;
+}
+.iconText:hover{
+    color:black;
+    z-index: 1;
+    transform:scale(3);
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react' 
 import L from 'leaflet';
 import { connect } from 'react-redux'
-import { userIcon } from '../icons/Icons'
+import { userIcon, iconWithCustomText } from '../icons/Icons'
 import { getAttraction } from '../store/actions/AttractionActions'
 
 // const greenIcon = L.icon({
@@ -40,7 +40,7 @@ class Map extends Component {
                 const lat = attraction.lat 
                 const lng = attraction.lng 
 
-                this.marker = L.marker([lat,lng],{icon: userIcon, title:attraction.name})
+                this.marker = L.marker([lat,lng],{icon: iconWithCustomText(`${attraction.name}`), title:attraction.name})
                 // set click function 
                 this.marker.on('click', this.handleMarkerClick)
                 this.marker.id = attraction.id 

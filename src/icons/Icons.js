@@ -15,6 +15,20 @@ const editIconMarker = `<span class='material-icons editIcon'>
                         </span>
                         `
 
+export const iconWithCustomText = text => {
+    const userIconMarker = `<span class='material-icons userIcon'>
+                                place
+                            </span>
+                            <div class='iconText'>
+                                ${text}
+                            </div>
+                            `
+    return L.divIcon({
+        className: 'materialMapIcon',
+        html: userIconMarker,
+        iconAnchor: [-12,30]
+    })
+}
 
 export const editIcon  = L.divIcon({
     className: 'materialMapIcon', 
