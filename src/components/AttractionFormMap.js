@@ -57,10 +57,10 @@ class AttractionFormMap extends Component {
     render(){
         return(
         <div className="Map">
-            <div id='myMap'></div>
+            <div id='myMap' className="newAttractionFormMap"></div>
         </div>
         )
     }
-}
+}   
 
 export default connect(null, { fillAttractionForm })(AttractionFormMap)

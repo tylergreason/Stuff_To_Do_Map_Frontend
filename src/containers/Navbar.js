@@ -96,12 +96,12 @@ class Navbar extends Component {
 
     render(){
         return(
-            <span className="NavbarParent">
-            <h1 className='title'>Stuff To Do Map</h1>
-            <span className="NavBar">
-                {this.renderNavbar()}
-            </span>
-            </span>
+            <div className="NavbarParent">
+                <h1 className='title'>Stuff To Do Map</h1>
+                <span className="NavBar">
+                    {this.renderNavbar()}
+                </span>
+            </div>
         )
     }
 }

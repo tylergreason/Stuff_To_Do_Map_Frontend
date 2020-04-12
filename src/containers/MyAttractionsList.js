@@ -20,7 +20,7 @@ class  MyAttractionList extends Component {
 
     renderMyAttractions = () => {
         if (this.props.myAttractions !== undefined){
-            return (<div className="middlePageBox"> 
+            return (<div> 
                 {this.props.myAttractions.map(attraction => {
                     return <MyAttractionListCard 
                         key={attraction.id} 
@@ -59,8 +59,10 @@ class  MyAttractionList extends Component {
     }
 
     renderNewAttractionForm = () => {
-        return (<div>
-            <div>Click on the map where your attraction should appear. The address will populate the fields to the left. Then, you can further edit the attraction.</div>
+        return (<div className="newAttractionWrapper">
+            <div>
+                Click on the map where your attraction should appear. The address will populate the fields to the left. You can then further edit the attraction.
+                </div>
                 <NewAttractionForm 
                         backToList={this.backToList}
                 />

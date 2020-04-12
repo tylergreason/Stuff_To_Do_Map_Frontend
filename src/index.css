@@ -16,16 +16,12 @@
   
   --borderColor: #05396b;
   --border-radius: 20px;
-
+  --border: 5px solid var(--borderColor);
   --displayHeight: 88vh; 
+  --borderRadius: 10px; 
 }
 
 body {
-  /* margin: 0; */
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif; */
-  /* font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;  */
   font-family: 'Kameron', serif;
   scrollbar-color: purple;
 
@@ -34,8 +30,6 @@ body {
   background-color: var(--bodyBGColor);
   color: var(--textColor);
   line-height: 1.5em;
-  /* padding:20px; */
-  /* padding-top:5px; */
   margin:0px;
   margin-left: 5px; 
   margin-right: 5px;
@@ -57,9 +51,11 @@ body {
   display:none;
 }
 
-.mainContainer {
-  height: 100%;
+#mainContainer {
+  height: 90%;
+  margin-top:70px;
   padding:0px;
+  overflow-y: scroll;
 }
 
 code {
@@ -73,8 +69,12 @@ code {
   display: inline;
 }
 
-.NavBarParent {
-  display: inline-grid; 
+.NavbarParent {
+  /* display: inline-grid;  */
+  background-color: var(--bodyBGColor);
+  position: fixed;
+  top: 0px;
+  width: 100%;
 }
 
 .NavBarButton {
@@ -111,9 +111,14 @@ button:focus{
   float: left;
   overflow-y: auto; 
   overflow-x: hidden;
+  margin-right: 10px;
+  margin-left: 10px;
   scrollbar-width: thin;
   scrollbar-color: var(--borderColor) transparent;
+  border: var(--border);
+  border-radius: var(--borderRadius);
 }
+
 
 .newAttractionForm { 
   width:40%;  
@@ -123,6 +128,7 @@ button:focus{
 
 #myMap {
   height: var(--displayHeight); 
+  /* height: 90%; */
   border: 5px solid var(--borderColor);
   border-radius: 10px;
   margin: 10px;
@@ -165,11 +171,12 @@ button:focus{
 .AttractionListCard:hover{
   background-color: var(--buttonTextColor);
   transform: scaleY(1.05);
+  border: 3px solid var(--borderColor)
   /* color: var(--buttonTextColor) */
 }
 
 .MyAttractionListCard { 
-  max-width: 50%;
+  width: 40%;
 }
 
 
@@ -279,6 +286,7 @@ label {
 
 .editAttractionForm { 
   margin: 10px;
+  width: 40%;
 }
 
 /* popup style taken from https://dev.to/skptricks/create-simple-popup-example-in-react-application-5g7f */
@@ -341,6 +349,10 @@ label {
   border-bottom: 2px solid var(--borderColor); 
 }
 
+.reviewDate { 
+  float:right;
+}
+
 .writeReviewText {
   background-color: var(--bodyBGColor);
   border-radius: 10px;
@@ -359,4 +371,21 @@ label {
 
 .WriteReviewCard {
   padding-top: 10px;
+}
+
+.newAttractionWrapper{
+  /* height:40%; */
+  /* border: var(--border); 
+  border-radius: var(--borderRadius); */
+}
+.MyAttractionList {
+  overflow-y: scroll;
+  height: var(--displayHeight); 
+  border: var(--border); 
+  border-radius: var(--borderRadius);
+  margin: 10px;
+}
+
+.newAttractionFormMap {
+  max-height: 75vh;
 }
