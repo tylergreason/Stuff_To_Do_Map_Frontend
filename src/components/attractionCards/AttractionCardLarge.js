@@ -4,7 +4,7 @@ import { getAttraction } from '../../store/actions/AttractionActions'
 import ReviewList from '../../containers/ReviewList'
 import WriteReviewCard from '../reviewCards/WriteReviewCard'
 
-const cardClass = "AttractionCardLarge "
+const cardClass = "AttractionCardLarge"
 
 class AttractionCardLarge extends Component {
     componentDidMount = () =>{

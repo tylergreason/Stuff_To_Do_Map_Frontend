@@ -43,7 +43,7 @@ body {
 }
 ::-webkit-scrollbar-thumb {
   background-color: var(--cardBGColor);
-  -webkit-border-radius: 10px;
+  -webkit-border-radius: var(--borderRadius);
   -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
 }
 
@@ -55,6 +55,7 @@ body {
   height: 90%;
   margin-top:70px;
   padding:0px;
+  margin-left: 5px;
   overflow-y: scroll;
 }
 
@@ -113,7 +114,7 @@ button:focus{
   overflow-x: hidden;
   margin-right: 10px;
   margin-left: 10px;
-  scrollbar-width: thin;
+  scrollbar-width: none;
   scrollbar-color: var(--borderColor) transparent;
   border: var(--border);
   border-radius: var(--borderRadius);
@@ -130,7 +131,7 @@ button:focus{
   height: var(--displayHeight); 
   /* height: 90%; */
   border: 5px solid var(--borderColor);
-  border-radius: 10px;
+  border-radius: var(--borderRadius);
   margin: 10px;
   /* setting z index to less than 0 so the AttractionCardLarge can appear over it */
   z-index: 0;
@@ -159,7 +160,7 @@ button:focus{
 .AttractionListCard {
   border: 2px solid var(--borderColor); 
   background-color: var(--cardBGColor);
-  border-radius: 10px;
+  border-radius: var(--borderRadius);
   /* max-width: 95%; */
   margin: 5px;
   margin-top: 10px; 
@@ -208,7 +209,7 @@ button:focus{
 .informationBox { 
   border: 5px solid var(--borderColor);
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: var(--cardBGColor);
   /* max-width: 50%; */
 }
@@ -236,7 +237,7 @@ button {
   margin:5px;
   text-transform: uppercase;
   border: 2px solid black;
-  border-radius: 10px;
+  border-radius: var(--borderRadius);
   transition: all 0.1s;
 } 
 
@@ -291,7 +292,6 @@ label {
 
 /* popup style taken from https://dev.to/skptricks/create-simple-popup-example-in-react-application-5g7f */
 .AttractionCardLarge {
-  /* darken background */
   top: 0;  
   left: 0;  
   right: 0;  
@@ -321,6 +321,9 @@ label {
 .AttractionListCardLarge { 
   /* width: 100%; */
   max-width: 100%;
+  margin: 5px;
+  /* animation: slide-up .5s; */
+
 }
 
 .AttractionListCardLargeInner { 
@@ -338,6 +341,7 @@ label {
   /* max-height:55%; */
   max-width: 100%;
   margin: auto;
+  border-radius: var(--borderRadius);
   background-color: var(--buttonTextColor);
   scrollbar-color: black;
 }
@@ -355,7 +359,7 @@ label {
 
 .writeReviewText {
   background-color: var(--bodyBGColor);
-  border-radius: 10px;
+  border-radius: var(--borderRadius);
   max-width: 90%;
   margin: auto auto;
 }
@@ -388,4 +392,19 @@ label {
 
 .newAttractionFormMap {
   max-height: 75vh;
+}
+
+
+@keyframes slide-up {
+  0% {
+      opacity: 0.5;
+      height: 0%; 
+      background-color: black;
+      /* transform: translateY(20px); */
+  }
+  100% {
+      opacity: 1;
+      height: 100%;
+      /* transform: translateY(0); */
+  }
 }
