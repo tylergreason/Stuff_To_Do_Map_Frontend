@@ -18,10 +18,11 @@ const editIconMarker = `<span class='material-icons editIcon'>
 export const iconWithCustomText = text => {
     const userIconMarker = `
                                 <div class='userIconWrapper'>
-                                    <div class='iconText'>${text}</div>
-                                    <span class='material-icons userIcon'>
-                                    place
-                                    </span>
+                                <span class='material-icons userIcon'>
+                                place
+                                </span>
+                                <div class='iconText'>${text}
+                                </div>
                                     </div>
                                     `
     return L.divIcon({

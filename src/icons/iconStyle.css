@@ -8,7 +8,7 @@
     border-radius: 50%;
     transform: scale(1.5);
 }
-.userIconWrapper:hover .userIcon{
+.userIcon:hover{
     border: 2px solid var(--userIconColor);
     background:white;
     transform: scale(2) rotate(180deg);
@@ -31,10 +31,12 @@
     margin-bottom: 30px;
     border-radius: 10px;
     border: 2px solid black;
+    pointer-events: none;
 }
 
-.userIconWrapper:hover .iconText {
-    transform: scale(3);
+/* grow the icon text when the icon is hovered */
+.userIcon:hover + .iconText{
+    transform: scale(3) translate(0px, -28px);
     color:lightgreen;
     background-color: white;
     /* margin: auto; */
@@ -44,6 +46,7 @@
     transition: 0.2s;
     /* translate(-50%,-50%); */
     /* width: 100px; */
+    pointer-events: none;
 }
 
 .userIconWrapper{
@@ -56,4 +59,4 @@
   align-items: center;
   /* center items vertically */
   justify-content: center;
-}
+  }
