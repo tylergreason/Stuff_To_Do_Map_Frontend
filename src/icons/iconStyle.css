@@ -16,6 +16,12 @@
     /* color:blue; */
 }
 
+.userIcon.hovered {
+    border: 2px solid var(--userIconColor);
+    background:white;
+    transform: scale(2) rotate(180deg);
+}
+
 .editIcon {
     transform: scale(2);
 }

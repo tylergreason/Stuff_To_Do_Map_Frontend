@@ -75,7 +75,7 @@ class WriteReviewCard extends Component {
                 <span className="ratingSelect">
                     <label>Rating</label>
                     <select name="rating" onChange={this.handleOptionSelect} id='rating'>
-                        <option name="rating" defaultValue value=""></option>
+                        <option className="ratingSelectOption" name="rating" defaultValue value=""></option>
                         <option name="rating" value="1">1</option>
                         <option name="rating" value="2">2</option>
                         <option name="rating" value="3">3</option>

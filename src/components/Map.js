@@ -40,11 +40,11 @@ class Map extends Component {
                 const lat = attraction.lat 
                 const lng = attraction.lng 
 
-                this.marker = L.marker([lat,lng],{icon: iconWithCustomText(`${attraction.name}`), title:attraction.name})
+                this.marker = L.marker([lat,lng],{icon: iconWithCustomText(`${attraction.name}`,`${attraction.id}`), title:attraction.name})
                 // set click function 
                 this.marker.on('click', this.handleMarkerClick)
                 this.marker.id = attraction.id 
-                this.marker.bindPopup(this.renderPopupText(attraction)).openPopup()
+                // this.marker.bindPopup(this.renderPopupText(attraction)).openPopup()
                 return this.marker.addTo(this.attractionLayer)
             })
         }
@@ -58,6 +58,7 @@ class Map extends Component {
     }
 
     // create popup marker 
+    // not being used anymore in favor of CSS hover 
     renderPopupText = (attraction) => {
         return `<div class="popupName">${attraction.name}</div>
         <div class=popupText></div>`
@@ -114,7 +115,7 @@ class Map extends Component {
     render(){
         return (
             <div className="Map">
-                <div id='myMap' className="animated fadeIn"></div>
+                <div id='myMap' className="animated fadeIn map"></div>
                 {/* {this.addMarker()} */}
             </div>
         )

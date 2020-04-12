@@ -57,7 +57,7 @@ class AttractionFormMap extends Component {
     render(){
         return(
         <div className="Map">
-            <div id='myMap' className="newAttractionFormMap"></div>
+            <div id='myMap' className="map newAttractionFormMap"></div>
         </div>
         )
     }
