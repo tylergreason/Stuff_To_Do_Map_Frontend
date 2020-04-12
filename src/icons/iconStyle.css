@@ -4,15 +4,15 @@
 
 .userIcon {
     color: var(--userIconColor);
-    transition:  0.1s;
+    transition:  0.2s;
     border-radius: 50%;
     transform: scale(1.5);
 }
-.userIcon:hover{
+.userIconWrapper:hover .userIcon{
     border: 2px solid var(--userIconColor);
     background:white;
-    transform: scale(2);
-    z-index: 1;
+    transform: scale(2) rotate(180deg);
+    /* z-index: 1; */
     /* color:blue; */
 }
 
@@ -21,13 +21,39 @@
 }
 
 .iconText{
-    /* transform: scale(.1); */
-    /* z-index: -109; */
     color: transparent;
-    transition: 0.5s;
+    transition: 0s;
+    font-family: Yellowtail;
+    white-space: nowrap;
+    transform: scale(0.1);
+    padding-right: 5px;
+    padding-left: 5px; 
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: 2px solid black;
 }
-.iconText:hover{
-    color:black;
-    z-index: 1;
-    transform:scale(3);
+
+.userIconWrapper:hover .iconText {
+    transform: scale(3);
+    color:lightgreen;
+    background-color: white;
+    /* margin: auto; */
+    text-align: center;
+    /* position: relative; 
+    top: -5vh; */
+    transition: 0.2s;
+    /* translate(-50%,-50%); */
+    /* width: 100px; */
+}
+
+.userIconWrapper{
+    /* background-color: blue; */
+  /* this will make its children flex-items */
+  display: inline-flex;
+  /* align-items items in column */
+  flex-direction: column;
+  /* center items horizontally */
+  align-items: center;
+  /* center items vertically */
+  justify-content: center;
 }
