@@ -3,6 +3,7 @@ import L from 'leaflet';
 import { connect } from 'react-redux'
 import { userIcon, iconWithCustomText } from '../icons/Icons'
 import { getAttraction } from '../store/actions/AttractionActions'
+import { toggleHoveredClass } from '../generalFunctions'
 
 // const greenIcon = L.icon({
 //     iconUrl: icon,
@@ -52,6 +53,7 @@ class Map extends Component {
 
     handleMarkerClick = e => {
         this.props.getAttraction(e.target.id)
+        toggleHoveredClass(e.target.id)
         const cardId = `attractionMapListCardLarge${e.target.id}`
         const cardToView = document.getElementById(cardId) 
         // cardToView.scrollIntoView()

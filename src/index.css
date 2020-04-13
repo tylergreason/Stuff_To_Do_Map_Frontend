@@ -186,7 +186,7 @@ button:focus{
 .address {
   font-size: 0.8rem;
   font-style: italic;
-  /* float:right; */
+  float:right;
   /* margin-top: 0px; */
 }
 
@@ -194,15 +194,19 @@ button:focus{
 .informationBox { 
   border: 5px solid var(--borderColor);
   padding: 10px;
-
   border-radius: 10px;
   background-color: var(--cardBGColor);
   /* max-width: 50%; */
 }
 
+.MyAccountComponent {
+  width: 40%;
+}
+
 .middlePageBox { 
-  max-width: 50%;
-  margin: auto; 
+  max-width: 40%;
+  /* margin: auto;  */
+  margin: 10px auto 10px auto;
 }
 
 
@@ -251,11 +255,6 @@ input:hover, input:focus, textarea:hover, textarea:focus{
   /* background-color: var(--cardBGColorLighter ); */
 }
 
-
-.MyAccount { 
-
-  margin: auto; 
-}
 label {
   font-family: Yellowtail; 
   font-size: 1.5em;
@@ -379,11 +378,6 @@ label {
   padding-top: 10px;
 }
 
-.newAttractionWrapper{
-  /* height:40%; */
-  /* border: var(--border); 
-  border-radius: var(--borderRadius); */
-}
 .MyAttractionList {
   overflow-y: scroll;
   height: var(--displayHeight); 

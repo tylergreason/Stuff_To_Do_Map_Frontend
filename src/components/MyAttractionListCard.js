@@ -2,6 +2,8 @@ import React from 'react'
 import Button from './general/Button'
 import { connect } from 'react-redux'
 import { deleteAttraction } from '../store/actions/MapActions'
+
+
 const MyAttractionListCard = (props) => {
 
     const deleteAttraction = (e) => {

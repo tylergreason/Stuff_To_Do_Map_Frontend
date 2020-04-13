@@ -11,7 +11,6 @@ const cardClass = "AttractionListCardLarge animated"
 class AttractionListCardLarge extends Component {
 
     componentDidMount = () => {
-        // debugger
         // scroll this card into view upon mounting 
         const thisCard = document.getElementById(`attractionMapListCardLarge${this.props.attraction.id}`)
         thisCard.scrollIntoView()
@@ -19,7 +18,6 @@ class AttractionListCardLarge extends Component {
 
     renderReviewList = (attraction) => {
         if (attraction.reviews.length < 1){
-
         }else{
             return(
                 <>
@@ -62,15 +60,12 @@ class AttractionListCardLarge extends Component {
     render(){
         return (
         <div className={cardClass} id={`attractionMapListCardLarge${this.props.attraction.id}`}>
-            {/* <h1>ATTRACTION CARD LARGE</h1> */}
             <div className="AttractionListCardLargeInner">
-                {/* {this.renderBackButton()} */}
                 <br></br>
                 <h4 className="name">{this.props.attraction.name}</h4>
                 {this.renderRating(this.props.attraction)}
-                <br></br>
                 {this.renderAddress(this.props.attraction)}
-                <p className="description">DESC {this.props.attraction.description}</p>
+                <p className="description">{this.props.attraction.description}</p>
                 {this.renderReviewList(this.props.attraction)}
             {this.renderWriteReviewCard()}
             </div>

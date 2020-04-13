@@ -96,7 +96,7 @@ class DeleteAccount extends Component {
     }
     render(){
         return(
-            <>
+            <div className="middlePageBox">
                 <label>Delete Account</label>
                 <div className="informationBox">
                     {this.renderKeepAttractionsSelect()}
@@ -105,7 +105,7 @@ class DeleteAccount extends Component {
                     <div>{this.state.returnMessage}</div>
                     {this.renderDeleteAccountButton()}
                 </div>
-            </>
+            </div>
 
         )
     }

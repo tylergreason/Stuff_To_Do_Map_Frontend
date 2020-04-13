@@ -80,9 +80,9 @@ class EditEmail extends Component {
 
     render(){
         return ( 
-            <> 
+            <div className="middlePageBox"> 
                 {this.renderUpdateEmailForm()}
-            </>
+            </div>
         )
     }
 }

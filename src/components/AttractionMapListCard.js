@@ -1,21 +1,31 @@
-import React from 'react' 
+import React,{Component} from 'react' 
+import { toggleHoveredClass } from '../generalFunctions'
 
 const cardClass = "AttractionListCard animated fadeIn"
 
-const AttractionMapListCard = (props) => {
-    return (
-        <div 
-            id={`attractionMapListCard${props.attraction.id}`}
+class AttractionMapListCard extends Component{
+    
+    cardClick = () => {
+            this.props.onClick(this.props.attraction)
+            toggleHoveredClass(this.props.attraction.id)
+    }
+    
+    render(){
+        return (
+            <div 
+            id={`attractionMapListCard${this.props.attraction.id}`}
             // feed the attraction's id back on click so the attraction list can fetch it and render its info  
-            onClick={() => props.onClick(props.attraction)}
+            // onClick={()=>toggleHoveredClass(this.props.attraction.id)}
+            onClick={this.cardClick}
             className={cardClass}>
-            <h4 className="name">{props.attraction.name}</h4>
-            <span className="cardRating"> - {props.attraction.average_rating}⭐️</span>
+            <h4 className="name">{this.props.attraction.name}</h4>
+            <span className="cardRating"> - {this.props.attraction.average_rating}⭐️</span>
             <span className="address">
-            {`${props.attraction.house_number} ${props.attraction.road}, ${props.attraction.city}, ${props.attraction.state}, ${props.attraction.country}`}
+            {`${this.props.attraction.house_number} ${this.props.attraction.road}, ${this.props.attraction.city}, ${this.props.attraction.state}, ${this.props.attraction.country}`}
             </span>
-            <p className="description">{props.attraction.description}</p>
+            <p className="description">{this.props.attraction.description}</p>
         </div>)
+        }
 }
 
 export default AttractionMapListCard

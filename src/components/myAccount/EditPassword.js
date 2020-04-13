@@ -72,9 +72,9 @@ class EditPassword extends Component {
 
     render(){
         return ( 
-            <> 
+            <div className="middlePageBox"> 
                 {this.renderChangePasswordForm()}
-            </>
+            </div>
         )
     }
 }

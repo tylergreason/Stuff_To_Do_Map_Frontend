@@ -46,7 +46,7 @@ class EditInfo extends Component {
 
     renderUpdateInfoForm = () => {
         return (
-            <>
+            <div className="middlePageBox">
             <label>Update Account Information</label>
             <form className="informationBox">
                 <label>First Name: </label>
@@ -106,7 +106,7 @@ class EditInfo extends Component {
                     onClick={this.handleUpdateInfoSubmit}
                     >Update Account Information</button>
             </form>
-            </>
+            </div>
         )
     }
     render(){

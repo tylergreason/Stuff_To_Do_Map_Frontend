@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 const MyAccount = (props) => { 
         console.log('myAccount mounted')
         return( 
-            <div className="MyAccount middlePageBox">
+            <div className="MyAttractionList">
                 <EditInfo />
                 <EditPassword userId={props.user.id}/>
                 <EditEmail userId={props.user.id}/>

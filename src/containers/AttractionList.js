@@ -32,10 +32,7 @@ class AttractionList extends Component {
     // on click, fetch attraction's info, then render a big card for that attraction 
     attractionCardClick = (e)=> {
         this.props.getAttraction(e.id)
-        // this.setState({
-        //     attractionCardLargeToRender:e
-        // })
-    }
+        }
 
     // check if user clicked outside the large card box, and reset the large card state if so (if it's not already nothing)
     // handleClick = e => {
