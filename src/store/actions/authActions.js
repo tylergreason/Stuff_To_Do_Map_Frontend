@@ -24,10 +24,10 @@ export const signUp = (newUser, returnMessage) => {
     .then(data => {
         console.log(data) 
         if (data.error){
-            returnMessage(data.error)
+            returnMessage(data)
         }else if (data.token){
                 localStorage.setItem('auth_token',data.token)
-                returnMessage(data.success)
+                returnMessage(data)
                 dispatch({type:'LOGIN', user:data.user})
             }
         })

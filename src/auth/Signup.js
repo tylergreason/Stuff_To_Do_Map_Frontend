@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux' 
 import { login, logout, signUp } from '../store/actions/authActions'
 import { withRouter } from 'react-router'
+import { ServerResponseCard } from '../components/ServerResponseCard'
 class Signup extends Component {
     state = {
         user:{
@@ -114,6 +115,7 @@ class Signup extends Component {
                         value={this.state.user.password_confirmation} 
                 />
                 <br></br>
+                <ServerResponseCard response={this.state.returnMessage} />
                 <button id="submit" 
                         type="submit" 
                         onClick={this.handleSubmit}>
