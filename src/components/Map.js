@@ -5,17 +5,6 @@ import { userIcon, iconWithCustomText } from '../icons/Icons'
 import { getAttraction } from '../store/actions/AttractionActions'
 import { toggleHoveredClass } from '../generalFunctions'
 
-// const greenIcon = L.icon({
-//     iconUrl: icon,
-//     // iconSize:     [38, 95], // size of the icon
-//     shadowSize:   [50, 64], // size of the shadow
-//     iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-//     shadowAnchor: [4, 62],  // the same for the shadow
-//     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-// });
-
-
-
 class Map extends Component {
     state = {
         map:"",
@@ -41,7 +30,7 @@ class Map extends Component {
                 const lat = attraction.lat 
                 const lng = attraction.lng 
 
-                this.marker = L.marker([lat,lng],{icon: iconWithCustomText(`${attraction.name}`,`${attraction.id}`), title:attraction.name})
+                this.marker = L.marker([lat,lng],{icon: iconWithCustomText(`${attraction.name}`,`${attraction.id}`)})
                 // set click function 
                 this.marker.on('click', this.handleMarkerClick)
                 this.marker.id = attraction.id 
@@ -101,7 +90,30 @@ class Map extends Component {
         // create event listener for when map moves 
         myMap.on("moveend", this.onMapChange)
 
+        // create button for map 
+        L.Control.Location = L.Control.extend({
+            onAdd: function(map){
+                var locationButton = L.DomUtil.create('button')
+                locationButton.innerText="gps_fixed"
+                L.DomEvent.on(locationButton,'click', function(){console.log('hlhl')})
+                L.DomUtil.addClass(locationButton, "locationButton")
+                L.DomUtil.addClass(locationButton, "material-icons")
+                // locationButton.innerText='dfdsafasdf'
+                return locationButton 
+            }, 
+            onRemove: function(map) {
+                // Nothing to do here
+            }
+        }); 
 
+        L.control.location = function(options){
+            return new L.Control.Location(options); 
+        }
+
+        L.control.location({position:'topleft'}).addTo(myMap)
+
+        
+        
 
         // set the state with the map's initial values 
         // this.props.parseBounds(myMap.getBounds())

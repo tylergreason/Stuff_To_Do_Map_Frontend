@@ -405,3 +405,7 @@ label {
       /* transform: translateY(0); */
   }
 }
+
+.locationButton{
+  transform: scale(0.7)
+}
