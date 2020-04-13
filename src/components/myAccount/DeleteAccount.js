@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux' 
 import { deleteUser } from '../../store/actions/UserActions'
 import { withRouter } from 'react-router'
+import { ServerResponseCard } from '../ServerResponseCard'
 
 
 
@@ -15,7 +16,7 @@ class DeleteAccount extends Component {
 
     // redirect to login if deletion was successful 
     componentDidUpdate = () =>{
-        if (this.state.returnMessage === "User deleted"){
+        if (this.state.returnMessage.success){
             localStorage.clear()
             this.props.history.push('/login')
         }
@@ -103,7 +104,7 @@ class DeleteAccount extends Component {
                     {this.renderKeepAttractionsSelect()}
                     {this.renderUserChoice()}
                     {this.renderPasswordInputs()}
-                    <div>{this.state.returnMessage}</div>
+                    <ServerResponseCard response={this.state.returnMessage} />
                     {this.renderDeleteAccountButton()}
                 </div>
             </div>

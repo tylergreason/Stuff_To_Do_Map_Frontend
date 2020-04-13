@@ -1,6 +1,8 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux' 
 import { updatePassword } from '../../store/actions/UserActions'
+import { ServerResponseCard } from '../ServerResponseCard'
+
 class EditPassword extends Component {
         state={
             user:{}, 
@@ -50,7 +52,7 @@ class EditPassword extends Component {
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
-                <div>{`${this.state.returnMessage}`}</div>
+                <ServerResponseCard response={this.state.returnMessage} />
                 <button 
                     type='submit'
                     onClick={this.handleUpdatePasswordSubmit}

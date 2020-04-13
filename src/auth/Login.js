@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux' 
 import { login } from '../store/actions/authActions'
 import { withRouter } from 'react-router'
+import { ServerResponseCard } from '../components/ServerResponseCard'
 
 class Login extends Component{
     state= {
         email:'', 
-        password:''
+        password:'',
+        returnMessage:[]
     }
     handleInput = (e) => {
         this.setState({
@@ -44,7 +46,7 @@ class Login extends Component{
                 
                 <input type="password" name='password' placeholder="password" onChange={this.handleInput} value={this.state.password} />
                 <br></br>
-                
+                <ServerResponseCard response={this.state.returnMessage} />
                 <button id="submit" type="submit" value="Submit">Login</button>
                 </form>
             </div>

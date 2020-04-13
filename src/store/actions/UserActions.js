@@ -66,10 +66,10 @@ export const updatePassword = (user, returnMessage) => {
             .then((data) => {
                 console.log(data)
                 if (data.error){
-                    returnMessage(data.error)
+                    returnMessage(data)
                 }else{
                     dispatch({type:'UPDATE_PASSWORD'})
-                    returnMessage(data.success)
+                    returnMessage(data)
                 }
             })
             .catch((error) => {
@@ -120,10 +120,10 @@ export const deleteUser = (user,returnMessage) => {
             .then((data) => {
                 console.log(data)
                 if (data.error){
-                    returnMessage(data.error)
+                    returnMessage(data)
                 }else{
                     dispatch({type:'DELETE_USER', user: data})
-                    returnMessage(data.success)
+                    returnMessage(data)
                 }
             })
             .catch((error) => {
