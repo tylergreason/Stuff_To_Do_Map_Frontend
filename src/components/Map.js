@@ -52,10 +52,10 @@ class Map extends Component {
 
     // create popup marker 
     // not being used anymore in favor of CSS hover 
-    renderPopupText = (attraction) => {
-        return `<div class="popupName">${attraction.name}</div>
-        <div class=popupText></div>`
-    }
+    // renderPopupText = (attraction) => {
+    //     return `<div class="popupName">${attraction.name}</div>
+    //     <div class=popupText></div>`
+    // }
 
     componentDidUpdate = (prevProps) => {
         if (prevProps.attractions !== this.props.attractions){
@@ -66,10 +66,10 @@ class Map extends Component {
     onMapChange = (e) => {
         const bounds = e.target.getBounds() 
         this.setState({
+            ...this.state, 
             southWestBounds:bounds._southWest, 
             northEastBounds:bounds._northEast
         })
-        // const boundsToReturn = [bounds._southWest, bounds._northEast] 
         this.props.setBounds(bounds)
     }
 
@@ -99,43 +99,15 @@ class Map extends Component {
             northEastBounds:myMap.getBounds()._northEast
         })
         createFindLocationButton(myMap)
+        L.control.scale().addTo(myMap);
         this.props.setBounds(myMap.getBounds())
         return myMap 
     }
-
-    // create find location button function 
-    // createFindLocationButton = (map) => {
-    //     // create button for map 
-    //     L.Control.Location = L.Control.extend({
-    //         onAdd: function(){
-    //             var locationButton = L.DomUtil.create('button')
-    //             locationButton.innerText="gps_fixed"
-    //             L.DomEvent.on(
-    //                 locationButton,
-    //                 'click', 
-    //                 function(){map.locate({setView:true})})
-    //             L.DomUtil.addClass(locationButton, "locationButton")
-    //             L.DomUtil.addClass(locationButton, "material-icons")
-    //             // locationButton.innerText='dfdsafasdf'
-    //             return locationButton 
-    //         }, 
-    //         onRemove: function() {
-    //             // Nothing to do here
-    //         }
-    //     }); 
-
-    //     L.control.location = function(options){
-    //         return new L.Control.Location(options); 
-    //     }
-
-    //     return L.control.location({position:'topleft'}).addTo(map)
-    // }
 
     render(){
         return (
             <div className="Map">
                 <div id='myMap' className="animated fadeIn map"></div>
-                {/* {this.addMarker()} */}
             </div>
         )
     }
