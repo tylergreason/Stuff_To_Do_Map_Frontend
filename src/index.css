@@ -163,6 +163,10 @@ button:focus{
   transition: all 0.1s;
 }
 
+.AttractionListCard.hovered {
+  background-color: var(--buttonTextColor);
+}
+
 .AttractionListCard:hover{
   background-color: var(--buttonTextColor);
   transform: scaleY(1.05);

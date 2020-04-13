@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import MyAttractionListCard from '../components/MyAttractionListCard'
 import EditAttractionForm from '../components/EditAttractionForm'
 import NewAttractionForm from '../components/NewAttractionForm'
-import AttractionFormMap from '../components/AttractionFormMap'
 import MyAttractionListMap from '../components/maps/MyAttractionListMap'
+
+import { toggleIconHoveredClass, toggleHoveredClass } from '../generalFunctions'
 
 
 import { connect } from 'react-redux' 
@@ -46,6 +47,8 @@ class  MyAttractionList extends Component {
     }
 
     handleNewAttractionClick = (e) => {
+        // clear the hovered class from all icons 
+        toggleIconHoveredClass()
         e.preventDefault() 
         this.setState({
             formToRender:'new'
@@ -99,15 +102,11 @@ class  MyAttractionList extends Component {
                 {/* render backToList button if not on list */}
                 {this.state.formToRender !== 'list' ? <button onClick={this.backToList}>Go Back</button> : <></>}
                     {this.renderStateForm()}    
-                    {/* <h2>My Attractions</h2>
-                    {this.state.modifyingAttraction 
-                        ?
-                        this.renderAttractionEditForm()
-                        :
-                        this.renderMyAttractions(this.props.myAttractions)
-                    } */}
                 </div>
-                <MyAttractionListMap />
+                <MyAttractionListMap 
+                    formToRender={this.state.formToRender}
+                    attractions ={this.props.myAttractions}
+                />
             </div>
     )
     }

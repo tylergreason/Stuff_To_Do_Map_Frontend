@@ -1,5 +1,5 @@
 import React,{Component} from 'react' 
-import { toggleHoveredClass } from '../generalFunctions'
+import { toggleIconHoveredClass } from '../generalFunctions'
 
 const cardClass = "AttractionListCard animated fadeIn"
 
@@ -7,7 +7,7 @@ class AttractionMapListCard extends Component{
     
     cardClick = () => {
             this.props.onClick(this.props.attraction)
-            toggleHoveredClass(this.props.attraction.id)
+            toggleIconHoveredClass(this.props.attraction.id)
     }
     
     render(){

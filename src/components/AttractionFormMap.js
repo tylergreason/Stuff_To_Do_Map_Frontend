@@ -51,7 +51,6 @@ class AttractionFormMap extends Component {
         // create marker where click was 
         this.marker = L.marker([lat,lng], {icon: editIcon})
         this.marker.addTo(this.attractionLayer)
-
     }
 
     createMarker = (lat,lng) => {

@@ -12,8 +12,6 @@
     border: 2px solid var(--userIconColor);
     background:white;
     transform: scale(2) rotate(180deg);
-    /* z-index: 1; */
-    /* color:blue; */
 }
 
 .userIcon.hovered {
@@ -28,6 +26,7 @@
 
 .iconText{
     color: transparent;
+    display: none;
     transition: 0s;
     font-family: Yellowtail;
     white-space: nowrap;
@@ -42,6 +41,7 @@
 
 /* grow the icon text when the icon is hovered */
 .userIcon:hover + .iconText{
+    display: inline;
     transform: scale(3) translate(0px, -28px);
     color:lightgreen;
     background-color: var(--userIconColor);
@@ -65,4 +65,7 @@
   align-items: center;
   /* center items vertically */
   justify-content: center;
+  border: 1px solid black;
+  max-width: 0px;
+  max-height: 0px;
   }

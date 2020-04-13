@@ -2,6 +2,7 @@ import React from 'react'
 import Button from './general/Button'
 import { connect } from 'react-redux'
 import { deleteAttraction } from '../store/actions/MapActions'
+import { toggleIconHoveredClass, toggleHoveredClass } from '../generalFunctions'
 
 
 const MyAttractionListCard = (props) => {
@@ -14,7 +15,15 @@ const MyAttractionListCard = (props) => {
     }
 
     return(
-    <div className="AttractionListCard animated fadeIn faster">
+    <div 
+        className="AttractionListCard animated fadeIn faster" 
+        id={`AttractionListCard${props.attraction.id}`}
+        onClick={() => {
+                toggleIconHoveredClass(props.attraction.id)
+                toggleHoveredClass("AttractionListCard", props.attraction.id)
+                console.log(props.attraction.lat)
+            }}
+    >
         <h4 className="name">{props.attraction.name}</h4>
         <span> - {props.attraction.average_rating || 'No reviews yet'}⭐️</span>
         <span className="address">

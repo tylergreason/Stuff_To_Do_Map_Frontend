@@ -3,9 +3,10 @@ import L from 'leaflet';
 import { editIcon } from '../../icons/Icons'
 import { connect } from 'react-redux'
 import { fillAttractionForm } from '../../store/actions/AttractionActions'
+import { iconWithCustomText } from '../../icons/Icons'
+import { toggleIconHoveredClass } from '../../generalFunctions'
 
-
-
+import { toggleHoveredClass } from '../../generalFunctions'
 
 import { createFindLocationButton } from '../mapFunctions'
 
@@ -20,24 +21,66 @@ class MyAttractionListMap extends Component {
         this.map = this.createMap()
         // add layer to this.map so we can control the attractions that are rendered 
         this.attractionLayer = L.layerGroup().addTo(this.map)
+        // create another layer for the edit icon 
+        this.editLayer = L.layerGroup().addTo(this.map)
+
         // get user location and set view to it 
         // this.map.locate({setView:true, enableHighAccuracy:true})
     }
 
+    componentDidUpdate = (prevProps) => {
+        if (prevProps.attractions !== this.props.attractions){
+            this.renderAttractionMarkers(this.state.map)
+            this.editLayer.clearLayers();
+        }
+    }
+
     onMapClick = e => {
-        let lat = e.latlng.wrap().lat
-        let lng = e.latlng.wrap().lng
-        console.log(`${lat} and ${lng}`)
-        fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`)
-        .then(resp => resp.json())
-        .then(data => {
-            this.props.fillAttractionForm(data.address, data.lat, data.lon)
-        }) 
-        // clear attractionLayer 
+        //change what the map click does depending on the state of the MyAttractionList component 
+        if (this.props.formToRender === 'new'){
+            let lat = e.latlng.wrap().lat
+            let lng = e.latlng.wrap().lng
+            console.log(`${lat} and ${lng}`)
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`)
+            .then(resp => resp.json())
+            .then(data => {
+                this.props.fillAttractionForm(data.address, data.lat, data.lon)
+            }) 
+            // clear attractionLayer 
+            // this.attractionLayer.clearLayers()
+            this.editLayer.clearLayers()
+            // create marker where click was 
+            this.marker = L.marker([lat,lng], {icon: editIcon})
+            this.marker.addTo(this.editLayer)
+        }
+    }
+
+    renderAttractionMarkers = () => {
+        // clear the layer of attractions before rendering new attractions 
         this.attractionLayer.clearLayers()
-        // create marker where click was 
-        this.marker = L.marker([lat,lng], {icon: editIcon})
-        this.marker.addTo(this.attractionLayer)
+        // iterate through attractions in props and make markers for each attraction 
+        if (this.props.attractions){
+            return this.props.attractions.map(attraction => {
+                const lat = attraction.lat 
+                const lng = attraction.lng 
+
+                this.marker = L.marker([lat,lng],{icon: iconWithCustomText(`${attraction.name}`,`${attraction.id}`)})
+                // set click function 
+                this.marker.on('click', this.handleMarkerClick)
+                this.marker.id = attraction.id 
+                // this.marker.bindPopup(this.renderPopupText(attraction)).openPopup()
+                return this.marker.addTo(this.attractionLayer)
+            })
+        }
+    }
+
+    handleMarkerClick = e => {
+        // this.props.getAttraction(e.target.id)
+        toggleIconHoveredClass(e.target.id)
+        toggleHoveredClass('AttractionListCard',e.target.id)
+        const cardId = `AttractionListCard${e.target.id}`
+        const cardToView = document.getElementById(cardId) 
+        cardToView.scrollIntoView();
     }
 
     createMap = () => {
