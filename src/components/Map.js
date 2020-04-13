@@ -90,27 +90,7 @@ class Map extends Component {
         // create event listener for when map moves 
         myMap.on("moveend", this.onMapChange)
 
-        // create button for map 
-        L.Control.Location = L.Control.extend({
-            onAdd: function(map){
-                var locationButton = L.DomUtil.create('button')
-                locationButton.innerText="gps_fixed"
-                L.DomEvent.on(locationButton,'click', function(){console.log('hlhl')})
-                L.DomUtil.addClass(locationButton, "locationButton")
-                L.DomUtil.addClass(locationButton, "material-icons")
-                // locationButton.innerText='dfdsafasdf'
-                return locationButton 
-            }, 
-            onRemove: function(map) {
-                // Nothing to do here
-            }
-        }); 
 
-        L.control.location = function(options){
-            return new L.Control.Location(options); 
-        }
-
-        L.control.location({position:'topleft'}).addTo(myMap)
 
         
         
@@ -122,8 +102,37 @@ class Map extends Component {
             southWestBounds:myMap.getBounds()._southWest,
             northEastBounds:myMap.getBounds()._northEast
         })
+        this.createFindLocationButton(myMap)
         this.props.setBounds(myMap.getBounds())
         return myMap 
+    }
+
+    // create find location button function 
+    createFindLocationButton = (map) => {
+        // create button for map 
+        L.Control.Location = L.Control.extend({
+            onAdd: function(){
+                var locationButton = L.DomUtil.create('button')
+                locationButton.innerText="gps_fixed"
+                L.DomEvent.on(
+                    locationButton,
+                    'click', 
+                    function(){map.locate({setView:true, enableHighAccuracy:true})})
+                L.DomUtil.addClass(locationButton, "locationButton")
+                L.DomUtil.addClass(locationButton, "material-icons")
+                // locationButton.innerText='dfdsafasdf'
+                return locationButton 
+            }, 
+            onRemove: function() {
+                // Nothing to do here
+            }
+        }); 
+
+        L.control.location = function(options){
+            return new L.Control.Location(options); 
+        }
+
+        return L.control.location({position:'topleft'}).addTo(map)
     }
 
     render(){
