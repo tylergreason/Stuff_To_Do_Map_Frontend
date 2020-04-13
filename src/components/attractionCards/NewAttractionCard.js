@@ -1,6 +1,7 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux' 
 import { addAttraction } from '../../store/actions/AttractionActions'
+import { ServerResponseCard } from '../ServerResponseCard'
 
 
 class NewAttractionForm extends Component {
@@ -16,7 +17,7 @@ class NewAttractionForm extends Component {
             lat:'',
             lng:''
         }, 
-        returnMessage:""
+        returnMessage:[]
     }
 
     componentDidUpdate = prevProps => {
@@ -146,6 +147,7 @@ class NewAttractionForm extends Component {
                     onChange={this.handleInput}
                 ></input>
                 <br></br>
+                <ServerResponseCard response={this.state.returnMessage} />
                 <button 
                     type='submit'
                 >Save Changes</button>

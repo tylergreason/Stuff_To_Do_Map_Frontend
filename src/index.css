@@ -414,3 +414,10 @@ label {
 .locationButton{
   transform: scale(0.7)
 }
+
+.serverResponseList { 
+  border: var(--border); 
+  border-radius: var(--borderRadius);
+  background-color: rgb(187, 45, 45);
+  color: var(--buttonTextColor)
+}
