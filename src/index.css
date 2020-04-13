@@ -114,8 +114,8 @@ button:focus{
 
 
 .newAttractionForm { 
-  width:40%;  
-  float: left;
+  /* width:40%;   */
+  /* float: left; */
   margin: 10px;  
 }
 
@@ -270,9 +270,10 @@ label {
   margin: 5px;
 }
 
-.editAttractionForm { 
-  margin: 10px;
-  width: 40%;
+.editAttractionForm:hover {
+  background-color: var(--cardBGColor); 
+  /* margin: 10px;
+  width: 40%; */
 }
 
 /* popup style taken from https://dev.to/skptricks/create-simple-popup-example-in-react-application-5g7f */

@@ -3,6 +3,7 @@ import MyAttractionListCard from '../components/MyAttractionListCard'
 import EditAttractionForm from '../components/EditAttractionForm'
 import NewAttractionForm from '../components/NewAttractionForm'
 import AttractionFormMap from '../components/AttractionFormMap'
+import MyAttractionListMap from '../components/maps/MyAttractionListMap'
 
 
 import { connect } from 'react-redux' 
@@ -66,9 +67,9 @@ class  MyAttractionList extends Component {
                 <NewAttractionForm 
                         backToList={this.backToList}
                 />
-                <AttractionFormMap
+                {/* <AttractionFormMap
     
-                />
+                /> */}
                 </div>)
     }
 
@@ -91,19 +92,22 @@ class  MyAttractionList extends Component {
     }
     render(){
         return(
-            <div className="MyAttractionList">
-            {/* only render new attraction button if at the list page  */}
-            {this.state.formToRender === 'list' ? <button onClick={this.handleNewAttractionClick}>New Attraction</button> : <></> }
-            {/* render backToList button if not on list */}
-            {this.state.formToRender !== 'list' ? <button onClick={this.backToList}>Go Back</button> : <></>}
-                {this.renderStateForm()}    
-                {/* <h2>My Attractions</h2>
-                {this.state.modifyingAttraction 
-                ?
-                this.renderAttractionEditForm()
-                :
-                this.renderMyAttractions(this.props.myAttractions)
-                } */}
+            <div>
+                <div className="AttractionList">
+                {/* only render new attraction button if at the list page  */}
+                {this.state.formToRender === 'list' ? <button onClick={this.handleNewAttractionClick}>New Attraction</button> : <></> }
+                {/* render backToList button if not on list */}
+                {this.state.formToRender !== 'list' ? <button onClick={this.backToList}>Go Back</button> : <></>}
+                    {this.renderStateForm()}    
+                    {/* <h2>My Attractions</h2>
+                    {this.state.modifyingAttraction 
+                        ?
+                        this.renderAttractionEditForm()
+                        :
+                        this.renderMyAttractions(this.props.myAttractions)
+                    } */}
+                </div>
+                <MyAttractionListMap />
             </div>
     )
     }

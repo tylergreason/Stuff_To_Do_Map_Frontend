@@ -34,7 +34,7 @@ class EditAttractionForm extends Component {
 
     render(){
         return (
-            <div className="informationBox editAttractionForm">
+            <div className=" AttractionListCard editAttractionForm">
             <form>
                 <label>Name: </label>
                 <br></br>
