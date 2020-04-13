@@ -10,6 +10,7 @@ import { toggleHoveredClass } from '../../generalFunctions'
 
 import { createFindLocationButton } from '../mapFunctions'
 
+const mapsList = []; 
 
 class MyAttractionListMap extends Component {
     state = {
@@ -23,9 +24,6 @@ class MyAttractionListMap extends Component {
         this.attractionLayer = L.layerGroup().addTo(this.map)
         // create another layer for the edit icon 
         this.editLayer = L.layerGroup().addTo(this.map)
-
-        // get user location and set view to it 
-        // this.map.locate({setView:true, enableHighAccuracy:true})
     }
 
     componentDidUpdate = (prevProps) => {
@@ -46,8 +44,6 @@ class MyAttractionListMap extends Component {
             .then(data => {
                 this.props.fillAttractionForm(data.address, data.lat, data.lon)
             }) 
-            // clear attractionLayer 
-            // this.attractionLayer.clearLayers()
             this.editLayer.clearLayers()
             // create marker where click was 
             this.marker = L.marker([lat,lng], {icon: editIcon})
@@ -102,6 +98,15 @@ class MyAttractionListMap extends Component {
         // myMap.on("moveend", this.onMapChange)
         // set the state with the map's initial values 
         // this.props.parseBounds(myMap.getBounds())
+
+        L.Map.addInitHook(function () {
+            // Store a reference of the Leaflet map object on the map container,
+            // so that it could be retrieved from DOM selection.
+            // https://leafletjs.com/reference-1.3.4.html#map-getcontainer
+            mapsList.push(this)
+            this.getContainer()._leaflet_map = this;
+          });
+
         this.setState({
             map:myMap, 
             southWestBounds:myMap.getBounds()._southWest,
