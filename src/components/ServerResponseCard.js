@@ -3,8 +3,15 @@ import React from 'react'
 export const ServerResponseCard = props => {
     // server returned error
     if (props.response.error){
-        // if the error isn't blank 
-        if (props.response.error.length > 0){
+        // if there is only one error (Rails returned a string)
+        if (typeof(props.response.error) === 'string') {
+            return (
+                <ul className="serverResponseList error">
+                    <li className="serverResponseItem">{props.response.error}</li> 
+                </ul>
+                )
+                // else if error is not blank and is an array 
+        }else if (props.response.error.length > 0 && typeof(props.response.error) === 'object'){
             return (
             <ul className="serverResponseList error">
                     {props.response.error.map(response => {

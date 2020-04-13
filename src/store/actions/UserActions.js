@@ -33,10 +33,10 @@ export const updateUser = (user,returnMessage) => {
             .then((data) => {
                 console.log(data)
                 if (data.error){
-                    returnMessage(data.error)
+                    returnMessage(data)
                 }else{
                     dispatch({type:'UPDATE_USER', user:data.user})
-                    returnMessage(data.success)
+                    returnMessage(data)
                 }
                 // dispatch({type:'UPDATE_USER', user: data})
             })
