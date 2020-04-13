@@ -1,9 +1,9 @@
 import React, { Component } from 'react' 
 import L from 'leaflet';
 import { connect } from 'react-redux'
-import { iconWithCustomText } from '../icons/Icons'
-import { getAttraction } from '../store/actions/AttractionActions'
-import { toggleIconHoveredClass } from '../generalFunctions'
+import { iconWithCustomText } from '../../icons/Icons'
+import { getAttraction } from '../../store/actions/AttractionActions'
+import { toggleIconHoveredClass } from '../../generalFunctions'
 
 import { createFindLocationButton } from './mapFunctions'
 

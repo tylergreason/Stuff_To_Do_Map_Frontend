@@ -8,7 +8,7 @@ import { toggleIconHoveredClass } from '../../generalFunctions'
 
 import { toggleHoveredClass } from '../../generalFunctions'
 
-import { createFindLocationButton } from '../mapFunctions'
+import { createFindLocationButton, setMapVariable } from './mapFunctions'
 
 const mapsList = []; 
 
@@ -24,6 +24,8 @@ class MyAttractionListMap extends Component {
         this.attractionLayer = L.layerGroup().addTo(this.map)
         // create another layer for the edit icon 
         this.editLayer = L.layerGroup().addTo(this.map)
+        setMapVariable(this.map)
+        // this.props.setMap(this.map)
     }
 
     componentDidUpdate = (prevProps) => {
@@ -80,7 +82,7 @@ class MyAttractionListMap extends Component {
     }
 
     createMap = () => {
-        const myMap = L.map('myMap').setView([33.74884399533138, -84.36997083332154], 11);
+        const myMap = L.map('myMap').setView([35, -100], 4);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution:'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 20,

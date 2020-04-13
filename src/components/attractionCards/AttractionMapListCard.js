@@ -1,5 +1,7 @@
 import React,{Component} from 'react' 
-import { toggleIconHoveredClass } from '../generalFunctions'
+import { toggleIconHoveredClass } from '../../generalFunctions'
+
+
 
 const cardClass = "AttractionListCard animated fadeIn"
 

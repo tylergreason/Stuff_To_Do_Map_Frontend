@@ -30,6 +30,7 @@ export const addAttraction = (attraction,returnMessage) => {
 }
 
 export const getAttraction = (attractionId) => {
+    console.log(attractionId)
     return (dispatch) => {
         fetch(`http://localhost:3000/attractions/${attractionId}`, {
             method: 'GET',

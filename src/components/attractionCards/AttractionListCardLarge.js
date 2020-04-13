@@ -4,7 +4,8 @@ import { getAttraction } from '../../store/actions/AttractionActions'
 import ReviewList from '../../containers/ReviewList'
 import WriteReviewCard from '../reviewCards/WriteReviewCard'
 
-// import './attractionCardStyle.css'
+
+import { renderAddress } from './attractionCardGeneralFunctions'
 
 const cardClass = "AttractionListCardLarge animated"
 
@@ -41,7 +42,7 @@ class AttractionListCardLarge extends Component {
     renderAddress = (attraction) =>{
         return (
             <span className="address">
-                {`${attraction.house_number} ${attraction.road}, ${attraction.city}, ${attraction.state}, ${attraction.country}`}
+                {`${attraction.house_number || ''} ${attraction.road || ''}, ${attraction.city || ''}, ${attraction.state || ''}, ${attraction.country || ''}`}
             </span>
         )
     }
@@ -64,7 +65,7 @@ class AttractionListCardLarge extends Component {
                 <br></br>
                 <h4 className="name">{this.props.attraction.name}</h4>
                 {this.renderRating(this.props.attraction)}
-                {this.renderAddress(this.props.attraction)}
+                {renderAddress(this.props.attraction)}
                 <p className="description">{this.props.attraction.description}</p>
                 {this.renderReviewList(this.props.attraction)}
             {this.renderWriteReviewCard()}

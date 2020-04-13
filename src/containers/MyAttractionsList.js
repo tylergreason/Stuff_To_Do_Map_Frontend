@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import MyAttractionListCard from '../components/MyAttractionListCard'
-import EditAttractionForm from '../components/EditAttractionForm'
-import NewAttractionForm from '../components/NewAttractionForm'
+import MyAttractionListCard from '../components/attractionCards/MyAttractionListCard'
+import EditAttractionForm from '../components/attractionCards/EditAttractionCard'
+import NewAttractionForm from '../components/attractionCards/NewAttractionCard'
 import MyAttractionListMap from '../components/maps/MyAttractionListMap'
 
 import { toggleIconHoveredClass, toggleHoveredClass } from '../generalFunctions'

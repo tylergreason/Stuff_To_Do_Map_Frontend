@@ -1,8 +1,9 @@
 import React from 'react' 
-import Button from './general/Button'
+import Button from '../general/Button'
 import { connect } from 'react-redux'
-import { deleteAttraction } from '../store/actions/MapActions'
-import { toggleIconHoveredClass, toggleHoveredClass } from '../generalFunctions'
+import { deleteAttraction } from '../../store/actions/MapActions'
+import { toggleIconHoveredClass, toggleHoveredClass } from '../../generalFunctions'
+import { mapVariable } from '../maps/mapFunctions'
 
 
 const MyAttractionListCard = (props) => {
@@ -21,7 +22,8 @@ const MyAttractionListCard = (props) => {
         onClick={() => {
                 toggleIconHoveredClass(props.attraction.id)
                 toggleHoveredClass("AttractionListCard", props.attraction.id)
-                console.log(props.attraction.lat)
+                mapVariable.setView({lat: props.attraction.lat,lng: props.attraction.lng})
+                // props.map.setView({lat: props.attraction.lat,lng: props.attraction.lng})
             }}
     >
         <h4 className="name">{props.attraction.name}</h4>

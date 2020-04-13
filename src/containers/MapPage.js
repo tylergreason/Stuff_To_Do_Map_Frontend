@@ -4,7 +4,7 @@ import { getAttractions } from '../store/actions/MapActions'
 
 // two containers to render 
 import AttractionList from './AttractionList'
-import Map from '../components/Map'
+import Map from '../components/maps/Map'
 console.log(process.env.REACT_APP_MAPBOX_API_KEY)
 class MapPage extends Component {  
     state = {

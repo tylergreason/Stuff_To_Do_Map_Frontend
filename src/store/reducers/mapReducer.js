@@ -1,5 +1,4 @@
 const defaultState = {
-                        
                         attractions:[], 
                         southWestBounds:'', 
                         northEastBounds:'',
@@ -59,6 +58,11 @@ const mapReducer = (state = defaultState, action) => {
                 ...state, 
                 success:false, 
                 errors:false
+            }
+        case 'SET_MAP': 
+            return state = {
+                ...state, 
+                map:action.map
             }
         default: 
             return state

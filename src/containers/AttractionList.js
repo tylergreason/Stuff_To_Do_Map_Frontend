@@ -1,6 +1,6 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux'
-import AttractionMapListCard from '../components/AttractionMapListCard'
+import AttractionMapListCard from '../components/attractionCards/AttractionMapListCard'
 import AttractionListCardLarge from '../components/attractionCards/AttractionListCardLarge'
 import { getAttraction } from '../store/actions/AttractionActions'
 
@@ -31,6 +31,7 @@ class AttractionList extends Component {
 
     // on click, fetch attraction's info, then render a big card for that attraction 
     attractionCardClick = (e)=> {
+        // debugger
         this.props.getAttraction(e.id)
         }
 

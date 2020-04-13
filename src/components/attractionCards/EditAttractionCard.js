@@ -1,8 +1,8 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux' 
-import { updateAttraction } from '../store/actions/MapActions'
+import { updateAttraction } from '../../store/actions/MapActions'
 
-class EditAttractionForm extends Component {
+class EditAttractionCard extends Component {
     state = {
         attraction:""
     }
@@ -91,4 +91,4 @@ class EditAttractionForm extends Component {
     }
 }
 
-export default connect(null,{ updateAttraction })(EditAttractionForm)
+export default connect(null,{ updateAttraction })(EditAttractionCard)

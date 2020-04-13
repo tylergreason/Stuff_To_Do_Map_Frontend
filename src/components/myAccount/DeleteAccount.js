@@ -9,6 +9,7 @@ class DeleteAccount extends Component {
     state = {
         password:'',
         save_attractions:null,
+        // save_reviews:null,
         returnMessage:""
     }
 
@@ -69,7 +70,7 @@ class DeleteAccount extends Component {
     renderKeepAttractionsSelect = () =>{
         return(
             <div>
-                <div>Would you like to keep the attractions you have made for others to continue to see?</div>
+                <div>Would you like to keep the attractions or reviews you have published for others to continue to see?</div>
                 <button value='yes' onClick={this.handleKeepAttractionsSelect}>Yes</button>
                 <button value='no' onClick={this.handleKeepAttractionsSelect}>No</button>
                 {/* keep attractions select */}

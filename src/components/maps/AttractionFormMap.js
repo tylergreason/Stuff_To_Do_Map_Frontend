@@ -1,8 +1,8 @@
 import React, { Component } from 'react' 
 import L from 'leaflet' 
 import { connect } from 'react-redux'
-import { fillAttractionForm } from '../store/actions/AttractionActions'
-import { editIcon } from '../icons/Icons'
+import { fillAttractionForm } from '../../store/actions/AttractionActions'
+import { editIcon } from '../../icons/Icons'
 
 import { createFindLocationButton } from './mapFunctions'
 

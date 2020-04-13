@@ -1,8 +1,8 @@
 import React from 'react' 
-import EditPassword from './myAccount/EditPassword'
-import EditEmail from './myAccount/EditEmail'
-import EditInfo from './myAccount/EditInfo'
-import DeleteAccount from './myAccount/DeleteAccount'
+import EditPassword from './EditPassword'
+import EditEmail from './EditEmail'
+import EditInfo from './EditInfo'
+import DeleteAccount from './DeleteAccount'
 
 
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux' 
-import { addAttraction } from '../store/actions/AttractionActions'
+import { addAttraction } from '../../store/actions/AttractionActions'
 
 
 class NewAttractionForm extends Component {
