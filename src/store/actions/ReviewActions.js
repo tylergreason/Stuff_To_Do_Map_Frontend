@@ -12,9 +12,9 @@ export const addReview = (review, returnMessage) => {
         .then((data) => {
             console.log(data)
             if (data.error){
-                returnMessage(data.error)
+                returnMessage(data)
             }else{
-                returnMessage(data.success)
+                returnMessage(data)
                 dispatch({type:'ADD_REVIEW', attraction:data.attraction})
             }
         })

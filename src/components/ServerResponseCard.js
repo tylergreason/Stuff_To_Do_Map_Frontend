@@ -13,8 +13,13 @@ export const ServerResponseCard = props => {
             </ul>
             )
         }
-    }else{
+    }else if (props.response.success){
         // server did not return error
+        return(
+            <div className="serverResponse success">
+                {props.response.success}
+            </div>)
+    }else{
         return(<></>)
     }
 }

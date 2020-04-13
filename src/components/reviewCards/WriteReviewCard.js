@@ -1,6 +1,7 @@
 import React, { Component } from 'react' 
 import {connect} from 'react-redux' 
 import { addReview } from '../../store/actions/ReviewActions'
+import { ServerResponseCard } from '../ServerResponseCard'
 
 class WriteReviewCard extends Component {
     state = {
@@ -90,7 +91,7 @@ class WriteReviewCard extends Component {
                     id="writeReviewTextArea"
                 ></textarea>
                 <br></br>
-                {this.renderReturnMessage()}
+                <ServerResponseCard response={this.state.returnMessage} />
                 <button
                     onClick={this.submitReview}
                 >Submit Review</button>
