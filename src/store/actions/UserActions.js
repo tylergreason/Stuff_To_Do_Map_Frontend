@@ -93,10 +93,10 @@ export const updateEmail = (email, returnMessage) => {
             .then((data) => {
                 console.log(data)
                 if (data.error){
-                    returnMessage(data.error)
+                    returnMessage(data)
                 }else{
+                    returnMessage(data)
                     dispatch({type:'UPDATE_EMAIL', email:data.email})
-                    returnMessage(data.success)
                 }
             })
             .catch((error) => {

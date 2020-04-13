@@ -1,6 +1,7 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux' 
 import { updateEmail, getUser } from '../../store/actions/UserActions'
+import { ServerResponseCard } from '../ServerResponseCard'
 class EditEmail extends Component {
         state={
             returnMessage:"",
@@ -24,7 +25,7 @@ class EditEmail extends Component {
             }
         })
     }
-        renderUpdateEmailForm = () =>{
+    renderUpdateEmailForm = () =>{
         return(
             <>
                 <label>Update Email Address</label>
@@ -55,8 +56,7 @@ class EditEmail extends Component {
                 </input>
                         <br></br>
 
-                        <div>{`${this.state.returnMessage}`}</div>
-
+                <ServerResponseCard response={this.state.returnMessage} />
                 <button 
                     type='submit'
                     onClick={this.handleUpdateEmailSubmit}
