@@ -64,8 +64,7 @@ export const deleteAttraction = (id) => {
     }
 }
 
-export const updateAttraction = (attraction) => {
-    console.log(attraction)
+export const updateAttraction = (attraction,returnMessage) => {
     return (dispatch) => {
         fetch(`http://localhost:3000/attractions/${attraction.id}`, {
             method: 'PATCH',
@@ -78,7 +77,12 @@ export const updateAttraction = (attraction) => {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data)
-                dispatch({type:'UPDATE_ATTRACTION', myAttractions: data})
+                if (data.error){
+                    returnMessage(data)
+                }else{
+                    dispatch({type:'UPDATE_ATTRACTION', myAttractions: data})
+                    returnMessage('Success')
+                }
             })
             .catch((error) => {
                 console.error('Error:', error);

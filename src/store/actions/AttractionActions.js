@@ -20,9 +20,8 @@ export const addAttraction = (attraction,returnMessage) => {
             .then((data) => {
                 console.log(data)
                 if (data.error){
-                    returnMessage(data.error)
+                    returnMessage(data)
                 }else{
-                    returnMessage("Success")
                     dispatch({type:'ADD_ATTRACTION', myAttractions: data})
                 }
             })

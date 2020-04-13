@@ -1,10 +1,12 @@
 import React, { Component } from 'react' 
 import { connect } from 'react-redux' 
 import { updateAttraction } from '../../store/actions/MapActions'
+import { ServerResponseCard } from '../ServerResponseCard'
 
 class EditAttractionCard extends Component {
     state = {
-        attraction:""
+        attraction:"",
+        serverResponse:[]
     }
 
     handleInput = (e) => {
@@ -19,18 +21,28 @@ class EditAttractionCard extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.updateAttraction(this.state.attraction)
-        this.props.backToList()
+        this.props.updateAttraction(this.state.attraction, this.setServerResponse)
+    }
+    
+    componentDidMount = () =>{
+        // set state to attraction so the form is already filled 
+        if (this.props.attraction !== undefined){
+            this.setState({
+                attraction:this.props.attraction
+            })
+        }
+    }
+    componentDidUpdate = () => {
+        if (this.state.serverResponse === "Success"){
+            this.props.backToList()
+        }
     }
 
-    componentDidMount = () =>{
-            // set state to attraction so the form is already filled 
-            if (this.props.attraction !== undefined){
-                this.setState({
-                    attraction:this.props.attraction
-                })
-            }
-        }
+    setServerResponse = (message) =>{
+        this.setState({
+            serverResponse:message
+        })
+    }
 
     render(){
         return (
@@ -81,6 +93,7 @@ class EditAttractionCard extends Component {
                     onChange={this.handleInput}
                 ></input> */}
                 <br></br>
+                <ServerResponseCard response={this.state.serverResponse} />
                 <button 
                     type='submit'
                     onClick={this.handleSubmit}
