@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { fillAttractionForm } from '../store/actions/AttractionActions'
 import { editIcon } from '../icons/Icons'
 
+import { createFindLocationButton } from './mapFunctions'
+
 class AttractionFormMap extends Component {
     state = {
         map:""
@@ -31,6 +33,7 @@ class AttractionFormMap extends Component {
         }).addTo(myMap);
 
         myMap.on('click', this.onMapClick)
+        createFindLocationButton(myMap)
         return myMap
     }
 

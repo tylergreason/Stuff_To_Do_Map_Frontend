@@ -44,7 +44,7 @@
 .userIcon:hover + .iconText{
     transform: scale(3) translate(0px, -28px);
     color:lightgreen;
-    background-color: white;
+    background-color: var(--userIconColor);
     /* margin: auto; */
     text-align: center;
     /* position: relative; 

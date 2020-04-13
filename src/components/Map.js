@@ -5,6 +5,8 @@ import { userIcon, iconWithCustomText } from '../icons/Icons'
 import { getAttraction } from '../store/actions/AttractionActions'
 import { toggleHoveredClass } from '../generalFunctions'
 
+import { createFindLocationButton } from './mapFunctions'
+
 class Map extends Component {
     state = {
         map:"",
@@ -43,9 +45,9 @@ class Map extends Component {
     handleMarkerClick = e => {
         this.props.getAttraction(e.target.id)
         toggleHoveredClass(e.target.id)
-        const cardId = `attractionMapListCardLarge${e.target.id}`
-        const cardToView = document.getElementById(cardId) 
-        // cardToView.scrollIntoView()
+        // const cardId = `attractionMapListCardLarge${e.target.id}`
+        // const cardToView = document.getElementById(cardId) 
+        // // cardToView.scrollIntoView()
     }
 
     // create popup marker 
@@ -73,7 +75,7 @@ class Map extends Component {
 
 
     createMap = () => {
-        const myMap = L.map('myMap').setView([33.86956036384148, -84.48491725891019], 11);
+        const myMap = L.map('myMap').setView([33.74884399533138, -84.36997083332154], 11);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution:'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 20,
@@ -89,12 +91,6 @@ class Map extends Component {
 
         // create event listener for when map moves 
         myMap.on("moveend", this.onMapChange)
-
-
-
-        
-        
-
         // set the state with the map's initial values 
         // this.props.parseBounds(myMap.getBounds())
         this.setState({
@@ -102,38 +98,38 @@ class Map extends Component {
             southWestBounds:myMap.getBounds()._southWest,
             northEastBounds:myMap.getBounds()._northEast
         })
-        this.createFindLocationButton(myMap)
+        createFindLocationButton(myMap)
         this.props.setBounds(myMap.getBounds())
         return myMap 
     }
 
     // create find location button function 
-    createFindLocationButton = (map) => {
-        // create button for map 
-        L.Control.Location = L.Control.extend({
-            onAdd: function(){
-                var locationButton = L.DomUtil.create('button')
-                locationButton.innerText="gps_fixed"
-                L.DomEvent.on(
-                    locationButton,
-                    'click', 
-                    function(){map.locate({setView:true, enableHighAccuracy:true})})
-                L.DomUtil.addClass(locationButton, "locationButton")
-                L.DomUtil.addClass(locationButton, "material-icons")
-                // locationButton.innerText='dfdsafasdf'
-                return locationButton 
-            }, 
-            onRemove: function() {
-                // Nothing to do here
-            }
-        }); 
+    // createFindLocationButton = (map) => {
+    //     // create button for map 
+    //     L.Control.Location = L.Control.extend({
+    //         onAdd: function(){
+    //             var locationButton = L.DomUtil.create('button')
+    //             locationButton.innerText="gps_fixed"
+    //             L.DomEvent.on(
+    //                 locationButton,
+    //                 'click', 
+    //                 function(){map.locate({setView:true})})
+    //             L.DomUtil.addClass(locationButton, "locationButton")
+    //             L.DomUtil.addClass(locationButton, "material-icons")
+    //             // locationButton.innerText='dfdsafasdf'
+    //             return locationButton 
+    //         }, 
+    //         onRemove: function() {
+    //             // Nothing to do here
+    //         }
+    //     }); 
 
-        L.control.location = function(options){
-            return new L.Control.Location(options); 
-        }
+    //     L.control.location = function(options){
+    //         return new L.Control.Location(options); 
+    //     }
 
-        return L.control.location({position:'topleft'}).addTo(map)
-    }
+    //     return L.control.location({position:'topleft'}).addTo(map)
+    // }
 
     render(){
         return (
