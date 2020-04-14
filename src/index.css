@@ -424,3 +424,49 @@ label {
   background-color: rgb(187, 45, 45);
   color: var(--buttonTextColor)
 }
+
+.otmImage {
+  width: 100%;
+  margin:auto;
+  /* border: 3px solid black;
+  border-radius: var(--borderRadius); */  
+}
+
+.otmAttractionCard {
+  background-color: var(--cardBGColor);
+  border: var(--border); 
+  border-radius: var(--borderRadius);
+
+  /* don't put padding on sides so that the listing image can reach the sides and look like a card  */
+  padding-top: 10px; 
+  padding-bottom: 10px; 
+  margin-left: var(--scrollbarWidth);
+}
+
+.otmAttractionCard > .address, p, .name{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.listHeader {
+  background-color: var(--cardBGColor);
+  font-family: Yellowtail;
+  font-size: 2em;
+  padding: 10px; 
+  /* width: 100%; */
+  margin: 10px;
+  display:flex; 
+  justify-content: center;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  transition: all 0.1s;
+}
+
+.listHeader:hover{
+  background-color: transparent;
+  padding: 15px;
+}
+
+#otmAttractionList {
+  /* visibility: hidden; */
+}

@@ -18,18 +18,36 @@ class AttractionList extends Component {
     renderAttractionsListingHeader = (type) => {
             let headerText=''; 
             let listCount = ''; 
+            let onClick = '';
         if (type === 'user'){
             headerText = "User listings"; 
             listCount = this.props.attractions.length; 
+            onClick = this.toggleAttractionListHidden;
         }else{
             headerText = "OTM listings"
             listCount = this.props.otmAttractions.length; 
+            onClick=this.toggleOTMAttractionListHidden
         }
         return (
-            <h1>
+            <div
+                className={'listHeader'}
+                onClick={onClick}
+            >
                 {headerText} ({listCount}):
-            </h1>
+            </div>
         )
+    }
+
+    toggleAttractionListHidden = () => {
+        // find the attraction list and toggle its hidden. 
+        const attractionList = document.getElementById('attractionList'); 
+        attractionList.hidden = !attractionList.hidden; 
+    }
+
+    toggleOTMAttractionListHidden = () => {
+        // find the OTM attraction list and toggle its hidden. 
+        const otmAttractionList = document.getElementById('otmAttractionList'); 
+        otmAttractionList.hidden = !otmAttractionList.hidden; 
     }
 
     renderAttractionCards = () => {
@@ -99,9 +117,13 @@ class AttractionList extends Component {
             // onClick={this.handleClick}
         >
             {this.renderAttractionsListingHeader('user')}
-            {this.renderAttractionCards()}
+            <div id="attractionList">
+                {this.renderAttractionCards()}
+            </div>
             {this.renderAttractionsListingHeader('otm')}
-            {this.renderOTMAttractionCards()}
+            <div id='otmAttractionList' hidden={true}>
+                {this.renderOTMAttractionCards()}
+            </div>
             {/* {this.state.attractionCardLargeToRender !== "" 
             ? 
             <AttractionCardLarge attractionId={this.state.attractionCardLargeToRender.id} 

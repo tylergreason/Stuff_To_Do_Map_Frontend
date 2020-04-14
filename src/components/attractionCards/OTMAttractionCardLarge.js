@@ -2,8 +2,9 @@ import React,{ Component } from 'react'
 import { fetchWikiData } from '../../otmFunctions'
 
 import { renderAddress } from './attractionCardGeneralFunctions'
+import AttractionListCardLarge from './AttractionListCardLarge'
 
-const cardClass = "AttractionListCard"
+const cardClass = "AttractionListCardLarge"
 
 class OTMAttractionCardLarge extends Component {
     state = {
@@ -30,7 +31,7 @@ class OTMAttractionCardLarge extends Component {
         if (wikidata !== ''){
             console.log(this.state.wikidata)
             {return (
-                <div className={cardClass}>
+                <div className={'otmAttractionCard'}>
                     <h4 className="name">{this.state.wikidata.name}</h4>
                     {renderAddress(wikidata.address)}
                     <img className="otmImage" src={wikidata.preview.source}></img>
@@ -46,7 +47,6 @@ class OTMAttractionCardLarge extends Component {
     render(){
         return( 
         <>
-
             {this.renderCardData(this.state.wikidata)}
             {/* <h4 className="name">{attraction.properties.name}</h4>
             <span className="osmRating"> - {attraction.properties.rate}⭐️</span> */}

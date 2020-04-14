@@ -34,7 +34,7 @@ export const otmIcon = (text,id) => {
     const otmMarker = `
                     <div class='userIconWrapper'>
                     <div class='material-icons userIcon icon otmIcon'  id=otmAttractionIcon${id}>
-                    trip_origin</div>
+                    place</div>
                     <span class='iconText'>${text}</span>
                     </div>
                     `
