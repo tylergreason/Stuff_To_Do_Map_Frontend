@@ -22,6 +22,8 @@ export const addAttraction = (attraction,returnMessage) => {
                 if (data.error){
                     returnMessage(data)
                 }else{
+                    // because of the way I'm rendering data on the backend and the way I want to handle the success of a new attraction, I'm hardcoding the object with a success key here so the component submitting the new attraction will know to go to the previous screen.
+                    returnMessage({success:"Success"})
                     dispatch({type:'ADD_ATTRACTION', myAttractions: data})
                 }
             })

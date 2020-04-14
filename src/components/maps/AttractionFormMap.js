@@ -53,9 +53,6 @@ class AttractionFormMap extends Component {
         this.marker.addTo(this.attractionLayer)
     }
 
-    createMarker = (lat,lng) => {
-
-    }
     render(){
         return(
         <div className="Map">

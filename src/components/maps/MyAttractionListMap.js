@@ -73,12 +73,15 @@ class MyAttractionListMap extends Component {
     }
 
     handleMarkerClick = e => {
-        // this.props.getAttraction(e.target.id)
-        toggleIconHoveredClass(e.target.id)
-        toggleHoveredClass('AttractionListCard',e.target.id)
-        const cardId = `AttractionListCard${e.target.id}`
-        const cardToView = document.getElementById(cardId) 
-        cardToView.scrollIntoView();
+        // only attempt to highlight the attraction card if on the 'list' page 
+        if (this.props.formToRender === 'list'){
+
+            toggleIconHoveredClass(e.target.id)
+            toggleHoveredClass('AttractionListCard',e.target.id)
+            const cardId = `AttractionListCard${e.target.id}`
+            const cardToView = document.getElementById(cardId) 
+            cardToView.scrollIntoView();
+        }
     }
 
     createMap = () => {

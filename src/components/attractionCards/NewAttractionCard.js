@@ -28,10 +28,12 @@ class NewAttractionForm extends Component {
                 return this.updateNewAttractionAddress(this.props.newAttraction)
             }
         }
-        if (this.state.returnMessage === "Success"){
-            this.props.backToList();
+        // check if response didn't contain error and isn't blank 
+        if (this.state.returnMessage.success){
+                this.props.backToList();
+            } 
         }
-    }
+    
 
     updateNewAttractionAddress = newAddress => {
         // create variable to hold bridgeObjectData 
