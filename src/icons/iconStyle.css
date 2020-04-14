@@ -1,6 +1,6 @@
 :root{
     --userIconColor: #172b97;
-    --cardBGColor: #c58585;
+    --cardBGColor: #75cff0;
 }
 
 .userIcon {
@@ -75,5 +75,5 @@
 }
 
 .otmIcon { 
-    color:red; 
+    color:rgb(204, 69, 69); 
 }

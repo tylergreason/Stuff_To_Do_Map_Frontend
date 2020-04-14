@@ -2,11 +2,14 @@
 
 const OTMAPIKey = process.env.REACT_APP_OTM_API_KEY
 
-export const fetchWikiData = xid => {
-    const WikiDataURL = createWikiDataURL(xid)
+export const fetchWikiData = (wikidataId,thenFunction) => {
+    const WikiDataURL = createWikiDataURL(wikidataId)
     fetch(WikiDataURL)
     .then(resp => resp.json())
-    .then(data => console.log(data))
+    .then(data => {
+        console.log(data)
+        thenFunction(data)
+    })
 }
 
 export const createOTMURL = (latMin,latMax,lngMin,lngMax) => {

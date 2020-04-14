@@ -4,12 +4,16 @@ import AttractionMapListCard from '../components/attractionCards/AttractionMapLi
 import AttractionListCardLarge from '../components/attractionCards/AttractionListCardLarge'
 import { getAttraction } from '../store/actions/AttractionActions'
 import { OTMAttractionCardSmall } from '../components/attractionCards/OTMAttractionCardSmall'
+import OTMAttractionCardLarge from '../components/attractionCards/OTMAttractionCardLarge'
+
 
 class AttractionList extends Component {   
     state = {
-        attractions:this.props.attractions
+        attractions:this.props.attractions,
+        selectedOTMAttractionWikidataId:''
     }
 
+    // render a header for attraction list for either user or OTM listings
     renderAttractionsListingHeader = (type) => {
             let headerText=''; 
             let listCount = ''; 
@@ -46,40 +50,37 @@ class AttractionList extends Component {
         }
     }
 
-    renderOTMAttractionsHeader = () => {
-        return(
-            <h4>
-                OTM Listings ({this.props.otmAttractions.length}):
-            </h4>
-        )
-    }
-
     renderOTMAttractionCards = () => {
         if (this.props.otmAttractions !== ""){
             return this.props.otmAttractions.map(attraction => {
-                // console.log(attraction)
-                return OTMAttractionCardSmall(attraction)
+                // render large card if ids match 
+                if (attraction.properties.wikidata === this.state.selectedOTMAttractionWikidataId){
+                    return <OTMAttractionCardLarge 
+                            xid={attraction.properties.xid}
+                            />
+                }else{
+
+                    return <OTMAttractionCardSmall 
+                    attraction={attraction} 
+                    onClick={this.otmAttractionCardClick}
+                    />
+                }
             })
         }
     }
 
     // on click, fetch attraction's info, then render a big card for that attraction 
     attractionCardClick = (e)=> {
-        // debugger
         this.props.getAttraction(e.id)
-        }
+    }
 
-    // check if user clicked outside the large card box, and reset the large card state if so (if it's not already nothing)
-    // handleClick = e => {
-    //     console.log(e.target.classList)
-    //     if (e.target.classList.contains("AttractionCardLargeInner") !== true){
-    //         if (this.state.attractionCardLargeToRender !== ""){
-    //             this.setState({
-    //                 attractionCardLargeToRender:""
-    //             })
-    //         }
-    //     }
-    // }
+    otmAttractionCardClick = wikidataId => {
+        console.log(wikidataId)
+        this.setState({
+            selectedOTMAttractionWikidataId:wikidataId
+        })
+
+    }
 
     backToAttractionListClick = (e) => {
         e.preventDefault()
