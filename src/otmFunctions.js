@@ -7,7 +7,7 @@ export const fetchWikiData = (wikidataId,thenFunction) => {
     fetch(WikiDataURL)
     .then(resp => resp.json())
     .then(data => {
-        console.log(data)
+        // console.log(data)
         thenFunction(data)
     })
 }

@@ -10,7 +10,8 @@ import OTMAttractionCardLarge from '../components/attractionCards/OTMAttractionC
 class AttractionList extends Component {   
     state = {
         attractions:this.props.attractions,
-        selectedOTMAttractionWikidataId:''
+        selectedOTMAttractionWikidataId:'',
+        selectedOTMAttractionName:''
     }
 
     // render a header for attraction list for either user or OTM listings
@@ -54,7 +55,12 @@ class AttractionList extends Component {
         if (this.props.otmAttractions !== ""){
             return this.props.otmAttractions.map(attraction => {
                 // render large card if ids match 
-                if (attraction.properties.wikidata === this.state.selectedOTMAttractionWikidataId){
+                console.log(attraction)
+                if (
+                    attraction.properties.wikidata === this.state.selectedOTMAttractionWikidataId 
+                    && 
+                    attraction.properties.name === this.state.selectedOTMAttractionName
+                    ){
                     return <OTMAttractionCardLarge 
                             xid={attraction.properties.xid}
                             />
@@ -74,10 +80,10 @@ class AttractionList extends Component {
         this.props.getAttraction(e.id)
     }
 
-    otmAttractionCardClick = wikidataId => {
-        console.log(wikidataId)
+    otmAttractionCardClick = (wikidataId,name) => {
         this.setState({
-            selectedOTMAttractionWikidataId:wikidataId
+            selectedOTMAttractionWikidataId:wikidataId,
+            selectedOTMAttractionName:name,
         })
 
     }

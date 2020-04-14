@@ -1,7 +1,9 @@
 import React,{ Component } from 'react' 
 import { fetchWikiData } from '../../otmFunctions'
 
-const cardClass = "AttractionListCard animated fadeIn"
+import { renderAddress } from './attractionCardGeneralFunctions'
+
+const cardClass = "AttractionListCardLarge animated fadeIn"
 
 class OTMAttractionCardLarge extends Component {
     state = {
@@ -18,11 +20,19 @@ class OTMAttractionCardLarge extends Component {
         })
     }
     
+    renderCardData = wikidata => {
+        if (wikidata !== ''){
+            console.log(this.state.wikidata)
+            {renderAddress(wikidata.address)}
+        }
+    }
+
     render(){
         return( 
         <div 
             className={cardClass}
         >
+            {this.renderCardData(this.state.wikidata)}
             {/* <h4 className="name">{attraction.properties.name}</h4>
             <span className="osmRating"> - {attraction.properties.rate}⭐️</span> */}
         </div>
