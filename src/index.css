@@ -1,6 +1,6 @@
 /* use root to hold variables */
 :root{ 
-  --cardBGHoverColor: rgb(65, 119, 141);
+  --cardBGHoverColor: rgb(214, 252, 255);
   --cardBGColor: #8de4af;
 
   /* --cardBGColor: rgb(51, 115, 199); */
@@ -165,11 +165,11 @@ button:focus{
 }
 
 .AttractionListCard.hovered {
-  background-color: var(--buttonTextColor);
+  background-color: var(--cardBGHoverColor);
 }
 
 .AttractionListCard:hover{
-  background-color: var(--buttonTextColor);
+  background-color: var(--cardBGHoverColor);
   transform: scaleY(1.05);
   border: 3px solid var(--borderColor)
   /* color: var(--buttonTextColor) */
@@ -320,7 +320,7 @@ label {
 }
 
 .AttractionListCardLargeInner { 
-  background-color: var(--buttonTextColor);
+  background-color: var(--cardBGHoverColor);
   border: 3px solid var(--borderColor);
   border-radius: var(--border-radius);
   padding: 5px;
@@ -335,7 +335,7 @@ label {
   max-width: 100%;
   margin: auto;
   border-radius: var(--borderRadius);
-  background-color: var(--buttonTextColor);
+  background-color: var(--bodyBGColor);
 }
 
 .ReviewCard { 

@@ -3,7 +3,7 @@ import { fetchWikiData } from '../../otmFunctions'
 
 import { renderAddress } from './attractionCardGeneralFunctions'
 
-const cardClass = "AttractionListCardLarge animated fadeIn"
+const cardClass = "AttractionListCard"
 
 class OTMAttractionCardLarge extends Component {
     state = {
@@ -19,23 +19,38 @@ class OTMAttractionCardLarge extends Component {
             wikidata:data
         })
     }
-    
+
+    renderWikipediaData = data =>{
+        const description = document.createElement('div'); 
+        description.innerHTML = data.html; 
+        return description
+    }
+
     renderCardData = wikidata => {
         if (wikidata !== ''){
             console.log(this.state.wikidata)
-            {renderAddress(wikidata.address)}
+            {return (
+                <div className={cardClass}>
+                    <h4 className="name">{this.state.wikidata.name}</h4>
+                    {renderAddress(wikidata.address)}
+                    <img className="otmImage" src={wikidata.preview.source}></img>
+                    <p>{wikidata.wikipedia_extracts.text}</p>
+
+                    {/* {wikidata.properties.name} */}
+                </div>
+                )
+            }
         }
     }
 
     render(){
         return( 
-        <div 
-            className={cardClass}
-        >
+        <>
+
             {this.renderCardData(this.state.wikidata)}
             {/* <h4 className="name">{attraction.properties.name}</h4>
             <span className="osmRating"> - {attraction.properties.rate}⭐️</span> */}
-        </div>
+        </>
     )}
 }
 

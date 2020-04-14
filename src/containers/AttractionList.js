@@ -55,7 +55,6 @@ class AttractionList extends Component {
         if (this.props.otmAttractions !== ""){
             return this.props.otmAttractions.map(attraction => {
                 // render large card if ids match 
-                console.log(attraction)
                 if (
                     attraction.properties.wikidata === this.state.selectedOTMAttractionWikidataId 
                     && 
