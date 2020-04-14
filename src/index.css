@@ -24,7 +24,9 @@
 }
 
 body {
-  font-family: 'Kameron', serif;
+  /* font-family: 'Kameron', serif; */
+  font-family: 'Baloo Bhaina 2', cursive;
+  /* font-weight: 300; */
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -127,7 +129,6 @@ button:focus{
   /* margin: 10px; */
   /* setting z index to less than 0 so the AttractionCardLarge can appear over it */
   z-index: 0;
-
 }
 
 /* popup */

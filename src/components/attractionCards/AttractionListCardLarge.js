@@ -5,7 +5,7 @@ import ReviewList from '../../containers/ReviewList'
 import WriteReviewCard from '../reviewCards/WriteReviewCard'
 
 
-import { renderAddress } from './attractionCardGeneralFunctions'
+import { renderAddress, renderRating } from './attractionCardGeneralFunctions'
 
 const cardClass = "AttractionListCardLarge animated"
 
@@ -47,24 +47,13 @@ class AttractionListCardLarge extends Component {
         )
     }
 
-    renderRating = (attraction) => {
-        if (attraction.average_rating === null){
-            return (
-                <span className="cardRating"> - not yet reviewed </span>    
-            )
-        }else {
-            return (
-                <span className="cardRating"> - {attraction.average_rating}⭐️</span>
-                )
-            }
-    }
     render(){
         return (
         <div className={cardClass} id={`attractionMapListCardLarge${this.props.attraction.id}`}>
             <div className="AttractionListCardLargeInner">
                 <br></br>
                 <h4 className="name">{this.props.attraction.name}</h4>
-                {this.renderRating(this.props.attraction)}
+                {renderRating(this.props.attraction)}
                 {renderAddress(this.props.attraction)}
                 <p className="description">{this.props.attraction.description}</p>
                 {this.renderReviewList(this.props.attraction)}

@@ -1,5 +1,6 @@
 :root{
     --userIconColor: #172b97;
+    --cardBGColor: #c58585;
 }
 
 .userIcon {
@@ -10,13 +11,13 @@
 }
 .userIcon:hover{
     border: 2px solid var(--userIconColor);
-    background:white;
+    background:var(--cardBGColor);
     transform: scale(2) rotate(180deg);
 }
 
 .userIcon.hovered {
     border: 2px solid var(--userIconColor);
-    background:white;
+    background:var(--cardBGColor);
     transform: scale(2) rotate(180deg);
 }
 
@@ -29,6 +30,9 @@
     display: none;
     transition: 0s;
     font-family: Yellowtail;
+    /* font-family: 'Lobster', cursive; */
+    font-weight: 0;
+
     white-space: nowrap;
     transform: scale(0.1);
     padding-right: 5px;
@@ -43,8 +47,8 @@
 .userIcon:hover + .iconText{
     display: inline;
     transform: scale(3) translate(0px, -28px);
-    color:lightgreen;
-    background-color: var(--userIconColor);
+    color:var(--userIconColor);
+    background-color: var(--cardBGColor);
     /* margin: auto; */
     text-align: center;
     /* position: relative; 

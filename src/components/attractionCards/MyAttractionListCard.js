@@ -3,6 +3,7 @@ import Button from '../general/Button'
 import { connect } from 'react-redux'
 import { deleteAttraction } from '../../store/actions/MapActions'
 import { toggleIconHoveredClass, toggleHoveredClass } from '../../generalFunctions'
+import { renderAddress, renderRating } from './attractionCardGeneralFunctions'
 import { mapVariable } from '../maps/mapFunctions'
 
 
@@ -27,11 +28,9 @@ const MyAttractionListCard = (props) => {
             }}
     >
         <h4 className="name">{props.attraction.name}</h4>
-        <span> - {props.attraction.average_rating || 'No reviews yet'}⭐️</span>
-        <span className="address">
-            {`${props.attraction.house_number} ${props.attraction.road}, ${props.attraction.city}, ${props.attraction.state}, ${props.attraction.country}`}
-            </span>
-            <p className="description">{props.attraction.description}</p>
+        {renderRating(props.attraction)}
+        {renderAddress(props.attraction)}
+        <p className="description">{props.attraction.description}</p>
         <br></br>
         {<Button 
             text={"🗑"}

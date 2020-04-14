@@ -8,23 +8,35 @@ export const renderAddress = (attraction) => {
         let returnState = '';
         let returnCountry = '';
         
-        if (attraction.house_number !== null) {
+        if (attraction.house_number) {
             returnHouseNumber = attraction.house_number; 
         }
-        if (attraction.road !== null) {
+        if (attraction.road) {
             returnRoad = attraction.road + ', '; 
         }
-        if (attraction.city !== null) {
+        if (attraction.city) {
             returnCity = attraction.city + ', '; 
         }
-        if (attraction.state !== null) {
+        if (attraction.state) {
             returnState = attraction.state + ', '; 
         }
-        if (attraction.country !== null) {
+        if (attraction.country) {
             returnCountry = attraction.country; 
         }
         return  (<span className='address'>
-               {returnHouseNumber} {returnRoad} {returnCity} {returnState} {returnCountry}
+            {returnHouseNumber} {returnRoad} {returnCity} {returnState} {returnCountry}
             </span>
         )
+}
+
+export const renderRating = attraction => {
+    if (attraction.average_rating){
+        return(
+            <span className='rating'> - {attraction.average_rating}⭐️</span>
+        )
+    }else{
+        return(
+            <span className='rating'> - No Reviews Yet</span>
+        )
+    }
 }
