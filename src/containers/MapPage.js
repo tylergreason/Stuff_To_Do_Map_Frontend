@@ -13,7 +13,7 @@ class MapPage extends Component {
         bounds:'', 
         attractions:'',
         otmAttractions:'',
-        otmBoundsThreshold:0.3
+        otmBoundsThreshold:3
     }
     
     // setOTMAttractions sets the otmAttractions state attribute to the OTM attractions returned in otmFunctions

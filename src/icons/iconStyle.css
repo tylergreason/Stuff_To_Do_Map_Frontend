@@ -72,4 +72,8 @@
   border: 1px solid black;
   max-width: 0px;
   max-height: 0px;
-  }
+}
+
+.otmIcon { 
+    color:red; 
+}

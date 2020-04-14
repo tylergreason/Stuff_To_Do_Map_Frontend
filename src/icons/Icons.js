@@ -30,6 +30,23 @@ export const iconWithCustomText = (text,id) => {
     })
 }
 
+export const otmIcon = (text,id) => {
+    const otmMarker = `
+                    <div class='userIconWrapper'>
+                    <div class='material-icons userIcon icon otmIcon'  id=otmAttractionIcon${id}>
+                    trip_origin</div>
+                    <span class='iconText'>${text}</span>
+                    </div>
+                    `
+                
+    return L.divIcon({
+        className: 'materialMapIcon',
+        html: otmMarker,
+        iconSize: [36,36],
+        iconAnchor: [0,18]
+    })
+}
+
 export const editIcon  = L.divIcon({
     className: 'materialMapIcon', 
     html:editIconMarker,

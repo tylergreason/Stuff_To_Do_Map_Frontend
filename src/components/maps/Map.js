@@ -1,7 +1,7 @@
 import React, { Component } from 'react' 
 import L from 'leaflet';
 import { connect } from 'react-redux'
-import { iconWithCustomText } from '../../icons/Icons'
+import { iconWithCustomText, otmIcon } from '../../icons/Icons'
 import { getAttraction } from '../../store/actions/AttractionActions'
 import { toggleIconHoveredClass } from '../../generalFunctions'
 
@@ -19,11 +19,12 @@ class Map extends Component {
         this.map = this.createMap()
         // add layer to this.map so we can control the attractions that are rendered 
         this.attractionLayer = L.layerGroup().addTo(this.map)
+        this.otmLayer = L.layerGroup().addTo(this.map)
         // get user location and set view to it 
         // this.map.locate({setView:true, enableHighAccuracy:true})
     }
 
-    renderAttractionMarkers = (map) => {
+    renderAttractionMarkers = () => {
         // clear the layer of attractions before rendering new attractions 
         this.attractionLayer.clearLayers()
         // iterate through attractions in props and make markers for each attraction 
@@ -42,24 +43,51 @@ class Map extends Component {
         }
     }
 
+    renderOTMMarkers = () => {
+        this.otmLayer.clearLayers();
+            if (this.props.otmAttractions){
+                console.log(this.props.otmAttractions)
+            return this.props.otmAttractions.map(attraction => {
+                // console.log(attraction)
+                // debugger
+                // create variables to feed to marker creation function 
+                const name = attraction.properties.name 
+                const lng = attraction.geometry.coordinates[0]
+                const lat = attraction.geometry.coordinates[1]
+                const xid = attraction.properties.xid 
+                // const wikidata = attraction.wikidata
+                let marker = L.marker([lat,lng], {icon:otmIcon(`${name}`,`${xid}`)})
+                // this.marker.id = xid; 
+                return marker.addTo(this.otmLayer)
+                // coordinates: Array(2)
+                //     0: -84.356102
+                //     1: 33.74905
+                // type: "Feature"
+                // id: "12731422"
+                // geometry: {type: "Point", coordinates: Array(2)}
+                // properties:
+                // xid: "Q5308985"
+                // name: "Druid Hills Historic District"
+                // rate: 7
+                // wikidata: "Q5308985"
+                // kinds: "historic,historical_places,interesting_places,historic_districts"
+                // __proto__: Object
+            })
+        }
+    }
+
     handleMarkerClick = e => {
         this.props.getAttraction(e.target.id)
         toggleIconHoveredClass(e.target.id)
     }
 
-    // create popup marker 
-    // not being used anymore in favor of CSS hover 
-    // renderPopupText = (attraction) => {
-    //     return `<div class="popupName">${attraction.name}</div>
-    //     <div class=popupText></div>`
-    // }
-
     componentDidUpdate = (prevProps) => {
-        if (prevProps.attractions !== this.props.attractions){
+        if (prevProps !== this.props){
             this.renderAttractionMarkers(this.state.map)
+            this.renderOTMMarkers()
         }
     }
-
+    
     onMapChange = (e) => {
         const bounds = e.target.getBounds() 
         this.setState({
@@ -68,6 +96,7 @@ class Map extends Component {
             northEastBounds:bounds._northEast
         })
         this.props.setBounds(bounds)
+        this.renderOTMMarkers()
     }
 
 

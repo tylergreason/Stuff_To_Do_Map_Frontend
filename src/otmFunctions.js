@@ -17,22 +17,15 @@ export const createWikiDataURL = (xid)=>{
 }
 
 export const fetchOTMData = (attractionBounds, thenFunction) => {
-    console.log(attractionBounds)
     const latMin = attractionBounds.south;  
     const latMax = attractionBounds.north; 
     const lngMin = attractionBounds.west;
     const lngMax = attractionBounds.east;
     const OTMURL = createOTMURL(latMin,latMax,lngMin,lngMax)
-    console.log(OTMURL)
     let returnData = fetch(OTMURL)
     .then(resp => resp.json())
     .then(data => {
-        console.log(data)
-        // if (data.features[0].properties.xid){
-        //     const xid = data.features[0].properties.xid
-        //     fetchWikiData(xid)
-        // }
-        thenFunction(data)
+        thenFunction(data.features)
     }).catch((error)=>{
         console.log(error)
     })
