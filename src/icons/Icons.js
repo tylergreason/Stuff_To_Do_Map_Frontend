@@ -21,8 +21,7 @@ export const iconWithCustomText = (text,id) => {
                                 <div class='material-icons userIcon icon'  id=attractionIcon${id}>
                                 place</div>
                                 <span class='iconText'>${text}</span>
-                                </div>
-                                    `
+                                </div>`
     return L.divIcon({
         className: 'materialMapIcon',
         html: userIconMarker,

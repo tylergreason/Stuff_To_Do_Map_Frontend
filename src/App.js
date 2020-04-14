@@ -51,7 +51,7 @@ class App extends Component {
             <Route path='/signup' component={()=>{
               return <Signup changeAppLoggedIn={this.changeAppLoggedIn}/>
             }}></Route>
-            <Route path='/about' component={()=>{ return <About /> }}></Route>
+            <Route path='/about' render={()=>{ return <About /> }}></Route>
             {/* confirm user is logged in before going to myAttractions or myAccount */}
             <Route path="/myAttractions" render={() =>{ return <CheckLogin 
                                                                   render={()=>{
@@ -67,7 +67,7 @@ class App extends Component {
                                                             }}
                                                         />
                                                   }}/>
-            <Route path="/" component={()=>{ return <MapPage /> }}></Route>
+            <Route path="/" render={()=>{ return <MapPage /> }}></Route>
         </Switch>
         </div>
       </Router>

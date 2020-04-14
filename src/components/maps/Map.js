@@ -45,9 +45,6 @@ class Map extends Component {
     handleMarkerClick = e => {
         this.props.getAttraction(e.target.id)
         toggleIconHoveredClass(e.target.id)
-        // const cardId = `attractionMapListCardLarge${e.target.id}`
-        // const cardToView = document.getElementById(cardId) 
-        // // cardToView.scrollIntoView()
     }
 
     // create popup marker 
