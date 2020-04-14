@@ -27,6 +27,10 @@ class MapPage extends Component {
         if (this.checkBounds(attractionBounds)){
             // use setOTMAttractions to set this state to the return data 
             fetchOTMData(attractionBounds, this.setOTMAttractions)
+        }else{
+            this.setState({
+                otmAttractions:''
+            })
         }
 
     }
@@ -73,6 +77,7 @@ class MapPage extends Component {
         <div>
             <AttractionList 
                 attractions={this.state.attractions}
+                otmAttractions={this.state.otmAttractions}
             />
             <Map 
                 attractions={this.state.attractions}

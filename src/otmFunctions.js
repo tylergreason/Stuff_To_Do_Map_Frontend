@@ -10,7 +10,7 @@ export const fetchWikiData = xid => {
 }
 
 export const createOTMURL = (latMin,latMax,lngMin,lngMax) => {
-    return `https://api.opentripmap.com/0.1/en/places/bbox?lon_min=${lngMin}&lon_max=${lngMax}&lat_min=${latMin}&lat_max=${latMax}&kinds=historical_places&apikey=${OTMAPIKey}`
+    return `https://api.opentripmap.com/0.1/en/places/bbox?lon_min=${lngMin}&lon_max=${lngMax}&lat_min=${latMin}&lat_max=${latMax}&kinds=historical_places&src_attr=wikidata&apikey=${OTMAPIKey}`
 }
 export const createWikiDataURL = (xid)=>{
     return `https://api.opentripmap.com/0.1/en/places/xid/${xid}?apikey=${OTMAPIKey}`
