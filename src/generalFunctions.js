@@ -22,7 +22,3 @@ export const toggleHoveredClass = (className,id) => {
         // add the 'hovered' class to that element 
         elementToHover.classList.add('hovered'); 
 }
-
-export const scrollMarkerIntoView = (lat,lng) => {
-        
-}

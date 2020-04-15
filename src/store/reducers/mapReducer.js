@@ -4,8 +4,7 @@ const defaultState = {
                         northEastBounds:'',
                         myAttractions:[],
                         newAddress:{},
-                        success:false, 
-                        errors:false
+                        highlightAttraction:''
                     }
 
 const mapReducer = (state = defaultState, action) => {
@@ -35,8 +34,6 @@ const mapReducer = (state = defaultState, action) => {
                 return state = { 
                     ...state, 
                     myAttractions:action.myAttractions,
-                    errors:false,
-                    success:true
                 }
         case 'UPDATE_USER': 
                 return state = {
@@ -47,22 +44,15 @@ const mapReducer = (state = defaultState, action) => {
                     ...state, 
                     newAddress:action.newAddress, 
                 }
-        case 'ADD_ATTRACTION_ERRORS':
-                return state = {
-                ...state, 
-                success:false,
-                errors: action.errors
-            }
-        case 'RESET_NEW_ATTRACTION_SUCCESS':
-            return state = {
-                ...state, 
-                success:false, 
-                errors:false
-            }
         case 'SET_MAP': 
             return state = {
                 ...state, 
                 map:action.map
+            }
+        case 'HIGHLIGHT_ATTRACTION': 
+            return state = {
+                ...state,
+                highlightAttraction: action.attractionId
             }
         default: 
             return state

@@ -90,3 +90,9 @@ export const updateAttraction = (attraction,returnMessage) => {
     }
 }
 
+export const highlightAttraction = attractionId => {
+    return (dispatch) => {
+        dispatch({type:'HIGHLIGHT_ATTRACTION', attractionId:attractionId})
+    }
+}
+

@@ -3,15 +3,16 @@ import { connect } from 'react-redux'
 import AttractionMapListCard from '../components/attractionCards/AttractionMapListCard'
 import AttractionListCardLarge from '../components/attractionCards/AttractionListCardLarge'
 import { getAttraction } from '../store/actions/AttractionActions'
-import { OTMAttractionCardSmall } from '../components/attractionCards/OTMAttractionCardSmall'
+import { highlightAttraction } from '../store/actions/MapActions'
+import  OTMAttractionCardSmall from '../components/attractionCards/OTMAttractionCardSmall'
 import OTMAttractionCardLarge from '../components/attractionCards/OTMAttractionCardLarge'
 
 
 class AttractionList extends Component {   
     state = {
         attractions:this.props.attractions,
-        selectedOTMAttractionWikidataId:'',
-        selectedOTMAttractionName:''
+        selectedOTMAttractionId:'',
+        selectedOTMXid:''
     }
 
     // render a header for attraction list for either user or OTM listings
@@ -56,7 +57,7 @@ class AttractionList extends Component {
                 if (attraction.id === this.props.attraction.id){
                     return <AttractionListCardLarge
                                 key={attraction.id}
-                                attraction={attraction}
+                                attraction={this.props.attraction}
                             />
                 }else{
                     return <AttractionMapListCard 
@@ -73,11 +74,7 @@ class AttractionList extends Component {
         if (this.props.otmAttractions !== ""){
             return this.props.otmAttractions.map(attraction => {
                 // render large card if ids match 
-                if (
-                    attraction.properties.wikidata === this.state.selectedOTMAttractionWikidataId 
-                    && 
-                    attraction.properties.name === this.state.selectedOTMAttractionName
-                    ){
+                if (attraction.properties.xid === this.props.highlightAttractionId){
                     return <OTMAttractionCardLarge 
                             xid={attraction.properties.xid}
                             />
@@ -97,11 +94,12 @@ class AttractionList extends Component {
         this.props.getAttraction(e.id)
     }
 
-    otmAttractionCardClick = (wikidataId,name) => {
+    otmAttractionCardClick = (xid) => {
         this.setState({
-            selectedOTMAttractionWikidataId:wikidataId,
-            selectedOTMAttractionName:name,
+            selectedOTMXid:xid
         })
+        this.props.highlightAttraction(xid)
+        // 
 
     }
 
@@ -114,23 +112,17 @@ class AttractionList extends Component {
     render(){
         return(
         <div className="AttractionList" 
-            // onClick={this.handleClick}
         >
             {this.renderAttractionsListingHeader('user')}
-            <div id="attractionList">
+            <div id="attractionList" hidden={true}>
                 {this.renderAttractionCards()}
             </div>
             {this.renderAttractionsListingHeader('otm')}
-            <div id='otmAttractionList' hidden={true}>
+            <div id='otmAttractionList' 
+                // hidden={true}
+            >
                 {this.renderOTMAttractionCards()}
             </div>
-            {/* {this.state.attractionCardLargeToRender !== "" 
-            ? 
-            <AttractionCardLarge attractionId={this.state.attractionCardLargeToRender.id} 
-                backClick={this.backToAttractionListClick}
-            />
-            :
-            <></> */}
         </div>
         )
     }
@@ -140,7 +132,9 @@ class AttractionList extends Component {
 const mapStateToProps = state => {
     return {
             attractions: state.map.attractions,
-            attraction:state.attraction.attraction
+            attraction:state.attraction.attraction,
+            selectedOTMXId:state.attraction.otmAttractionId,
+            highlightAttractionId:state.map.highlightAttraction
             }
 }
-export default connect(mapStateToProps, { getAttraction })(AttractionList)
+export default connect(mapStateToProps, { getAttraction, highlightAttraction })(AttractionList)

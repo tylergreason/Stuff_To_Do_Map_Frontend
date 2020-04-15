@@ -19,6 +19,11 @@ const attractionReducer = (state=defaultState,action)=>{
                 ...state, 
                 attraction: action.attraction
             }
+        case 'SET_OTM_ATTRACTION_ID': 
+            return state = {
+                ...state, 
+                otmAttractionId:action.otmAttractionId
+            }
         default: 
             return state 
     }

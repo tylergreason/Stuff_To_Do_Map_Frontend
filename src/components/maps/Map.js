@@ -3,8 +3,8 @@ import L from 'leaflet';
 import { connect } from 'react-redux'
 import { iconWithCustomText, otmIcon } from '../../icons/Icons'
 import { getAttraction } from '../../store/actions/AttractionActions'
-import { toggleIconHoveredClass } from '../../generalFunctions'
-
+import { toggleIconHoveredClass, toggleHoveredClass } from '../../generalFunctions'
+import { highlightAttraction } from '../../store/actions/MapActions'
 import { createFindLocationButton } from './mapFunctions'
 
 class Map extends Component {
@@ -32,7 +32,6 @@ class Map extends Component {
             return this.props.attractions.map(attraction => {
                 const lat = attraction.lat 
                 const lng = attraction.lng 
-
                 this.marker = L.marker([lat,lng],{icon: iconWithCustomText(`${attraction.name}`,`${attraction.id}`)})
                 // set click function 
                 this.marker.on('click', this.handleMarkerClick)
@@ -57,28 +56,32 @@ class Map extends Component {
                 const xid = attraction.properties.xid 
                 // const wikidata = attraction.wikidata
                 let marker = L.marker([lat,lng], {icon:otmIcon(`${name}`,`${xid}`)})
-                // this.marker.id = xid; 
+                marker.on('click',this.handleOTMMarkerClick)
+                marker.id = xid; 
                 return marker.addTo(this.otmLayer)
-                // coordinates: Array(2)
-                //     0: -84.356102
-                //     1: 33.74905
-                // type: "Feature"
-                // id: "12731422"
-                // geometry: {type: "Point", coordinates: Array(2)}
-                // properties:
-                // xid: "Q5308985"
-                // name: "Druid Hills Historic District"
-                // rate: 7
-                // wikidata: "Q5308985"
-                // kinds: "historic,historical_places,interesting_places,historic_districts"
-                // __proto__: Object
             })
         }
     }
 
     handleMarkerClick = e => {
         this.props.getAttraction(e.target.id)
+        // unhide attractionList div 
+        const attractionList = document.getElementById('attractionList'); 
+        if (attractionList.hidden){
+            attractionList.hidden = false; 
+        }
         toggleIconHoveredClass(e.target.id)
+        this.props.highlightAttraction(e.target.id)
+    }
+
+    handleOTMMarkerClick = e => {
+        console.log(e.target.id)
+        const otmAttractionList = document.getElementById('otmAttractionList'); 
+        if (otmAttractionList.hidden){
+            otmAttractionList.hidden = false; 
+        }
+        toggleHoveredClass('otmIcon',e.target.id)
+        this.props.highlightAttraction(e.target.id)
     }
 
     componentDidUpdate = (prevProps) => {
@@ -101,7 +104,7 @@ class Map extends Component {
 
 
     createMap = () => {
-        const myMap = L.map('myMap').setView([33.74884399533138, -84.36997083332154], 11);
+        const myMap = L.map('myMap').setView([33.74884399533138, -84.36997083332154], 14);
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
             attribution:'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 20,
@@ -143,4 +146,4 @@ const mapStateToProps = state => {
         attractions: state.map.attractions
     }
 }
-export default connect(mapStateToProps, {getAttraction})(Map) 
+export default connect(mapStateToProps, {getAttraction,highlightAttraction })(Map) 

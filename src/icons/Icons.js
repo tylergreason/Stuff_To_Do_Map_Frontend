@@ -31,9 +31,10 @@ export const iconWithCustomText = (text,id) => {
 }
 
 export const otmIcon = (text,id) => {
+    const markerId = `otmIcon${id}`
     const otmMarker = `
                     <div class='userIconWrapper'>
-                    <div class='material-icons userIcon icon otmIcon'  id=otmAttractionIcon${id}>
+                    <div class='material-icons userIcon icon otmIcon'  id=${markerId}>
                     place</div>
                     <span class='iconText'>${text}</span>
                     </div>
