@@ -185,7 +185,7 @@ button:focus{
   margin:0px;
   display: inline;
   font-size: 1.4em;
-  font-family: Yellowtail;
+  /* font-family: Yellowtail; */
 }
 
 .address {

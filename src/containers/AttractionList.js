@@ -26,7 +26,7 @@ class AttractionList extends Component {
             listCount = this.props.attractions.length; 
             onClick = this.toggleAttractionListHidden;
         }else{
-            headerText = "OTM Attractions"
+            headerText = "Historical Districts"
             listCount = this.props.otmAttractions.length; 
             onClick=this.toggleOTMAttractionListHidden
         }
