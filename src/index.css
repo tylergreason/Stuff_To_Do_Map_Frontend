@@ -84,11 +84,11 @@ code {
   /* background-color: var(--bodyBGColor); */
   background-color: transparent;
   color: var(--textColor);
-  border-radius: 110% 10% 110% 5%;
+  /* border-radius: 110% 10% 110% 5%; */
 }
-.NavBar button:hover{
+.NavBarButton:hover{
   background-color: var(--cardBGColor);
-  border-radius: 110% 10% 110% 5%;
+  /* border-radius: 110% 10% 110% 5%; */
   border:none;
 }
 
@@ -390,6 +390,7 @@ label {
   border: var(--border); 
   border-radius: var(--borderRadius);
   margin: 10px;
+  margin-bottom: 0px;
 }
 
 .newAttractionFormMap {

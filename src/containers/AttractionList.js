@@ -22,11 +22,11 @@ class AttractionList extends Component {
             let listCount = ''; 
             let onClick = '';
         if (type === 'user'){
-            headerText = "User listings"; 
+            headerText = "User Attractions"; 
             listCount = this.props.attractions.length; 
             onClick = this.toggleAttractionListHidden;
         }else{
-            headerText = "OTM listings"
+            headerText = "OTM Attractions"
             listCount = this.props.otmAttractions.length; 
             onClick=this.toggleOTMAttractionListHidden
         }

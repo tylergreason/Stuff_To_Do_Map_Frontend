@@ -20,15 +20,18 @@ class OTMAttractionCardLarge extends Component {
     
     componentDidUpdate = () => {
         console.log('updated')
-        scrollElementIntoViewById(`otmAttractionCardLarge${this.state.wikidata.xid}`)
-        // if (this.state.scrollIntoView === false){
-        //     console.log(this.state.scrollIntoView)
-        //     const thisCard = document.getElementById(`otmAttractionCardLarge${this.props.xid}`)
-        //     thisCard.scrollIntoView()
-        //     // this.setState({
-        //     //     scrollIntoView:true
-        //     // })
-        // }        
+        if (this.state.scrollIntoView === false){
+            scrollElementIntoViewById(`otmAttractionCardLarge${this.state.wikidata.xid}`)
+            this.setState({
+                scrollIntoView:true
+            })
+            // console.log(this.state.scrollIntoView)
+            // const thisCard = document.getElementById(`otmAttractionCardLarge${this.props.xid}`)
+            // thisCard.scrollIntoView()
+            // this.setState({
+            //     scrollIntoView:true
+            // })
+        }        
     }
 
 
