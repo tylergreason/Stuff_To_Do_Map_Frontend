@@ -40,7 +40,7 @@ class WriteReviewCard extends Component {
     }
 
     componentDidUpdate = () => {
-        if (this.state.returnMessage === "Review added!"){
+        if (this.state.returnMessage.success){
             this.setState({
                 returnMessage:"",
                 text:""
@@ -62,6 +62,7 @@ class WriteReviewCard extends Component {
     }
 
     clearWriteReviewArea = () =>{
+        console.log('write review fired')
         const textArea = document.getElementById('writeReviewTextArea')
         textArea.value = ''
         const reviewRatingOptionSelect = document.getElementById('rating')
@@ -82,6 +83,11 @@ class WriteReviewCard extends Component {
                         <option name="rating" value="3">3</option>
                         <option name="rating" value="4">4</option>
                         <option name="rating" value="5">5</option>
+                        <option name="rating" value="6">6</option>
+                        <option name="rating" value="7">7</option>
+                        <option name="rating" value="8">8</option>
+                        <option name="rating" value="9">9</option>
+                        <option name="rating" value="10">10</option>
                     </select>
                 </span>
                 <textarea
