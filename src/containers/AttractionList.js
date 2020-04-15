@@ -4,6 +4,7 @@ import AttractionMapListCard from '../components/attractionCards/AttractionMapLi
 import AttractionListCardLarge from '../components/attractionCards/AttractionListCardLarge'
 import { getAttraction } from '../store/actions/AttractionActions'
 import { highlightAttraction } from '../store/actions/MapActions'
+import { toggleHoveredClass } from '../generalFunctions'
 import  OTMAttractionCardSmall from '../components/attractionCards/OTMAttractionCardSmall'
 import OTMAttractionCardLarge from '../components/attractionCards/OTMAttractionCardLarge'
 
@@ -95,12 +96,8 @@ class AttractionList extends Component {
     }
 
     otmAttractionCardClick = (xid) => {
-        this.setState({
-            selectedOTMXid:xid
-        })
         this.props.highlightAttraction(xid)
-        // 
-
+        toggleHoveredClass('otmIcon',xid)
     }
 
     backToAttractionListClick = (e) => {
@@ -133,7 +130,6 @@ const mapStateToProps = state => {
     return {
             attractions: state.map.attractions,
             attraction:state.attraction.attraction,
-            selectedOTMXId:state.attraction.otmAttractionId,
             highlightAttractionId:state.map.highlightAttraction
             }
 }

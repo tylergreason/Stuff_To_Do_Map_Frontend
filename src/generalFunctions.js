@@ -5,7 +5,12 @@ export const toggleIconHoveredClass = id => {
         markers.forEach(marker => marker.classList.remove('hovered'))
 
         // find the marker to add the 'hovered' class to 
-        const markerToHover = document.getElementById(`attractionIcon${id}`)
+        const markerToHover = document.querySelector(`[id$='con${id}']`);
+        // console.log(markerId) 
+        // const marker = document.getElementById(markerId) 
+        // marker.classList.add('hovered')
+        
+        // const markerToHover = document.getElementById(`attractionIcon${id}`)
         // give that marker the 'hovered' class if it could be found 
         if (markerToHover){
                 markerToHover.classList.add('hovered') 

@@ -80,7 +80,7 @@ class Map extends Component {
         if (otmAttractionList.hidden){
             otmAttractionList.hidden = false; 
         }
-        toggleHoveredClass('otmIcon',e.target.id)
+        toggleIconHoveredClass(e.target.id)
         this.props.highlightAttraction(e.target.id)
     }
 

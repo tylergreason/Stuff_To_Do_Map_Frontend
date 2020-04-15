@@ -2,7 +2,7 @@ import React,{ Component } from 'react'
 import { fetchWikiData } from '../../otmFunctions'
 
 import { renderAddress } from './attractionCardGeneralFunctions'
-import AttractionListCardLarge from './AttractionListCardLarge'
+
 
 const cardClass = "AttractionListCardLarge"
 
