@@ -47,7 +47,7 @@ class EditEmail extends Component {
                             onChange={this.handleInput}>
                     </input>
                     <br></br>
-                    <label>*Current Password</label>
+                    <label>*Current Password: </label>
                 <br></br>
                 <input  name='current_password' 
                         type='password'

@@ -3,7 +3,7 @@ import L from 'leaflet';
 import { connect } from 'react-redux'
 import { iconWithCustomText, otmIcon } from '../../icons/Icons'
 import { getAttraction } from '../../store/actions/AttractionActions'
-import { toggleIconHoveredClass, toggleHoveredClass } from '../../generalFunctions'
+import { toggleIconHoveredClass, toggleHoveredClass, scrollElementIntoView, scrollElementIntoViewById } from '../../generalFunctions'
 import { highlightAttraction } from '../../store/actions/MapActions'
 import { createFindLocationButton } from './mapFunctions'
 
@@ -82,6 +82,9 @@ class Map extends Component {
         }
         toggleIconHoveredClass(e.target.id)
         this.props.highlightAttraction(e.target.id)
+        
+        // scrollElementIntoView('otm',e.target.id)
+        scrollElementIntoViewById(`otmAttractionCardLarge${e.target.id}`)
     }
 
     componentDidUpdate = (prevProps) => {

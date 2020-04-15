@@ -73,7 +73,7 @@ class EditInfo extends Component {
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
-                <label>City </label>
+                <label>City: </label>
                 <br></br>
                 <input  name='city' 
                         value={this.state.user.city || ""} 
@@ -94,7 +94,7 @@ class EditInfo extends Component {
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
-                <label>Current Password</label>
+                <label>Current Password: </label>
                 <br></br>
                 <input  name='password' 
                         type='password'

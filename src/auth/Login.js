@@ -41,11 +41,11 @@ class Login extends Component{
             <div className='informationBox middlePageBox'>
                 <h2> Login </h2>
                 <form onSubmit={this.handleSubmit}>
+                <label>Email: </label>
                 <input type="text" name='email' placeholder="Email" onChange={this.handleInput} value={this.state.email} />
                 <br></br>
-                
+                <label>Password: </label>
                 <input type="password" name='password' placeholder="password" onChange={this.handleInput} value={this.state.password} />
-                <br></br>
                 <ServerResponseCard response={this.state.returnMessage} />
                 <button id="submit" type="submit" value="Submit">Login</button>
                 </form>

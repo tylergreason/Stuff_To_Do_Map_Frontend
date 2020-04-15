@@ -6,12 +6,7 @@ export const toggleIconHoveredClass = id => {
 
         // find the marker to add the 'hovered' class to 
         const markerToHover = document.querySelector(`[id$='con${id}']`);
-        // console.log(markerId) 
-        // const marker = document.getElementById(markerId) 
-        // marker.classList.add('hovered')
-        
-        // const markerToHover = document.getElementById(`attractionIcon${id}`)
-        // give that marker the 'hovered' class if it could be found 
+
         if (markerToHover){
                 markerToHover.classList.add('hovered') 
         }
@@ -26,4 +21,21 @@ export const toggleHoveredClass = (className,id) => {
         const elementToHover = document.getElementById(`${className}${id}`)
         // add the 'hovered' class to that element 
         elementToHover.classList.add('hovered'); 
+}
+
+export const scrollElementIntoView = (idStart, idEnd) => {
+        const element = document.querySelector(`[id^='${idStart}'][id$='${idEnd}']`)
+        // debugger
+        if (element) {
+                console.log(element)
+                element.scrollIntoView()
+        }
+}
+
+export const scrollElementIntoViewById = id =>{
+        const element = document.getElementById(id) 
+        // debugger 
+        if (element){
+                element.scrollIntoView()
+        }
 }

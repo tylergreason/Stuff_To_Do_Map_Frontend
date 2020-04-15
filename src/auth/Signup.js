@@ -78,7 +78,7 @@ class Signup extends Component {
                         onChange={this.handleInput}>
                 </input>
                 <br></br>
-                <label>City </label>
+                <label>City: </label>
                 <br></br>
                 <input  name='city' 
                         value={this.state.user.city} 
@@ -107,7 +107,7 @@ class Signup extends Component {
                         value={this.state.user.password} 
                 />
                 <br></br>
-                <label>Confirm Password:</label>
+                <label>Confirm Password: </label>
                 <br></br>
                 <input type="password" 
                         name="password_confirmation" 

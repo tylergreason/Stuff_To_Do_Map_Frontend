@@ -96,6 +96,7 @@ class AttractionList extends Component {
     }
 
     otmAttractionCardClick = (xid) => {
+        // select the otm attraction to be highlighted 
         this.props.highlightAttraction(xid)
         toggleHoveredClass('otmIcon',xid)
     }

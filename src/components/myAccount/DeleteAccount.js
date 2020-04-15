@@ -50,7 +50,7 @@ class DeleteAccount extends Component {
     renderPasswordInputs = () => {
         return (
             <>
-                <label>Password</label>
+                <label>Password: </label>
                 <input  name='password' 
                 type='password'
                 value={this.state.password || ''}

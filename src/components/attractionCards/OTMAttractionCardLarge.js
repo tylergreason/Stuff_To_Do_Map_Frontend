@@ -2,6 +2,7 @@ import React,{ Component } from 'react'
 import { fetchWikiData } from '../../otmFunctions'
 
 import { renderAddress } from './attractionCardGeneralFunctions'
+import { scrollElementIntoViewById } from '../../generalFunctions'
 
 
 const cardClass = "AttractionListCardLarge"
@@ -18,14 +19,16 @@ class OTMAttractionCardLarge extends Component {
     }
     
     componentDidUpdate = () => {
-        if (this.state.scrollIntoView === false){
-            console.log(this.state.scrollIntoView)
-            const thisCard = document.getElementById(`otmAttractionCardLarge${this.props.xid}`)
-            thisCard.scrollIntoView()
-            this.setState({
-                scrollIntoView:true
-            })
-        }        
+        console.log('updated')
+        scrollElementIntoViewById(`otmAttractionCardLarge${this.state.wikidata.xid}`)
+        // if (this.state.scrollIntoView === false){
+        //     console.log(this.state.scrollIntoView)
+        //     const thisCard = document.getElementById(`otmAttractionCardLarge${this.props.xid}`)
+        //     thisCard.scrollIntoView()
+        //     // this.setState({
+        //     //     scrollIntoView:true
+        //     // })
+        // }        
     }
 
 
