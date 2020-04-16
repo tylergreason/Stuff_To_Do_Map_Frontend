@@ -18,18 +18,56 @@ export const createWikiDataURL = (xid)=>{
     return `https://api.opentripmap.com/0.1/en/places/xid/${xid}?apikey=${OTMAPIKey}`
 }
 
+// export const fetchOTMData = (attractionBounds, thenFunction) => {
+//     const latMin = attractionBounds.south;  
+//     const latMax = attractionBounds.north; 
+//     const lngMin = attractionBounds.west;
+//     const lngMax = attractionBounds.east;
+//     const OTMURL = createOTMURL(latMin,latMax,lngMin,lngMax)
+//     let returnData = fetch(OTMURL)
+//     .then(resp => resp.json())
+//     .then(data => {
+//         thenFunction(data.features)
+//     }).catch((error)=>{
+//         console.log(error)
+//     })
+//     return returnData
+// }
+
+// export const fetchOTMData = (attractionBounds, thenFunction) => {
+//     const latMin = attractionBounds.south;  
+//     const latMax = attractionBounds.north; 
+//     const lngMin = attractionBounds.west;
+//     const lngMax = attractionBounds.east;
+//     const OTMURL = createOTMURL(latMin,latMax,lngMin,lngMax)
+//     let returnData = fetch(OTMURL)
+//     .then(resp => resp.json())
+//     .then(data => {
+//         thenFunction(data.features)
+//     }).catch((error)=>{
+//         console.log(error)
+//     })
+//     return returnData
+// }
+
 export const fetchOTMData = (attractionBounds, thenFunction) => {
-    const latMin = attractionBounds.south;  
-    const latMax = attractionBounds.north; 
-    const lngMin = attractionBounds.west;
-    const lngMax = attractionBounds.east;
-    const OTMURL = createOTMURL(latMin,latMax,lngMin,lngMax)
-    let returnData = fetch(OTMURL)
-    .then(resp => resp.json())
-    .then(data => {
-        thenFunction(data.features)
-    }).catch((error)=>{
-        console.log(error)
+    fetch(`http://localhost:3000/otm_attractions`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json', 
+            'south': attractionBounds.south,
+            'north': attractionBounds.north,
+            'east': attractionBounds.east, 
+            'west': attractionBounds.west
+        }, 
     })
-    return returnData
+    .then(resp => resp.json())
+    .then((data) => {
+        console.log(data)
+        thenFunction(data.features)
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 }
+    
