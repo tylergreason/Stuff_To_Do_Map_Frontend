@@ -50,8 +50,10 @@
 //     return returnData
 // }
 
+const API_URL = 'https://stdm-backend.herokuapp.com'
+
 export const fetchOTMData = (attractionBounds, thenFunction) => {
-    fetch(`http://localhost:3000/otm_attractions`, {
+    fetch(`${API_URL}/otm_attractions`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json', 
@@ -73,7 +75,7 @@ export const fetchOTMData = (attractionBounds, thenFunction) => {
     
 export const fetchWikiData = (wikidataId,thenFunction) => {
     // const WikiDataURL = createWikiDataURL(wikidataId)
-    fetch('http://localhost:3000/fetchWikidata', {
+    fetch(`${API_URL}/fetchWikidata`, {
         method: 'GET',
         headers: {
             'xid':wikidataId
@@ -84,4 +86,7 @@ export const fetchWikiData = (wikidataId,thenFunction) => {
         // console.log(data)
         thenFunction(data)
     })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 }

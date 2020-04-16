@@ -1,5 +1,5 @@
-// const API_URL = 'https://stdm-backend.herokuapp.com/'
-const API_URL = 'http://localhost:3000'
+const API_URL = 'https://stdm-backend.herokuapp.com/'
+// const API_URL = 'http://localhost:3000'
 
 
 export const logout = () => {
