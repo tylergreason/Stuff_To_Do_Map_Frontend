@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0bcc1849e0f6ebd4912ea123ef5b3c52",
+    "revision": "3f132647ed847ca786ad5a5c125615e8",
     "url": "/Stuff_To_Do_Map_Frontend/index.html"
   },
   {
-    "revision": "2896d858296a1fd14697",
-    "url": "/Stuff_To_Do_Map_Frontend/static/css/main.68c3750d.chunk.css"
+    "revision": "a57d2772a8f26f3f3a92",
+    "url": "/Stuff_To_Do_Map_Frontend/static/css/main.3d5a012b.chunk.css"
   },
   {
     "revision": "25acaa24e00c1b2757e4",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Stuff_To_Do_Map_Frontend/static/js/2.bc163870.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2896d858296a1fd14697",
-    "url": "/Stuff_To_Do_Map_Frontend/static/js/main.6cbcbb3b.chunk.js"
+    "revision": "a57d2772a8f26f3f3a92",
+    "url": "/Stuff_To_Do_Map_Frontend/static/js/main.0149671b.chunk.js"
   },
   {
     "revision": "f284c139368ae7795563",
