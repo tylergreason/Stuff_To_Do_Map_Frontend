@@ -1,6 +1,6 @@
 import React from 'react' 
 import { connect } from 'react-redux'
-const cardClass = "AttractionListCard animated fadeIn"
+const cardClass = "AttractionListCard animated fadeIn otmAttractionCard"
 
 
 const OTMAttractionCardSmall = props => {

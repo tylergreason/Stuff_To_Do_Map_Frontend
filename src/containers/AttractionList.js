@@ -21,14 +21,17 @@ class AttractionList extends Component {
             let headerText=''; 
             let listCount = ''; 
             let onClick = '';
+            let headerClass = ''; 
         if (type === 'user'){
             headerText = "User Attractions"; 
+            headerClass = 'listHeader userHeader'
             if (this.props.attractions.length !== undefined){
                 listCount = this.props.attractions.length; 
             }
             onClick = this.toggleAttractionListHidden;
         }else{
             headerText = "Historical Districts"
+            headerClass = 'listHeader otmHeader'
             if (this.props.otmAttractions !== undefined){
                 listCount = this.props.otmAttractions.length; 
             }else{
@@ -38,7 +41,7 @@ class AttractionList extends Component {
         }
         return (
             <div
-                className={'listHeader'}
+                className={headerClass}
                 onClick={onClick}
             >
                 {headerText} ({listCount}):

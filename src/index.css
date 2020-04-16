@@ -2,6 +2,10 @@
 :root{ 
   --cardBGHoverColor: rgb(214, 252, 255);
   --cardBGColor: #8de4af;
+  --otmCardBGColor: rgb(187, 80, 80);
+  --otmCardTextColor: rgb(255,255,255);
+  --otmCardBGColorHover: rgb(149, 183, 228);
+
 
   /* --cardBGColor: rgb(51, 115, 199); */
   --cardBGColorLighter: rgb(114, 154, 206);
@@ -433,17 +437,6 @@ label {
   border-radius: var(--borderRadius); */  
 }
 
-.otmAttractionCard {
-  background-color: var(--cardBGColor);
-  border: var(--border); 
-  border-radius: var(--borderRadius);
-
-  /* don't put padding on sides so that the listing image can reach the sides and look like a card  */
-  padding-top: 10px; 
-  padding-bottom: 10px; 
-  margin-left: var(--scrollbarWidth);
-}
-
 .otmAttractionCard > .address, p, .name{
   padding-left: 10px;
   padding-right: 10px;
@@ -470,4 +463,29 @@ label {
 
 #otmAttractionList {
   /* visibility: hidden; */
+}
+
+.otmAttractionCard {
+  border: var(--border); 
+  border-radius: var(--borderRadius);
+  
+  /* don't put padding on sides so that the listing image can reach the sides and look like a card  */
+  padding-top: 10px; 
+  padding-bottom: 10px; 
+  margin-left: var(--scrollbarWidth);
+  background-color: var(--otmCardBGColor);
+  color: var(--otmCardTextColor)
+}
+
+.otmAttractionCard:hover {
+  background-color: var(--otmCardBGColorHover);
+}
+
+.otmHeader {
+  background-color: var(--otmCardBGColor);
+  color: var(--otmCardTextColor)
+}
+
+.otmHeader:hover {
+  background-color: var(--otmCardBGColorHover);
 }

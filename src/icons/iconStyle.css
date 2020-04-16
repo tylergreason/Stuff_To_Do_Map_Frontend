@@ -1,6 +1,9 @@
 :root{
     --userIconColor: #172b97;
     --cardBGColor: #75cff0;
+    --otmCardBGColor: rgb(187, 80, 80);
+    --otmCardTextColor: rgb(255,255,255);
+    --otmCardBGColorHover: rgb(228, 149, 149);
 }
 
 .userIcon {
@@ -75,9 +78,36 @@
 }
 
 .otmIcon { 
-    color:rgb(204, 69, 69); 
+    color: var(--otmCardBGColor) 
 }
 
 .iconRating {
     background-color: red;
+}
+
+.otmIcon:hover + .iconText{
+    display: inline;
+    transform: scale(3) translate(0px, -28px);
+    color:var(--otmCardTextColor);
+    background-color: var(--otmCardBGColor);
+    /* margin: auto; */
+    text-align: center;
+    /* position: relative; 
+    top: -5vh; */
+    transition: 0.2s;
+    /* translate(-50%,-50%); */
+    /* width: 100px; */
+    pointer-events: none;
+}
+
+.otmIcon:hover{
+    border: 2px solid var(--otmCardBGColor);
+    background:var(--otmCardTextColor);
+    transform: scale(2) rotate(180deg);
+}
+
+.otmIcon.hovered {
+    border: 2px solid var(--otmCardBGColor);
+    background:var(--otmCardTextColor);
+    transform: scale(2) rotate(180deg);
 }

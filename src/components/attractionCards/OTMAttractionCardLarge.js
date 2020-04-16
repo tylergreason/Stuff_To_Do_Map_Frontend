@@ -5,7 +5,7 @@ import { renderAddress } from './attractionCardGeneralFunctions'
 import { scrollElementIntoViewById } from '../../generalFunctions'
 
 
-const cardClass = "AttractionListCardLarge"
+const cardClass = "AttractionListCardLarge OTMAttractionCard"
 
 class OTMAttractionCardLarge extends Component {
     state = {
