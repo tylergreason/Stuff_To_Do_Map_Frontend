@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/stdm_frontend/static/css/main.68c3750d.chunk.css",
-    "main.js": "/stdm_frontend/static/js/main.d3e58e1a.chunk.js",
-    "main.js.map": "/stdm_frontend/static/js/main.d3e58e1a.chunk.js.map",
-    "runtime-main.js": "/stdm_frontend/static/js/runtime-main.9e231663.js",
-    "runtime-main.js.map": "/stdm_frontend/static/js/runtime-main.9e231663.js.map",
-    "static/js/2.ced40aab.chunk.js": "/stdm_frontend/static/js/2.ced40aab.chunk.js",
-    "static/js/2.ced40aab.chunk.js.map": "/stdm_frontend/static/js/2.ced40aab.chunk.js.map",
-    "index.html": "/stdm_frontend/index.html",
-    "precache-manifest.26975b99d90972e234b02d3777c5d3c5.js": "/stdm_frontend/precache-manifest.26975b99d90972e234b02d3777c5d3c5.js",
-    "service-worker.js": "/stdm_frontend/service-worker.js",
-    "static/css/main.68c3750d.chunk.css.map": "/stdm_frontend/static/css/main.68c3750d.chunk.css.map",
-    "static/js/2.ced40aab.chunk.js.LICENSE.txt": "/stdm_frontend/static/js/2.ced40aab.chunk.js.LICENSE.txt"
+    "main.css": "/Stuff_To_Do_Map_Frontend/static/css/main.68c3750d.chunk.css",
+    "main.js": "/Stuff_To_Do_Map_Frontend/static/js/main.c770e157.chunk.js",
+    "main.js.map": "/Stuff_To_Do_Map_Frontend/static/js/main.c770e157.chunk.js.map",
+    "runtime-main.js": "/Stuff_To_Do_Map_Frontend/static/js/runtime-main.bb490ed2.js",
+    "runtime-main.js.map": "/Stuff_To_Do_Map_Frontend/static/js/runtime-main.bb490ed2.js.map",
+    "static/js/2.ced40aab.chunk.js": "/Stuff_To_Do_Map_Frontend/static/js/2.ced40aab.chunk.js",
+    "static/js/2.ced40aab.chunk.js.map": "/Stuff_To_Do_Map_Frontend/static/js/2.ced40aab.chunk.js.map",
+    "index.html": "/Stuff_To_Do_Map_Frontend/index.html",
+    "precache-manifest.3ec73d5281a4dac098778cd62beb4e7c.js": "/Stuff_To_Do_Map_Frontend/precache-manifest.3ec73d5281a4dac098778cd62beb4e7c.js",
+    "service-worker.js": "/Stuff_To_Do_Map_Frontend/service-worker.js",
+    "static/css/main.68c3750d.chunk.css.map": "/Stuff_To_Do_Map_Frontend/static/css/main.68c3750d.chunk.css.map",
+    "static/js/2.ced40aab.chunk.js.LICENSE.txt": "/Stuff_To_Do_Map_Frontend/static/js/2.ced40aab.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.9e231663.js",
+    "static/js/runtime-main.bb490ed2.js",
     "static/js/2.ced40aab.chunk.js",
     "static/css/main.68c3750d.chunk.css",
-    "static/js/main.d3e58e1a.chunk.js"
+    "static/js/main.c770e157.chunk.js"
   ]
 }
