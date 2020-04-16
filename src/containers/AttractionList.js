@@ -23,7 +23,7 @@ class AttractionList extends Component {
             let onClick = '';
         if (type === 'user'){
             headerText = "User Attractions"; 
-            if (this.props.attraction.length !== undefined){
+            if (this.props.attractions.length !== undefined){
                 listCount = this.props.attractions.length; 
             }
             onClick = this.toggleAttractionListHidden;

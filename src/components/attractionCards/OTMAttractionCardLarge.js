@@ -43,7 +43,7 @@ class OTMAttractionCardLarge extends Component {
 
     renderWikipediaData = data =>{
         // debugger
-        if (data.text){
+        if (data !== undefined && data.text !== undefined){
             return(
                 <p>
                     {data.text}
