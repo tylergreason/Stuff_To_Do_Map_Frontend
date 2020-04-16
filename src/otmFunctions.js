@@ -1,5 +1,4 @@
 // general functions for finding OTM listings. Keeping here to keep MapPage clean. 
-
 const OTMAPIKey = process.env.REACT_APP_OTM_API_KEY
 
 export const fetchWikiData = (wikidataId,thenFunction) => {

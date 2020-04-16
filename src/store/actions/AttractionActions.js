@@ -1,3 +1,7 @@
+// const API_URL = 'https://stdm-backend.herokuapp.com/'
+const API_URL = 'http://localhost:3000'
+
+
 export const  fillAttractionForm = (attraction,lat,lng) => {
     let newAddress = {...attraction, lat:lat, lng: lng}
     return {
@@ -8,7 +12,7 @@ export const  fillAttractionForm = (attraction,lat,lng) => {
 export const addAttraction = (attraction,returnMessage) => {
     console.log('addAttraction fired ')
     return (dispatch) => {
-        fetch(`http://localhost:3000/attractions/`, {
+        fetch(`${API_URL}/attractions/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,7 +37,7 @@ export const addAttraction = (attraction,returnMessage) => {
 export const getAttraction = (attractionId) => {
     console.log(attractionId)
     return (dispatch) => {
-        fetch(`http://localhost:3000/attractions/${attractionId}`, {
+        fetch(`${API_URL}/attractions/${attractionId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

@@ -1,6 +1,9 @@
+// const API_URL = 'https://stdm-backend.herokuapp.com/'
+const API_URL = 'http://localhost:3000'
+
 export const addReview = (review, returnMessage) => {
     return (dispatch) => {
-        fetch(`http://localhost:3000/reviews/`, {
+        fetch(`${API_URL}/reviews/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -24,7 +27,7 @@ export const addReview = (review, returnMessage) => {
 export const deleteReview = (review) => {
     // debugger
     return (dispatch) => {
-        fetch(`http://localhost:3000/reviews/${review.id}`, {
+        fetch(`${API_URL}/reviews/${review.id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

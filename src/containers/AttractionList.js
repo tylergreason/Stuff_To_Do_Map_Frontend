@@ -23,11 +23,17 @@ class AttractionList extends Component {
             let onClick = '';
         if (type === 'user'){
             headerText = "User Attractions"; 
-            listCount = this.props.attractions.length; 
+            if (this.props.attraction.length !== undefined){
+                listCount = this.props.attractions.length; 
+            }
             onClick = this.toggleAttractionListHidden;
         }else{
             headerText = "Historical Districts"
-            listCount = this.props.otmAttractions.length; 
+            if (this.props.otmAttractions !== undefined){
+                listCount = this.props.otmAttractions.length; 
+            }else{
+                listCount = 0   ; 
+            }
             onClick=this.toggleOTMAttractionListHidden
         }
         return (
@@ -72,7 +78,7 @@ class AttractionList extends Component {
     }
 
     renderOTMAttractionCards = () => {
-        if (this.props.otmAttractions !== ""){
+        if (this.props.otmAttractions !== "" && this.props.otmAttractions !== undefined){
             return this.props.otmAttractions.map(attraction => {
                 // render large card if ids match 
                 if (attraction.properties.xid === this.props.highlightAttractionId){

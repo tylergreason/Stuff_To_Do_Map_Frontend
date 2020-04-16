@@ -1,7 +1,9 @@
+// const API_URL = 'https://stdm-backend.herokuapp.com/'
+const API_URL = 'http://localhost:3000'
 export const getUser = () => {
     console.log('get user called ')
     return (dispatch) => {
-        fetch(`http://localhost:3000/myAccount`, {
+        fetch(`${API_URL}/myAccount`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -21,7 +23,7 @@ export const getUser = () => {
 
 export const updateUser = (user,returnMessage) => {
     return (dispatch) => {
-        fetch(`http://localhost:3000/users/${user.id}`, {
+        fetch(`${API_URL}/users/${user.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -54,7 +56,7 @@ export const updatePassword = (user, returnMessage) => {
         password_confirmation: user.password_confirmation
     }
     return (dispatch) => {
-        fetch(`http://localhost:3000/updatePassword/`, {
+        fetch(`${API_URL}/updatePassword/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -81,7 +83,7 @@ export const updatePassword = (user, returnMessage) => {
 
 export const updateEmail = (email, returnMessage) => {
     return (dispatch) => {
-        fetch(`http://localhost:3000/updateEmail/`, {
+        fetch(`${API_URL}/updateEmail/`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -108,7 +110,7 @@ export const updateEmail = (email, returnMessage) => {
 export const deleteUser = (user,returnMessage) => {
     console.log({user})
     return (dispatch) => {
-        fetch(`http://localhost:3000/users/${user.id}`, {
+        fetch(`${API_URL}/users/${user.id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

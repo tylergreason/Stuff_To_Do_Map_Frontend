@@ -1,9 +1,6 @@
-// export const login = (user) => {
-//     return {
-//         type:'LOGIN',
-//         user:user
-//     }
-// }
+// const API_URL = 'https://stdm-backend.herokuapp.com/'
+const API_URL = 'http://localhost:3000'
+
 
 export const logout = () => {
     return {
@@ -13,7 +10,7 @@ export const logout = () => {
 
 export const signUp = (newUser, returnMessage) => {
     return dispatch => {
-        fetch('http://localhost:3000/signup',{
+        fetch(`${API_URL}/signup`,{
             method: 'POST',
             headers: {
             'Content-Type': 'application/json'
@@ -40,7 +37,7 @@ export const signUp = (newUser, returnMessage) => {
 
 export const login = (user, returnMessage) => {
     return dispatch => {
-        fetch('http://localhost:3000/login',{
+        fetch(`${API_URL}/login`,{
             method: 'POST',
             headers: {
             'Content-Type': 'application/json'

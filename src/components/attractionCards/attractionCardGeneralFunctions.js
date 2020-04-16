@@ -8,7 +8,7 @@ export const renderAddress = (attraction) => {
         let returnState = '';
         let returnCountry = '';
         
-        if (attraction.house_number) {
+        if (attraction.house_number !== undefined) {
             returnHouseNumber = attraction.house_number; 
         }
         if (attraction.road) {
