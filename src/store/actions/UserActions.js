@@ -1,4 +1,4 @@
-const API_URL = 'https://stdm-backend.herokuapp.com/'
+const API_URL = 'https://stdm-backend.herokuapp.com'
 // const API_URL = 'http://localhost:3000'
 export const getUser = () => {
     console.log('get user called ')
