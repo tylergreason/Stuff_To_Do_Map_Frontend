@@ -38,6 +38,7 @@ class AttractionFormMap extends Component {
     }
 
     onMapClick = e => {
+        console.log(e.latlng)
         let lat = e.latlng.wrap().lat
         let lng = e.latlng.wrap().lng
         console.log(`${lat} and ${lng}`)

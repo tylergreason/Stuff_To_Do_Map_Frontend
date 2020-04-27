@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getAttractions } from '../store/actions/MapActions'
 
+// import leaflet for wrap function 
+import L from 'leaflet' 
 // two containers to render 
 import AttractionList from './AttractionList'
 import Map from '../components/maps/Map'
@@ -46,11 +48,15 @@ class MapPage extends Component {
     
     // function to parse what's brought back by getBounds() into useable format 
     parseBounds = (bounds) => {
+        // use wrap to make sure the lat and lng are within realistic limits 
+        const southWest = bounds._southWest.wrap ()
+        const northEast = bounds._northEast.wrap()
+        console.log(southWest)
         return { 
-            south: bounds._southWest.lat,
-            north: bounds._northEast.lat,
-            east: bounds._northEast.lng, 
-            west: bounds._southWest.lng
+            south: southWest.lat,
+            north: northEast.lat,
+            east: northEast.lng, 
+            west: southWest.lng
         }
     }
     
