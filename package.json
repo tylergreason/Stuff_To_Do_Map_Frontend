@@ -1,6 +1,6 @@
 {
   "homepage": "http://tylergreason.github.io/Stuff_To_Do_Map_Frontend",
-  "name": "Stuff To Do Map",
+  "name": "stdm_frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
