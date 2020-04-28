@@ -5,7 +5,7 @@ import { renderAddress } from './attractionCardGeneralFunctions'
 import { scrollElementIntoViewById } from '../../generalFunctions'
 
 
-const cardClass = "AttractionListCardLarge"
+
 
 class OTMAttractionCardLarge extends Component {
     state = {
@@ -72,8 +72,11 @@ class OTMAttractionCardLarge extends Component {
                 className={'otmAttractionCard'}
                 id={`otmAttractionCardLarge${this.state.wikidata.xid}`}
                 >
-                <h4 className="name">{this.state.wikidata.name}</h4>
-                {renderAddress(wikidata.address)}
+                <div className={'otmAttractionCardDetails'}>
+                    <h4 className="name">{this.state.wikidata.name}</h4>                
+                    {/* <br></br> */}
+                    {renderAddress(wikidata.address)}
+                </div>
                 {this.renderImage(wikidata)}
                 {this.renderWikipediaData(wikidata.wikipedia_extracts)}
                 {/* <p>{wikidata.wikipedia_extracts.text}</p> */}
