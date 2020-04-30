@@ -9,6 +9,7 @@ import MyAccount from './components/myAccount/MyAccount'
 import { connect } from 'react-redux'
 import { logout } from './store/actions/authActions'
 import { getUser } from './store/actions/UserActions'
+import { setWindowWidth } from './store/actions/generalActions'
 
 // for '/' route: 
 import MapPage from './containers/MapPage'
@@ -21,10 +22,16 @@ class App extends Component {
     loggedIn:false
   }
 
-    componentDidMount=()=>{
-      this.props.getUser()
-    }
+  // set window witdth in store before component mounts 
+  componentWillMount = () => {
+    this.props.setWindowWidth(window.innerWidth);
+  }
 
+  componentDidMount=()=>{
+    this.props.getUser()
+    // add window listener for screen size changing 
+    window.addEventListener('resize', () => this.props.setWindowWidth(window.innerWidth))
+    }
 
   changeAppLoggedIn = (boolean) =>{
     this.setState({
@@ -82,4 +89,4 @@ const mapStateToProps = (state) => {
           user: state.user.user
         }
 }
-export default connect(mapStateToProps, { logout,getUser })(App);
+export default connect(mapStateToProps, { logout,getUser,setWindowWidth })(App);
