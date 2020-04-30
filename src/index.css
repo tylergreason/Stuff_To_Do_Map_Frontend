@@ -69,7 +69,12 @@ code {
   display: inline;
 }
 
-.NavbarParent {
+/* .NavBarParent--mobile {
+  top:none; 
+  bottom:0px; 
+} */
+
+.NavBarParent {
   /* display: inline-grid;  */
   background-color: var(--bodyBGColor);
   position: fixed;
@@ -503,4 +508,19 @@ label {
 #otmAttractionsHeader:hover{
   background-color: var(--otmHoverColor);
   color: var(--otmCardColor);
+}
+
+@media (max-width: 870px){
+  .NavBarParent { 
+    top:auto; 
+    bottom:0px;
+    max-height: 8%;
+  }
+  .NavBarButton{
+    font-size: 0.8rem;
+  }
+
+  #mainContainer{
+    margin-top: 10px;
+  }
 }

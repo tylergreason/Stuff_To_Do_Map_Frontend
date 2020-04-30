@@ -42,13 +42,12 @@ class App extends Component {
   render(){
     return (
       <Router>
-      <Navbar />
         <div id="mainContainer">
         <Switch>
             <Route path="/login" 
               component={()=>{
-              return <Login changeAppLoggedIn={this.changeAppLoggedIn}/>
-            }}></Route>
+                return <Login changeAppLoggedIn={this.changeAppLoggedIn}/>
+              }}></Route>
             {/* for logout route, set store state loggedIn to false and redirect to root  */}
             <Route path="/logout" component={()=>{
               this.props.logout()
@@ -64,19 +63,20 @@ class App extends Component {
                                                                   render={()=>{
                                                                     return <MyAttractionsList />
                                                                   }
-                                                                  }
-            
+                                                                }
+                                                                
                                                                 />}}/>
             <Route path="/myAccount" render={() =>{ 
-                                                  return <CheckLogin 
-                                                            render={()=>{
-                                                              return <MyAccount />
-                                                            }}
-                                                        />
-                                                  }}/>
+              return <CheckLogin 
+              render={()=>{
+                return <MyAccount />
+              }}
+              />
+            }}/>
             <Route path="/" render={()=>{ return <MapPage /> }}></Route>
         </Switch>
         </div>
+            <Navbar />
       </Router>
   );
 }

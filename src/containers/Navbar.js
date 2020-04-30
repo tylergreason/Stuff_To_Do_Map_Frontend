@@ -62,6 +62,14 @@ class Navbar extends Component {
         return Array.from(navBarButtons) 
     }
     
+    // choose class name based on window width 
+    navBarClassName = () => {
+        if (this.props.windowWidth > 870){
+            return "NavBarParent"
+        }else{
+            return "NavBarParent"
+        }
+    }
     
     renderLoggedInNavbar = () => {
         return (
@@ -87,27 +95,32 @@ class Navbar extends Component {
     }
 
     renderNavbar = () => {
-        if (this.props.loggedIn){
-            return this.renderLoggedInNavbar() 
-        }else if (this.props.loggedIn===false){
-            return this.renderLoggedOutNavbar() 
-        }
+            if (this.props.loggedIn){
+                return this.renderLoggedInNavbar() 
+            }else if (this.props.loggedIn===false){
+                return this.renderLoggedOutNavbar() 
+            }
     }
 
     render(){
         return(
-            <div className="NavbarParent">
-                <h1 className='title'>Stuff To Do Map</h1>
+            <>
+            <div className={this.navBarClassName()}>
+            <h1 className='title'>Stuff To Do Map</h1>
                 <span className="NavBar">
                     {this.renderNavbar()}
                 </span>
             </div>
+            </>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-    return {loggedIn: state.user.loggedIn}
+    return {
+        loggedIn: state.user.loggedIn,
+        windowWidth: state.general.windowWidth
+    }
 }
 
 export default withRouter(connect(mapStateToProps, {logout})(Navbar))
