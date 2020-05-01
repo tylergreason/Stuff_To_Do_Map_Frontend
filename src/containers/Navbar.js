@@ -70,6 +70,18 @@ class Navbar extends Component {
             return "NavBarParent"
         }
     }
+
+    renderShowHideNavBarButton = () => {
+        return (<span class="material-icons">
+        menu
+        </span>
+        )
+    }
+
+    showHideNavBarButtonClick = () => {
+        // find navbar and change its visibility 
+        // document.getElementsByClassName
+    }
     
     renderLoggedInNavbar = () => {
         return (
