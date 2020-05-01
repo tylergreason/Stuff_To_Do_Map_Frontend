@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { logout } from '../store/actions/authActions'
+import { getAttractionListShown } from '../store/actions/generalActions'
 import { attractionListStatus } from '../generalFunctions'
 import { toggleAttractionListShow } from '../generalFunctions'
 import ToggleListButton from '../components/general/ToggleListButton'
@@ -15,6 +16,8 @@ class Navbar extends Component {
         this.removeHighlightClass()
         const buttons = this.allNavBarButtons()
         this.addHighlightToButton(buttons)
+        // set whether the attraction list is shown in the state 
+        this.props.getAttractionListShown()
     }
     
     // in component did update, check to see if any buttons have a class that matches this state's path 
@@ -25,6 +28,9 @@ class Navbar extends Component {
         const buttons = this.allNavBarButtons() 
         this.addHighlightToButton(buttons)
         // toggleAttractionListShow()
+        console.log('navbar updated')
+        // set whether the attraction list is shown in the state 
+        this.props.getAttractionListShown()
     }
     
     checkForMobile = () =>{
@@ -120,6 +126,7 @@ class Navbar extends Component {
 
     renderToggleAttractionListShowButton = () => {
         // check width and render if this width is small enough 
+        console.log(attractionListStatus())
         if (this.checkForMobile()){
             if (this.state.path === "/" || this.state.path === "/myAttractions"){
                 return (<ToggleListButton 
@@ -147,9 +154,8 @@ class Navbar extends Component {
 const mapStateToProps = (state) => {
     return {
         loggedIn: state.user.loggedIn,
-        windowWidth: state.general.windowWidth,
-        list: state.general.list
-    }
+        windowWidth: state.general.windowWidth
+    }   
 }
 
-export default withRouter(connect(mapStateToProps, {logout})(Navbar))
+export default withRouter(connect(mapStateToProps, {logout, getAttractionListShown})(Navbar))

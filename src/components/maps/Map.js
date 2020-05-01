@@ -8,6 +8,9 @@ import { highlightAttraction } from '../../store/actions/MapActions'
 import { createFindLocationButton } from './mapFunctions'
 import { toggleAttractionListShow } from '../../generalFunctions'
 
+import { getAttractionListShown } from '../../store/actions/generalActions'
+
+
 
 class Map extends Component {
     state = {
@@ -75,7 +78,8 @@ class Map extends Component {
         toggleIconHoveredClass(e.target.id)
         this.props.highlightAttraction(e.target.id)
         toggleAttractionListShow()
-
+        // tell the store whether the list is shown or not
+        this.props.getAttractionListShown()
     }
 
     handleOTMMarkerClick = e => {
@@ -90,6 +94,8 @@ class Map extends Component {
         // scrollElementIntoView('otm',e.target.id)
         scrollElementIntoViewById(`otmAttractionCardLarge${e.target.id}`)
         toggleAttractionListShow()
+        // tell the store whether the list is shown or not
+        this.props.getAttractionListShown()
     }
 
     componentDidUpdate = (prevProps) => {
@@ -154,4 +160,4 @@ const mapStateToProps = state => {
         attractions: state.map.attractions
     }
 }
-export default connect(mapStateToProps, {getAttraction,highlightAttraction })(Map) 
+export default connect(mapStateToProps, {getAttraction,highlightAttraction, getAttractionListShown })(Map) 

@@ -45,7 +45,7 @@ const findAttractionList = () =>{
     // find the first (and only) element with the class AttractionList
     // find its first value
     const list = document.getElementsByClassName("AttractionList")[0]
-
+    
     // if there is a list, return it
     if (list !== undefined){
             return list
@@ -53,11 +53,6 @@ const findAttractionList = () =>{
 }
 
 export const toggleAttractionListShow = () => {
-    // // find the first (and only) element with the class AttractionList
-    // // find its first value
-    // const list = document.getElementsByClassName("AttractionList")[0]
-
-    // // if there is a list, check if it contains the class 'showList' and add that class if it doesn't 
     const list = findAttractionList() 
     console.log(list)
     if (list !== undefined){

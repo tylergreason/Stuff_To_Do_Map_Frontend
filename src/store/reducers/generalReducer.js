@@ -1,6 +1,6 @@
 const defaultState = {
     windowWidth:'',
-    list:''
+    showList:''
 }
 
 const generalReducer = (state=defaultState, action) => {
@@ -9,6 +9,11 @@ const generalReducer = (state=defaultState, action) => {
             return state = {
                 ...state, 
                 windowWidth: action.width
+            }
+        case "SET_SHOWLIST": 
+            return state = {
+                ...state, 
+                showList: action.showList
             }
         default: 
             return state 

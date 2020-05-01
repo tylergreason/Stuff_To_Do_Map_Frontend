@@ -1,25 +1,47 @@
-import React from 'react' 
-import { attractionListStatus } from '../../generalFunctions'
+import React, { Component } from 'react' 
+import { connect } from 'react-redux'
+import { getAttractionListShown } from '../../store/actions/generalActions'
 import { toggleAttractionListShow } from '../../generalFunctions'
 
-const buttonText = () => {
-    // Set button text depending on if the list has the showList class
-    return attractionListStatus() === true
-    ?
-    "Show Attractions"
-    :
-    "Hide Attractions"
-}
 
-const ToggleListButton = (props) => {
-    return(
-        <button
+class ToggleListButton extends Component {
+    componentDidMount = () => {
+        // set button text upon mounting 
+        this.buttonText()
+    }
+
+    buttonText = () => {
+        // set whether the button text is 'show' or 'hide' 'attractions' based on if the list is shown or not 
+        if (this.props.showList === true){
+            return "Hide Attractions"
+        }else{
+            return "Show Attractions"
+        }
+    }
+
+    handleClick = () => {
+        toggleAttractionListShow() 
+        this.props.getAttractionListShown()
+        this.buttonText()
+    }
+
+    render(){
+        return(
+            <button
             className="toggleListButton"
-            onClick={() => toggleAttractionListShow()}
-        >
-           {props.text} 
-        </button>
-    )
+            onClick={() => this.handleClick()}
+            >
+                {this.buttonText()} 
+                </button>
+            )
+    }
 }
 
-export default ToggleListButton
+const mapStateToProps = state => {
+    return {
+        showList: state.general.showList
+    }
+}
+
+
+export default connect(mapStateToProps, { getAttractionListShown })(ToggleListButton)
