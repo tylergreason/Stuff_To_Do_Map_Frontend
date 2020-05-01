@@ -125,9 +125,9 @@ class MyAttractionListMap extends Component {
     }
     render(){
         return(
-            <>
-                <div id='myMap' className="animated fadeIn map"></div>
-            </>
+            <div className="Map">
+                <div id='myMap' className="map"></div>
+            </div>
         )
     }
 }

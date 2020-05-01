@@ -139,7 +139,7 @@ class Map extends Component {
     render(){
         return (
             <div className="Map">
-                <div id='myMap' className="animated fadeIn map"></div>
+                <div id='myMap' className="map"></div>
             </div>
         )
     }
