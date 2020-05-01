@@ -24,6 +24,8 @@
   --borderRadius: 10px; 
 
   --scrollbarWidth: 10px; 
+
+  --bottomNavBarHeight: 80px; 
 }
 
 body {
@@ -519,8 +521,10 @@ label {
     display: grid;
     grid-template-columns: repeat(5,20%);
     grid-template-rows: 30% 70%;
-    height: 80px;
-    border-top: 2px solid var(--borderColor)
+    height: var(--bottomNavBarHeight);
+    border-top: 2px solid var(--borderColor);
+    /* keep navbar above map and lists */
+    z-index: 2;
   }
   .NavBar {
     justify-content: space-evenly;
@@ -555,25 +559,42 @@ label {
   #mainContainer{
     margin: 0px;
     margin-top: 10px; 
-    height: calc(100vh - 80px);
+    height: calc(100vh - var(--bottomNavBarHeight));
     display: flex;
-    grid-template-columns: repeat(10,1fr);
-    grid-template-rows: repeat(10,1fr);
+    /* staying with flex for now, but leaving these in case grid is used again */
+    /* grid-template-columns: repeat(10,1fr);
+    grid-template-rows: repeat(10,1fr); */
   }
+
   /* remove scrollbar from whole page  */
   ::-webkit-scrollbar {
     display: none;
     }
-  .About{
-    /* margin: 0px; */
-    overflow-y: scroll;
-  }
-
+  
   .AttractionList {
-    display:none;
-    width: 100%; 
-  }
+    /* display:none; */
+    margin:auto;
+    /* padding: 0px; */
+    background-color: var(--otmHoverColor);
+    position: absolute;
+    /* hide this element until it also has the showList class */
+    top:calc(100vh * 2);
+    bottom: var(--bottomNavBarHeight);
+    left: 0px; 
+    right: 0px;
+    /* bottom:var(--bottomNavBarHeight); */
+    width: 95vw; 
+    height: calc(100vh - var(--bottomNavBarHeight)); 
+    /* border-left:none; */
+    /* border-right:none; */
+    border-bottom:none;
+    border-radius: var(--borderRadius) var(--borderRadius) 0px 0px;
+    /* display above map */
+    transition: 0.5s; 
 
+    z-index: 1;
+  }
+    
   #myMap{
     height: calc(100vh - 150px); 
     width: 90vw;
@@ -587,5 +608,15 @@ label {
     justify-content: center;
     /* height: 80vh; */
     /* max-height: 400px; */
+  }
+
+  .About{
+    /* margin: 0px; */
+    overflow-y: scroll;
+  }
+
+  .showList {
+    top: 100px; 
+    transition: 0.5s;
   }
 }
