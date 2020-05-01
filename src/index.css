@@ -516,35 +516,45 @@ label {
     bottom:0px;
     text-align: center;
     padding-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(5,20%);
+    grid-template-rows: 30% 70%;
+    height: 80px;
+    border-top: 2px solid var(--borderColor)
   }
   .NavBar {
-    display:none;
-    display: flex; 
-    /* flex-flow: wrap; */
     justify-content: space-evenly;
-    position: relative;
     margin-right: 10px;
+    grid-column: 1/6;
+    display: flex; 
+    margin: 0px;
+    margin-top: 5px;
   }
   .NavBarButton{
     font-size: 0.8rem;
-    /* width: 10%; */
-    margin: 5px;
+    padding: 5px; 
+    margin: 3px; 
+    flex-basis: 100%;
     background: var(--otmCardColor);
     color: var(--otmHoverColor);
   }
 
   .title {
-    font-size: 2rem;
-    margin: 0 auto; 
-    margin-top: 10px;
-    width: 90%;
-    text-align: center;
+    font-size: 1.5rem;
+    margin: 0px;
+    /* margin-top: 10px; */
+    /* width: 90%; */
+    /* text-align: center; */
+    grid-column: 2/5;
+  }
+
+  body{
+    margin: 0px;
   }
 
   #mainContainer{
-    margin: 10px; 
-    /* margin-top: 10px; */
-    max-height: 50%;
+    margin: 0px;
+    margin-top: 10px; 
   }
 
   .about{
