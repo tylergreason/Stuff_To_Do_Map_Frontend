@@ -522,6 +522,7 @@ label {
     grid-template-columns: repeat(5,20%);
     grid-template-rows: 30% 70%;
     height: var(--bottomNavBarHeight);
+    max-height: var(--bottomNavBarHeight);
     border-top: 2px solid var(--borderColor);
     /* keep navbar above map and lists */
     z-index: 2;
@@ -548,9 +549,18 @@ label {
     margin: 0px;
     /* margin-top: 10px; */
     /* width: 90%; */
-    /* text-align: center; */
-    grid-column: 2/5;
+    text-align: left;
+    grid-row: 1;
+    grid-column: 1/4;
   }
+
+  .toggleListButton{
+    grid-row:1;
+    grid-column: 4/6;
+    height: 100%;
+    padding:0px;
+    font-size: 0.8rem;
+}
 
   body{
     margin: 0px;
@@ -584,7 +594,7 @@ label {
     right: 0px;
     /* bottom:var(--bottomNavBarHeight); */
     width: 95vw; 
-    height: calc(100vh - var(--bottomNavBarHeight)); 
+    height: calc(100vh - calc(2 * var(--bottomNavBarHeight))); 
     /* border-left:none; */
     /* border-right:none; */
     border-bottom:none;
@@ -615,8 +625,9 @@ label {
     overflow-y: scroll;
   }
 
+  /* class for showing attraction lists */
   .showList {
-    top: 100px; 
-    transition: 0.5s;
+    top: 50px; 
+    transition: 0.5s;   
   }
 }

@@ -17,76 +17,77 @@ import MapPage from './containers/MapPage'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'; 
 
 class App extends Component {
-  state = {
-    attractions: [],
-    loggedIn:false
-  }
-
-  // set window witdth in store before component mounts 
-  componentWillMount = () => {
-    this.props.setWindowWidth(window.innerWidth);
-  }
-
-  componentDidMount=()=>{
-    this.props.getUser()
-    // add window listener for screen size changing 
-    window.addEventListener('resize', () => this.props.setWindowWidth(window.innerWidth))
+    state = {
+        attractions: [],
+        loggedIn:false
     }
 
-  changeAppLoggedIn = (boolean) =>{
-    this.setState({
-      loggedIn:boolean
-    })
-  }
+    // set window witdth in store before component mounts 
+    componentWillMount = () => {
+        this.props.setWindowWidth(window.innerWidth);
+    }
 
-  render(){
-    return (
-      <Router>
-        <div id="mainContainer">
-        <Switch>
-            <Route path="/login" 
-              component={()=>{
-                return <Login changeAppLoggedIn={this.changeAppLoggedIn}/>
-              }}></Route>
-            {/* for logout route, set store state loggedIn to false and redirect to root  */}
-            <Route path="/logout" component={()=>{
-              this.props.logout()
-              this.changeAppLoggedIn(false)
-              return <Redirect to="/"></Redirect>
-            }}></Route>
-            <Route path='/signup' component={()=>{
-              return <Signup changeAppLoggedIn={this.changeAppLoggedIn}/>
-            }}></Route>
-            <Route path='/about' render={()=>{ return <About /> }}></Route>
-            {/* confirm user is logged in before going to myAttractions or myAccount */}
-            <Route path="/myAttractions" render={() =>{ return <CheckLogin 
-                                                                  render={()=>{
-                                                                    return <MyAttractionsList />
-                                                                  }
-                                                                }
-                                                                
-                                                                />}}/>
-            <Route path="/myAccount" render={() =>{ 
-              return <CheckLogin 
-              render={()=>{
-                return <MyAccount />
-              }}
-              />
-            }}/>
-            <Route path="/" render={()=>{ return <MapPage /> }}></Route>
-        </Switch>
-            <Navbar />
-        </div>
-      </Router>
-  );
-}
-}
+    componentDidMount=()=>{
+        this.props.getUser()
+        // add window listener for screen size changing 
+        window.addEventListener('resize', () => this.props.setWindowWidth(window.innerWidth))
+    }
+
+
+    changeAppLoggedIn = (boolean) =>{
+        this.setState({
+        loggedIn:boolean
+        })
+    }
+
+    render(){
+        return (
+        <Router>
+            <div id="mainContainer">
+            <Switch>
+                <Route path="/login" 
+                component={()=>{
+                    return <Login changeAppLoggedIn={this.changeAppLoggedIn}/>
+                }}></Route>
+                {/* for logout route, set store state loggedIn to false and redirect to root  */}
+                <Route path="/logout" component={()=>{
+                this.props.logout()
+                this.changeAppLoggedIn(false)
+                return <Redirect to="/"></Redirect>
+                }}></Route>
+                <Route path='/signup' component={()=>{
+                return <Signup changeAppLoggedIn={this.changeAppLoggedIn}/>
+                }}></Route>
+                <Route path='/about' render={()=>{ return <About /> }}></Route>
+                {/* confirm user is logged in before going to myAttractions or myAccount */}
+                <Route path="/myAttractions" render={() =>{ return <CheckLogin 
+                                                                    render={()=>{
+                                                                        return <MyAttractionsList />
+                                                                    }
+                                                                    }
+                                                                    
+                                                                    />}}/>
+                <Route path="/myAccount" render={() =>{ 
+                return <CheckLogin 
+                render={()=>{
+                    return <MyAccount />
+                }}
+                />
+                }}/>
+                <Route path="/" render={()=>{ return <MapPage /> }}></Route>
+            </Switch>
+                <Navbar />
+            </div>
+        </Router>
+    );
+    }
+    }
 
 
 const mapStateToProps = (state) => {
-  return {
-          loggedIn: state.loggedIn,
-          user: state.user.user
-        }
+    return {
+        loggedIn: state.loggedIn,
+        user: state.user.user
+    }
 }
 export default connect(mapStateToProps, { logout,getUser,setWindowWidth })(App);

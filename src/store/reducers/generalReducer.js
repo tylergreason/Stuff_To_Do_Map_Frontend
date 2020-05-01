@@ -1,5 +1,6 @@
 const defaultState = {
-    windowWidth:''
+    windowWidth:'',
+    list:''
 }
 
 const generalReducer = (state=defaultState, action) => {

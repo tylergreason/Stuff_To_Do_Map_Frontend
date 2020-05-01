@@ -2,12 +2,15 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { logout } from '../store/actions/authActions'
+import { attractionListStatus } from '../generalFunctions'
+import { toggleAttractionListShow } from '../generalFunctions'
+import ToggleListButton from '../components/general/ToggleListButton'
 
 class Navbar extends Component {
     state = {
         path:this.props.location.pathname
     }
-    
+
     componentDidMount = () =>{
         this.removeHighlightClass()
         const buttons = this.allNavBarButtons()
@@ -21,6 +24,12 @@ class Navbar extends Component {
         // loop through the buttons, and if their name matches this state's path value, then give that button the highlight class 
         const buttons = this.allNavBarButtons() 
         this.addHighlightToButton(buttons)
+        // toggleAttractionListShow()
+    }
+    
+    checkForMobile = () =>{
+        // if the window is less than 870 pixels wide, the user is probably on mobile. Return true. 
+        return this.props.windowWidth < 870
     }
     
     addHighlightToButton = buttons => {
@@ -64,7 +73,7 @@ class Navbar extends Component {
     
     // choose class name based on window width 
     navBarClassName = () => {
-        if (this.props.windowWidth > 870){
+        if (this.checkForMobile()){
             return "NavBarParent"
         }else{
             return "NavBarParent"
@@ -76,11 +85,6 @@ class Navbar extends Component {
         menu
         </span>
         )
-    }
-
-    showHideNavBarButtonClick = () => {
-        // find navbar and change its visibility 
-        // document.getElementsByClassName
     }
     
     renderLoggedInNavbar = () => {
@@ -114,10 +118,22 @@ class Navbar extends Component {
             }
     }
 
+    renderToggleAttractionListShowButton = () => {
+        // check width and render if this width is small enough 
+        if (this.checkForMobile()){
+            if (this.state.path === "/" || this.state.path === "/myAttractions"){
+                return (<ToggleListButton 
+                            text={attractionListStatus()}
+                        />)
+            }
+        }
+    }
+
     render(){
         return(
             <>
             <div className={this.navBarClassName()}>
+                {this.renderToggleAttractionListShowButton()}
             <h1 className='title'>Stuff To Do Map</h1>
                 <span className="NavBar">
                     {this.renderNavbar()}
@@ -131,7 +147,8 @@ class Navbar extends Component {
 const mapStateToProps = (state) => {
     return {
         loggedIn: state.user.loggedIn,
-        windowWidth: state.general.windowWidth
+        windowWidth: state.general.windowWidth,
+        list: state.general.list
     }
 }
 
