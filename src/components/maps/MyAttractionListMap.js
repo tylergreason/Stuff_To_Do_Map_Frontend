@@ -7,8 +7,11 @@ import { iconWithCustomText } from '../../icons/Icons'
 import { toggleIconHoveredClass } from '../../generalFunctions'
 
 import { toggleHoveredClass } from '../../generalFunctions'
-
 import { createFindLocationButton, setMapVariable } from './mapFunctions'
+
+// handling showing map on mobile 
+import { toggleAttractionListShow } from '../../generalFunctions'
+import { getAttractionListShown } from '../../store/actions/generalActions'
 
 const mapsList = []; 
 
@@ -75,13 +78,15 @@ class MyAttractionListMap extends Component {
     handleMarkerClick = e => {
         // only attempt to highlight the attraction card if on the 'list' page 
         if (this.props.formToRender === 'list'){
-
             toggleIconHoveredClass(e.target.id)
             toggleHoveredClass('AttractionListCard',e.target.id)
             const cardId = `AttractionListCard${e.target.id}`
             const cardToView = document.getElementById(cardId) 
             cardToView.scrollIntoView();
         }
+        toggleAttractionListShow()
+        // tell the store whether the list is shown or not
+        this.props.getAttractionListShown()
     }
 
     createMap = () => {
@@ -131,4 +136,4 @@ class MyAttractionListMap extends Component {
         )
     }
 }
-export default connect(null, { fillAttractionForm })(MyAttractionListMap)
+export default connect(null, { fillAttractionForm, getAttractionListShown })(MyAttractionListMap)

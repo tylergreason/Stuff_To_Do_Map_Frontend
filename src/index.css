@@ -582,27 +582,33 @@ label {
     }
   
   .AttractionList {
-    /* display:none; */
     margin:auto;
-    /* padding: 0px; */
     background-color: var(--otmHoverColor);
     position: absolute;
     /* hide this element until it also has the showList class */
-    top:calc(100vh * 2);
+    /* top:calc(100vh * 2); */
     bottom: var(--bottomNavBarHeight);
     left: 0px; 
     right: 0px;
     /* bottom:var(--bottomNavBarHeight); */
     width: 95vw; 
-    height: calc(100vh - calc(2 * var(--bottomNavBarHeight))); 
-    /* border-left:none; */
-    /* border-right:none; */
+    /* height: calc(100vh - calc(2 * var(--bottomNavBarHeight)));  */
+    margin-top: calc(100vh - calc(2 * var(--bottomNavBarHeight))); 
+    height: 0px;
     border-bottom:none;
     border-radius: var(--borderRadius) var(--borderRadius) 0px 0px;
+    transition: 0.3s ease; 
+    
     /* display above map */
-    transition: 0.5s; 
-
     z-index: 1;
+  }
+  /* class for showing attraction lists */
+  .showList {
+    top: 70px; 
+    transition: 0.3s;   
+    margin-top: 0px; 
+    height: calc(100vh - calc(2 * var(--bottomNavBarHeight))); 
+
   }
     
   #myMap{
@@ -625,9 +631,4 @@ label {
     overflow-y: scroll;
   }
 
-  /* class for showing attraction lists */
-  .showList {
-    top: 50px; 
-    transition: 0.5s;   
-  }
 }
