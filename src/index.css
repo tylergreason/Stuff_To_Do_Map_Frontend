@@ -212,6 +212,9 @@ button:focus{
   border-radius: 10px;
   background-color: var(--cardBGColor);
   /* max-width: 50%; */
+  max-width: 40%;
+  /* margin: auto;  */
+  margin: 10px auto 10px auto;
 }
 
 .MyAccountComponent {
@@ -219,9 +222,6 @@ button:focus{
 }
 
 .middlePageBox { 
-  max-width: 40%;
-  /* margin: auto;  */
-  margin: 10px auto 10px auto;
 }
 
 
@@ -571,6 +571,7 @@ label {
     margin-top: 10px; 
     height: calc(100vh - var(--bottomNavBarHeight));
     display: flex;
+    justify-content: center;
     /* staying with flex for now, but leaving these in case grid is used again */
     /* grid-template-columns: repeat(10,1fr);
     grid-template-rows: repeat(10,1fr); */
@@ -629,6 +630,20 @@ label {
   .About{
     /* margin: 0px; */
     overflow-y: scroll;
+    max-width: 90%;
+  }
+
+  .middlePageBox {
+      max-width: 90%;
+  }
+  
+  .AttractionListCard, .AttractionListCardLarge, #otmAttractionList .otmAttractionCard {
+      margin-left: 0px;
+      margin: 5px;
+  }
+
+  .AttractionList {
+      /* margin: 0px; */
   }
 
 }

@@ -65,7 +65,7 @@ class  MyAttractionList extends Component {
     renderNewAttractionForm = () => {
         return (<div className="newAttractionWrapper">
             <div>
-                Click on the map where your attraction should appear. The address will populate the fields to the left. You can then further edit the attraction.
+                Click on the map where your attraction should appear. The nearest address will populate the fields below. You can then further edit the attraction.
                 </div>
                 <NewAttractionForm 
                         backToList={this.backToList}

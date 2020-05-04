@@ -48,9 +48,10 @@ class EditInfo extends Component {
 
     renderUpdateInfoForm = () => {
         return (
-            <div className="middlePageBox">
+            <>
             <label>Update Account Information</label>
-            <form className="informationBox">
+            <div className="middlePageBox informationBox">
+            <form className="">
                 <label>First Name: </label>
                 <br></br>
                 <input  
@@ -110,6 +111,7 @@ class EditInfo extends Component {
                     >Update Account Information</button>
             </form>
             </div>
+            </>
         )
     }
     render(){

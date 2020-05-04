@@ -117,6 +117,7 @@ class Signup extends Component {
                 <br></br>
                 <ServerResponseCard response={this.state.returnMessage} />
                 <button id="submit" 
+                        class="signup"
                         type="submit" 
                         onClick={this.handleSubmit}>
                 Sign Up</button>

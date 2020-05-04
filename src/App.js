@@ -76,7 +76,7 @@ class App extends Component {
                 }}/>
                 <Route path="/" render={()=>{ return <MapPage /> }}></Route>
             </Switch>
-                <Navbar />
+            <Navbar />
             </div>
         </Router>
     );
