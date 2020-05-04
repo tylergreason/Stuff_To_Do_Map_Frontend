@@ -28,8 +28,9 @@ class EditEmail extends Component {
     renderUpdateEmailForm = () =>{
         return(
             <>
-                <label>Update Email Address</label>
-                <form className="informationBox">
+            <label>Update Email Address</label>
+            <div className="informationBox MyAccount__child">
+                <form className="">
                 <label>Current Email Address</label>
                 <label> - {this.props.currentEmail}</label>
                 <br></br>
@@ -62,6 +63,7 @@ class EditEmail extends Component {
                     onClick={this.handleUpdateEmailSubmit}
                     >Update Email Address</button>
                 </form>
+            </div>
             </>
         )
     }
@@ -80,9 +82,9 @@ class EditEmail extends Component {
 
     render(){
         return ( 
-            <div className="middlePageBox"> 
+            <>
                 {this.renderUpdateEmailForm()}
-            </div>
+            </>
         )
     }
 }

@@ -48,9 +48,11 @@ class Signup extends Component {
         }
     }
     
-    render(){
+    renderSignUpForm = () =>{
         return (
-            <div className='informationBox middlePageBox'>
+            <div className="signup">
+            {/* <label>Sign Up</label> */}
+            <div className='informationBox'>
             {this.redirectToHomeIfLoggedIn()}
             <form>
                  <label>First Name: </label>
@@ -117,13 +119,21 @@ class Signup extends Component {
                 <br></br>
                 <ServerResponseCard response={this.state.returnMessage} />
                 <button id="submit" 
-                        class="signup"
+                        class="signupButton"
                         type="submit" 
                         onClick={this.handleSubmit}>
                 Sign Up</button>
 
             </form>
         </div>
+        </div>
+        ) 
+    }
+    render(){
+        return (
+            <>
+            {this.renderSignUpForm()}
+            </>
         ) 
     }
 }

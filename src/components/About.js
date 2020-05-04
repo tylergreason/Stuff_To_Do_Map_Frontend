@@ -2,8 +2,8 @@ import React from 'react'
 
 const About = () => {
     return(
-
-        <div className='About  informationBox animated fadeIn fast'>
+        <div className='About'>
+            <div className="informationBox">
             {/* <h2 className='title'>About</h2> */}
             <h3>Hi, and thanks for visiting my site!</h3>
             <div>
@@ -41,6 +41,8 @@ const About = () => {
                 <a href="mailto:tylergreason@gmail.com">tylergreason@gmail.com</a>
             </li>
             </ul>
+            </div>
+
         </div>
     )
 }

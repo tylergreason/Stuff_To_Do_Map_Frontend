@@ -28,8 +28,9 @@ class EditPassword extends Component {
     renderChangePasswordForm = () =>{
         return (
             <>
-                <label>Change Password</label>
-                <form className="informationBox">
+            <label>Change Password</label>
+            <div className="informationBox MyAccount__child">
+                <form>
                     <label>Current Password: </label>
                     <br></br>
                 <input  name='password' 
@@ -58,6 +59,7 @@ class EditPassword extends Component {
                     onClick={this.handleUpdatePasswordSubmit}
                     >Change Password</button>
                 </form>
+            </div>
             </>
         )
     }
@@ -74,9 +76,9 @@ class EditPassword extends Component {
 
     render(){
         return ( 
-            <div className="middlePageBox"> 
+            <> 
                 {this.renderChangePasswordForm()}
-            </div>
+            </>
         )
     }
 }

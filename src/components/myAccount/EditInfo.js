@@ -50,7 +50,7 @@ class EditInfo extends Component {
         return (
             <>
             <label>Update Account Information</label>
-            <div className="middlePageBox informationBox">
+            <div className="informationBox MyAccount__child">
             <form className="">
                 <label>First Name: </label>
                 <br></br>

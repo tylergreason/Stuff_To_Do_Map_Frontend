@@ -38,15 +38,18 @@ class Login extends Component{
 
     renderLoginForm = () => {
         return(
-            <div className='informationBox middlePageBox'>
-                <h2> Login </h2>
-                <form onSubmit={this.handleSubmit}>
+            <div className='login'>
+                {/* <label> Login </label> */}
+                <form onSubmit={this.handleSubmit} className="informationBox">
                 <label>Email: </label>
+                <br></br>
                 <input type="text" name='email' placeholder="Email" onChange={this.handleInput} value={this.state.email} />
                 <br></br>
                 <label>Password: </label>
+                <br></br>
                 <input type="password" name='password' placeholder="password" onChange={this.handleInput} value={this.state.password} />
                 <ServerResponseCard response={this.state.returnMessage} />
+                <br></br>
                 <button id="submit" type="submit" value="Submit">Login</button>
                 </form>
             </div>

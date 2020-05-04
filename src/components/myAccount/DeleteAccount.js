@@ -98,16 +98,16 @@ class DeleteAccount extends Component {
     }
     render(){
         return(
-            <div className="middlePageBox">
+            <>
                 <label>Delete Account</label>
-                <div className="informationBox">
+            <div className="informationBox MyAccount__child">
                     {this.renderKeepAttractionsSelect()}
                     {this.renderUserChoice()}
                     {this.renderPasswordInputs()}
                     <ServerResponseCard response={this.state.returnMessage} />
                     {this.renderDeleteAccountButton()}
-                </div>
             </div>
+            </>
 
         )
     }
