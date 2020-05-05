@@ -11,11 +11,22 @@ class ToggleListButton extends Component {
     }
 
     buttonText = () => {
-        // set whether the button text is 'show' or 'hide' 'attractions' based on if the list is shown or not 
-        if (this.props.showList === true){
-            return "Hide Attractions"
+        // if on the myAttraction page: 
+        if (this.props.page === "/myAttractions"){
+            // set whether the button text is 'show' or 'hide' 'attractions' based on if the list is shown or not 
+            if (this.props.showList === true){
+                return "Hide Attractions"
+            }else{
+                return "My Attractions"
+            }
         }else{
-            return "Show Attractions"
+
+            // set whether the button text is 'show' or 'hide' 'attractions' based on if the list is shown or not 
+            if (this.props.showList === true){
+                return "Hide Attractions"
+            }else{
+                return "Show Attractions"
+            }
         }
     }
 

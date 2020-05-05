@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { login, logout, signUp } from '../store/actions/authActions'
 import { withRouter } from 'react-router'
 import { ServerResponseCard } from '../components/ServerResponseCard'
+
 class Signup extends Component {
     state = {
         user:{

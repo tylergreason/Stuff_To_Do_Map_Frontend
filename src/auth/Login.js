@@ -31,6 +31,7 @@ class Login extends Component{
     }
 
     redirectToHomeIfLoggedIn = () => {
+        // set the path and history to the map page for appropriate button highlighting 
         if (this.props.loggedIn === true){
             this.props.history.push('/')
         }

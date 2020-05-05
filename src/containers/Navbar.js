@@ -7,10 +7,13 @@ import { attractionListStatus } from '../generalFunctions'
 import { toggleAttractionListShow } from '../generalFunctions'
 import ToggleListButton from '../components/general/ToggleListButton'
 
+
 class Navbar extends Component {
     state = {
         path:this.props.location.pathname
     }
+
+    currentPage = this.props.history.location.pathname;
 
     componentDidMount = () =>{
         this.removeHighlightClass()
@@ -18,10 +21,13 @@ class Navbar extends Component {
         this.addHighlightToButton(buttons)
         // set whether the attraction list is shown in the state 
         this.props.getAttractionListShown()
+
     }
     
     // in component did update, check to see if any buttons have a class that matches this state's path 
     componentDidUpdate = () => {
+        this.currentPage = this.props.history.location.pathname;
+        console.log(this.currentPage)
         //remove highlight from all buttons 
         this.removeHighlightClass()
         // loop through the buttons, and if their name matches this state's path value, then give that button the highlight class 
@@ -40,7 +46,7 @@ class Navbar extends Component {
     
     addHighlightToButton = buttons => {
         buttons.forEach(button => {
-            if (button.value === this.state.path){
+            if (button.value === this.currentPage){
                 button.classList.add('highlight')
             }
         })
@@ -52,18 +58,12 @@ class Navbar extends Component {
         this.removeHighlightClass()
         e.target.classList.add('highlight')
         console.log(e.target.classList)
-        this.setState({
-            path:e.target.value
-        })
-        // e.target.classList.remove('blargh')
-        // console.log(e.target.classList)
     }
-    
+
     logout = () => {
         localStorage.clear()
-        // this.props.changeAppLoggedIn(false)
         this.props.logout()
-        this.setState({path:'/'})
+        this.props.history.push('/')
     }
     
     // remove highlight class from all NavBar buttons
@@ -84,13 +84,6 @@ class Navbar extends Component {
         }else{
             return "NavBarParent"
         }
-    }
-
-    renderShowHideNavBarButton = () => {
-        return (<span class="material-icons">
-        menu
-        </span>
-        )
     }
     
     renderLoggedInNavbar = () => {
@@ -128,9 +121,10 @@ class Navbar extends Component {
         // check width and render if this width is small enough 
         console.log(attractionListStatus())
         if (this.checkForMobile()){
-            if (this.state.path === "/" || this.state.path === "/myAttractions"){
+            if (this.currentPage === "/" || this.currentPage === "/myAttractions"){
                 return (<ToggleListButton 
                             text={attractionListStatus()}
+                            page={this.currentPage}
                         />)
             }
         }

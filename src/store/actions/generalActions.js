@@ -32,6 +32,7 @@ export const getAttractionListShown = () => {
     }
 }
 
+
 // export const setAttractionList = () => {
 //     // find the first (and only) element with the class AttractionList
 //     // find its first value

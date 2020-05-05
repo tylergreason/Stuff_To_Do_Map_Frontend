@@ -652,6 +652,12 @@ label {
     max-width: 95%;
     height: calc(100vh - var(--bottomNavBarHeight));
     margin: 0px 0px 0px 0px;
+}
+
+.signup {
+    /* give a large bottom margin to ensure user can scroll to bottom of element  */
+    margin: 0px 0px var(--bottomNavBarHeight) 0px;
+
   }
 
   /* remove padding to make the About containter align correctly */

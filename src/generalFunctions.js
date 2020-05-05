@@ -70,3 +70,4 @@ export const attractionListStatus = () => {
         return list.classList.contains("showList")
     }
 }
+
