@@ -51,12 +51,12 @@ class App extends Component {
                 }}></Route>
                 {/* for logout route, set store state loggedIn to false and redirect to root  */}
                 <Route path="/logout" component={()=>{
-                this.props.logout()
-                this.changeAppLoggedIn(false)
-                return <Redirect to="/"></Redirect>
+                    this.props.logout()
+                    this.changeAppLoggedIn(false)
+                    return <Redirect to="/"></Redirect>
                 }}></Route>
                 <Route path='/signup' component={()=>{
-                return <Signup changeAppLoggedIn={this.changeAppLoggedIn}/>
+                    return <Signup changeAppLoggedIn={this.changeAppLoggedIn}/>
                 }}></Route>
                 <Route path='/about' render={()=>{ return <About /> }}></Route>
                 {/* confirm user is logged in before going to myAttractions or myAccount */}

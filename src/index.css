@@ -533,8 +533,10 @@ label {
     display: grid;
     grid-template-columns: repeat(5,20%);
     grid-template-rows: 30% 70%;
-    height: var(--bottomNavBarElementHeight);
-    max-height: var(--bottomNavBarElementHeight);
+    /* height: var(--bottomNavBarElementHeight);
+    max-height: var(--bottomNavBarElementHeight); */
+    height: 10vh; 
+    max-height: 10vh;
     border-top: 2px solid var(--borderColor);
     /* keep navbar above map and lists */
     z-index: 2;
@@ -572,6 +574,8 @@ label {
     height: 100%;
     padding:0px;
     font-size: 0.8rem;
+    height: 100%;
+    margin: 0px;
 }
 
   body{
@@ -598,16 +602,14 @@ label {
     margin: 0 auto;
     background-color: var(--otmHoverColor);
     position: absolute;
-    bottom: 100vh;
+    /* bottom: 50vh; */
     left: 0px; 
     right: 0px;
     /* bottom:var(--bottomNavBarHeight); */
     width: 95vw; 
 
-    /* hide the attraction list below the navbar */
-    /* margin-top: calc(100vh - calc(2 * var(--bottomNavBarHeight)));  */
-    margin: 0px;
-    top: 100vh;
+    /* hide this barely above the bottom to prevent unwanted scrolling  */
+    top: 95vh;
     height: 0px;
     border-bottom:none;
     border-radius: var(--borderRadius) var(--borderRadius) 0px 0px;
@@ -629,26 +631,39 @@ label {
   #myMap{
     /* height: calc(100vh - var(--bottomNavBarHeight));  */
     height: 100%;
-    max-width: 90%;
     flex-grow: 1;
   }
   
   .Map{
-    width: 100vw; 
-    height: calc(100vh - calc(var(--bottomNavBarHeight) + 30px)); 
+    width: 90vw; 
+    /* height: calc(100vh - calc(var(--bottomNavBarHeight) + 30px));  */
+    height: 83vh;
     display:flex; 
     justify-content: center;
     /* height: 80vh; */
     /* max-height: 400px; */
-    margin: 5px
+    margin: 5px;
+    padding: 5px;
   }
 
   .About, .signup, .login{
     overflow-y: scroll;
     width: 95%;
     max-width: 95%;
-    height: 80%;
+    height: calc(100vh - var(--bottomNavBarHeight));
     margin: 0px 0px 0px 0px;
+  }
+
+  /* remove padding to make the About containter align correctly */
+  .About, .MyAccount {
+      padding: 0px;
+      width: 90vw;
+  }
+
+  .About .informationBox {
+      overflow-y: scroll; 
+      height: 83vh; 
+    padding: 5px;
   }
   
   .AttractionListCard, .AttractionListCardLarge, #otmAttractionList .otmAttractionCard {
@@ -656,7 +671,17 @@ label {
       margin: 5px;
   }
 
+  .MyAccount { 
+    /* height: calc(90vh - calc(var(--bottomNavBarHeight) + 0px));  */
+    height: 83vh;
+  }
+
   .MyAccount__child {
-      width: 90%;
+      width: 100%;
+  }
+
+  /* remove border from last child in MyAccount so it lines up with bottom */
+  .MyAccount__child:last-child{
+    border-bottom: none; 
   }
 }

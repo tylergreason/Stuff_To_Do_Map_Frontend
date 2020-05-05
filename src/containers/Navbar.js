@@ -63,7 +63,7 @@ class Navbar extends Component {
         localStorage.clear()
         // this.props.changeAppLoggedIn(false)
         this.props.logout()
-        this.setState({path:'map'})
+        this.setState({path:'/'})
     }
     
     // remove highlight class from all NavBar buttons
