@@ -62,4 +62,4 @@ class AttractionFormMap extends Component {
     }
 }   
 
-export default connect(null, { fillAttractionForm })(AttractionFormMap)
+export default connect(null, { fillAttractionForm})(AttractionFormMap)

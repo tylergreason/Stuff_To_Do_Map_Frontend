@@ -10,7 +10,6 @@ export const getAttractionListShown = () => {
 //     // find its first value
     const list = document.getElementsByClassName("AttractionList")[0]
     // if list exists
-    // debugger
     if (list !== undefined){
         if (list.classList.contains("showList")){
             // if list contains showList class (if list is shown)

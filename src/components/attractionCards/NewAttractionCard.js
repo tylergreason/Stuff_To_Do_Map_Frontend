@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { addAttraction } from '../../store/actions/AttractionActions'
 import { ServerResponseCard } from '../ServerResponseCard'
 
+import { getAttractionListShown } from '../../store/actions/generalActions'
+import { toggleAttractionListShow } from '../../generalFunctions'
 
 class NewAttractionForm extends Component {
     state = {
@@ -25,6 +27,8 @@ class NewAttractionForm extends Component {
             if (prevProps.newAttraction !== this.props.newAttraction){
                 console.log(this.props.newAttraction)
                 console.log('attraction address updated')
+                this.props.getAttractionListShown() 
+                toggleAttractionListShow()
                 return this.updateNewAttractionAddress(this.props.newAttraction)
             }
         }
@@ -165,4 +169,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { addAttraction })(NewAttractionForm)
+export default connect(mapStateToProps, { addAttraction, getAttractionListShown })(NewAttractionForm)
