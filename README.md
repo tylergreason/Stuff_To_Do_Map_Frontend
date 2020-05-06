@@ -1,6 +1,8 @@
 # Stuff To Do Map - Frontend 
 _An app to find something to do no matter where you are_
 
+This is the repository for the frontend of this application. You can find the repository for the backend [here](https://github.com/tylergreason/Stuff_To_Do_Map_Backend).
+
 ## Background 
 Stuff To Do Map was created as my final project for Flatiron School’s Immersive Software Engineering program. I was inspired to create it after traveling abroad in the summer of 2019. As I was journeying to new cities and looking online for things to do, I found a lack of sites that let me find things to do around my current location. I wanted to see a map, know where I was, and know what was around me, without having to wade through multiple listacles and look up addresses myself. Thus, Stuff To Do Map was born. 
 
@@ -21,19 +23,10 @@ Users can:
 - Delete their reviews. 
 
 
-## Association Wireframes 
-
-![alt text](./public/wireframes.png "wireframes")
-
-- User has many reviews 
-- Review belongs to user 
-- User has many attractions 
-- Attraction belongs to user 
-- Attraction has many reviews
-- Review belongs to attraction 
-
-
 ## Tools and Technologies 
+
+### Frontend Technologies: 
+
 - HTML, CSS, Javascript 
 - [React JS](https://reactjs.org/) - Used for quick development time, reusable components, and ease of porting to mobile if I choose to later. Used for the view portion of the MVC. 
 - [React Redux](https://react-redux.js.org/introduction/quick-start) - Used for keeping a single store shared amongst whichever components need it. This drastically reduced development time. 
@@ -44,6 +37,9 @@ Users can:
 - [MapBox](https://www.mapbox.com/) - The map I used to present marker data on (Leaflet does not include a map). 
 - [OpenTripMap](https://opentripmap.io/product) - Used for its enormous amount of data and easy to use API. Provides data on tens of thousands of places ranging from hotels to restaurants to architecture to nature trails. I only used historical district data because anything more overcrowds the map. 
 - [Nominatim](http://nominatim.org/) - Used this API to send it a set of coordinates and receive the closest address to those coordinates. This is used when users are creating markers. 
+
+### Backend Technologies: 
+
 - [Ruby 2.6](https://www.ruby-lang.org/en/), [Ruby on Rails 6.0.2.2](https://rubyonrails.org/) - Used to create the model and controller portions of the MVC. Currently hosted on Heroku. 
 - [DOTENV](https://github.com/bkeepers/dotenv) - Used to store environmental variables such as API keys during development. 
 - [JSON Web Tokens](https://jwt.io/) - Used to securely prevent the need to re-authentice the user while they are logged in.
@@ -57,26 +53,26 @@ To see how to use Stuff To Do Map yourself, check it out at [stufftodomap.com](w
 
 The root page shows the user a map of Atlanta, the default view for Stuff To Do Map. The user can click on markers to find information about that attraction. Red markers are OpenTripMap markers, blue markers are user markers. The user can click the blue location icon at the top left of the map to move the map to their location. 
 
-<img src="./stdm11.png" width="800px">
+<img src="./public/stdm11.png" width="800px">
 
 Once a user has logged in they can view the attractions they have made. 
 
-<img src="./stdm13.png" width="800px">
+<img src="./public/stdm13.png" width="800px">
 
 From here they can edit (shown below) an attraction with the ✏️ button or delete an attraction with the 🗑 button. 
 
-<img src="./stdm14.png" width="800px">
+<img src="./public/stdm14.png" width="800px">
 
 Users can also use this page to add new attractions. Shown below, the user clicked on the map and an icon appeared where they clicked. That click sent a request to the Nominatim API for the closest address data, which was automatically filled in when received. 
 
-<img src="./stdm17.png" width="800px">
+<img src="./public/stdm17.png" width="800px">
 
 Users can leave text reviews for user attractions and give them a 1-10 star rating. 
 
-<img src="./stdm16.png" width="800px">
+<img src="./public/stdm16.png" width="800px">
 
 
-## Challenges and What I Learned 
+## Frontend Challenges and What I Learned 
 
 Building the frontend for Stuff To Do Map was a challenging and rewarding experience. Because the focus of Stuff To Do Map is the frontend presentation, I put a *lot* more time and energy into the frontend than I did the backend. I wanted to create an application that was a pleasure to look at and use, and I think I have definitely succeeded at that. 
 
@@ -98,3 +94,4 @@ Depending on if the user is on a page with a map, found using React Router’s h
 - Make the app a Progressive Web App (PWA) to give the best experience possible on mobile. 
 - Redo the main container on both desktop and mobile to use CSS grid or flexbox for easier alignment of elements. 
 - Change the CSS for mobile to use touch actions instead of hover selectors.
+- Prevent users from reviewing their own attractions or from reviewing attractions more than once. 
