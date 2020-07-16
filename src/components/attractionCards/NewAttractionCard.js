@@ -96,6 +96,7 @@ class NewAttractionForm extends Component {
             <div className="informationBox newAttractionForm">
             <form
                 onSubmit={this.handleSubmit}
+                class="newAttraction"
             >
                 <label>Name</label>
                 <br></br>
@@ -111,6 +112,7 @@ class NewAttractionForm extends Component {
                     name="description" 
                     value={this.state.attraction.description}
                     onChange={this.handleInput}
+                    class="newAttraction__desc"
                 ></textarea>
                 <br></br>
                 <label>Building Number</label>

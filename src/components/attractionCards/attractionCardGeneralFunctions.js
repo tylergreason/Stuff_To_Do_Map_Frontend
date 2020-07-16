@@ -23,8 +23,9 @@ export const renderAddress = (attraction) => {
         if (attraction.country) {
             returnCountry = attraction.country; 
         }
-        return  (<div className='address'>
-            {returnHouseNumber} {returnRoad} {returnCity} {returnState} {returnCountry}
+        return  (
+            <div className='address'>
+                {returnHouseNumber} {returnRoad} {returnCity} {returnState} {returnCountry}
             </div>
         )
 }

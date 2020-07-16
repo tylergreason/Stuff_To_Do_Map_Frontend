@@ -202,8 +202,7 @@ button:focus{
 .address {
   font-size: 0.8rem;
   font-style: italic;
-  float:right;
-  /* margin-top: 0px; */
+  padding-left: 10px;
 }
 
 
@@ -262,7 +261,13 @@ input, textarea{
   font-size: 1rem;
   width: 90%;
   transition: all 0.2s;
-  margin:10px;
+  margin: auto 10px;
+  font-family: inherit;
+}
+
+textarea {
+    margin: auto;
+    display: block;
 }
 
 input:hover, input:focus, textarea:hover, textarea:focus{
@@ -301,13 +306,8 @@ label {
 
 .AttractionCardLargeInner {
   /* actual popup div */
-  position: absolute;  
-  width:100%;
-  left: 0%;  
-  right: 00%;  
-  top: 5%;  
-  bottom: 5%;  
-  margin: auto;  
+  /* width:100%; */
+  /* margin: auto;   */
   /* z-index: 1000; */
 }
 
@@ -401,6 +401,11 @@ label {
     flex-flow: column;
     align-items: center;
     /* flex-wrap: wrap; */
+}
+
+.MyAccount Button {
+    /* display: flex;  */
+    /* margin: auto;  */
 }
 
 .MyAccount__child {
@@ -690,4 +695,11 @@ label {
   .MyAccount__child:last-child{
     border-bottom: none; 
   }
+}
+
+.newAtrraction {
+    font-family: inherit; 
+}
+
+.AttractionListCardLargeInner .description:before {
 }
