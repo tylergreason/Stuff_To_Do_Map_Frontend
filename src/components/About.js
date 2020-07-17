@@ -32,13 +32,19 @@ const About = () => {
                 <a href="https://github.com/tylergreason/Stuff_To_Do_Map_Backend">Stuff To Do Map Backend Repo</a>
             </li>
             <li>
-                <a href="https://github.com/tylergreason/">My Github</a>
+                <a href="https://github.com/tylergreason/">Github</a>
             </li>
             <li>
-                <a href="https://twitter.com/GreasonTyler">My Twitter</a>            
+                <a href="https://twitter.com/tylergreason">Twitter</a>            
             </li>
             <li>
                 <a href="mailto:tylergreason@gmail.com">tylergreason@gmail.com</a>
+            </li>
+            <li>
+                <a href="https://www.tylergreason.com">Portfolio</a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/tyler-greason">LinkedIn</a>
             </li>
             </ul>
             </div>

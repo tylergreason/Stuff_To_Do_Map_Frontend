@@ -7,6 +7,7 @@ import { highlightAttraction } from '../store/actions/MapActions'
 import { toggleHoveredClass } from '../generalFunctions'
 import  OTMAttractionCardSmall from '../components/attractionCards/OTMAttractionCardSmall'
 import OTMAttractionCardLarge from '../components/attractionCards/OTMAttractionCardLarge'
+import AttractionListHeader from './AttractionListHeader'
 
 
 class AttractionList extends Component {   
@@ -17,46 +18,35 @@ class AttractionList extends Component {
     }
 
     // render a header for attraction list for either user or OTM listings
-    renderAttractionsListingHeader = (type) => {
-            let headerText=''; 
-            let listCount = ''; 
-            let onClick = '';
-            let id = ''; 
+    renderAttractionsListHeader = (type) => {
         if (type === 'user'){
-            headerText = "User Attractions"; 
-            id = 'user'; 
-            if (this.props.attractions.length !== undefined){
-                listCount = this.props.attractions.length; 
-            }
-            onClick = this.toggleAttractionListHidden;
+            return (
+                    <AttractionListHeader
+                        type={type}
+                        listCount={this.props.attractions.length}
+                    ></AttractionListHeader>
+                    )
         }else{
-            headerText = "Historical Districts"
-            id = 'otm'; 
-            if (this.props.otmAttractions !== undefined){
-                listCount = this.props.otmAttractions.length; 
-            }else{
-                listCount = 0   ; 
-            }
-            onClick=this.toggleOTMAttractionListHidden
+            return (
+                    <AttractionListHeader
+                        type={type}
+                        listCount={this.props.otmAttractions.length}
+                    ></AttractionListHeader>
+            )
         }
-        return (
-            <div
-                className={'listHeader'}
-                onClick={onClick}
-                id={`${id}AttractionsHeader`}
-            >
-                {headerText} ({listCount}):
-            </div>
-        )
     }
 
-    toggleAttractionListHidden = () => {
+    toggleAttractionListHidden = (e) => {
         // find the attraction list and toggle its hidden. 
         const attractionList = document.getElementById('attractionList'); 
         attractionList.hidden = !attractionList.hidden; 
     }
 
-    toggleOTMAttractionListHidden = () => {
+    toggleOTMAttractionListHidden = (e) => {
+        e.preventDefault()
+        console.log(e);
+        console.log(e.target.props);
+
         // find the OTM attraction list and toggle its hidden. 
         const otmAttractionList = document.getElementById('otmAttractionList'); 
         otmAttractionList.hidden = !otmAttractionList.hidden; 
@@ -86,15 +76,21 @@ class AttractionList extends Component {
             return this.props.otmAttractions.map(attraction => {
                 // render large card if ids match 
                 if (attraction.properties.xid === this.props.highlightAttractionId){
-                    return <OTMAttractionCardLarge 
+                    return (
+                        <OTMAttractionCardLarge 
                             xid={attraction.properties.xid}
-                            />
-                }else{
+                            key={attraction.properties.xid}
+                        />
 
-                    return <OTMAttractionCardSmall 
-                    attraction={attraction} 
-                    onClick={this.otmAttractionCardClick}
-                    />
+                        )
+                }else{
+                    return(
+                        <OTMAttractionCardSmall 
+                            attraction={attraction} 
+                            onClick={this.otmAttractionCardClick}
+                            key={attraction.properties.xid}
+                        />
+                        ) 
                 }
             })
         }
@@ -121,11 +117,11 @@ class AttractionList extends Component {
         return(
         <div className="AttractionList" 
         >
-            {this.renderAttractionsListingHeader('user')}
+            {this.renderAttractionsListHeader('user')}
             <div id="attractionList" hidden={true}>
                 {this.renderAttractionCards()}
             </div>
-            {this.renderAttractionsListingHeader('otm')}
+            {this.renderAttractionsListHeader('otm')}
             <div id='otmAttractionList' 
                 // hidden={true}
             >

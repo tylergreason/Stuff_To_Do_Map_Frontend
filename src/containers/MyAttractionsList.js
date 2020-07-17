@@ -95,7 +95,7 @@ class  MyAttractionList extends Component {
     }
     render(){
         return(
-            <div>
+            <>
                 <div className="AttractionList">
                 {/* only render new attraction button if at the list page  */}
                 {this.state.formToRender === 'list' ? <button onClick={this.handleNewAttractionClick}>New Attraction</button> : <></> }
@@ -107,7 +107,7 @@ class  MyAttractionList extends Component {
                     formToRender={this.state.formToRender}
                     attractions ={this.props.myAttractions}
                 />
-            </div>
+            </>
     )
     }
 }
