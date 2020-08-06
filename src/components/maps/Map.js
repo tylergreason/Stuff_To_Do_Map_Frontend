@@ -104,10 +104,6 @@ class Map extends Component {
             this.renderAttractionMarkers(this.state.map)
             this.renderOTMMarkers()
         }
-        if (this.props.attractions.length >= 1){
-            console.log('there are attractions!')
-        }else {
-        }
     }
     
     onMapChange = (e) => {
@@ -119,6 +115,12 @@ class Map extends Component {
         })
         this.props.setBounds(bounds)
         this.renderOTMMarkers()
+    }
+
+    showServerWarningCard = () => {
+        if (!this.props.attractions.length >= 1 && !this.props.otmAttractions.length >=1){
+            return (<ServerWarning opacity={100}></ServerWarning>)
+        }
     }
 
 
@@ -156,7 +158,7 @@ class Map extends Component {
         return (
             <div className="Map">
                 <div id='myMap' className="map"></div>
-                <ServerWarning></ServerWarning>
+                {this.showServerWarningCard()}
             </div>
         )
     }
