@@ -103,6 +103,11 @@ class Map extends Component {
             this.renderAttractionMarkers(this.state.map)
             this.renderOTMMarkers()
         }
+        if (this.props.attractions.length >= 1){
+            console.log('there are attractions!')
+        }else {
+            console.log('there are no attractions :(')
+        }
     }
     
     onMapChange = (e) => {
