@@ -119,7 +119,7 @@ class Map extends Component {
 
     showServerWarningCard = () => {
         if (!this.props.attractions.length >= 1 && !this.props.otmAttractions.length >=1){
-            return (<ServerWarning opacity={100}></ServerWarning>)
+            return (<ServerWarning class='show'></ServerWarning>)
         }
     }
 
