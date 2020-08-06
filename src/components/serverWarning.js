@@ -23,12 +23,14 @@ const ServerWarning = (props) => {
         border: 3px solid #172b97;
         border-radius: 10px; 
         font-size: 1.5rem;
-        opacity: ${props => props.opacity || "0"};
+        opacity: ${props => props.opacity || 0};
+        /* prevent user from interacting with the element */
+        pointer-events: none;
     `
     
     return(
         <div>
-            <WarningDiv id="ServerWarning">
+            <WarningDiv id="ServerWarning" opacity={props.opacity}>
                 ✌️ Hey there! It looks like no attractions are available to view right now. You may need to wait around 10 seconds for the database to wake up (this app uses free Heroku servers that sleep when they haven't been used for long enough) or zoom into the map farther to see the attractions!
             </WarningDiv>
         </div>

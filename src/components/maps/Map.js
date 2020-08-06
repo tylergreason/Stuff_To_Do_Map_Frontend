@@ -120,8 +120,9 @@ class Map extends Component {
     showServerWarningCard = () => {
         if (!this.props.attractions.length >= 1 && !this.props.otmAttractions.length >=1){
             // check if the element with the id ServerWarning is on the map and if it's not then append it
-
-            return (<ServerWarning opacity="1"></ServerWarning>)
+            return (<ServerWarning opacity={1}></ServerWarning>)
+        }else {
+            return (<ServerWarning></ServerWarning>)
         }
     }
 
