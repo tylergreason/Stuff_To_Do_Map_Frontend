@@ -1,22 +1,29 @@
 import React from 'react'
-import styled, {css} from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 
 const ServerWarning = (props) => {
+    const fadeIn = keyframes`
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    `;
     // create warning div using styled component 
     const WarningDiv = styled.div`
-    position: fixed;
-    top: 50%; 
-    left: 50%;
-    background-color: #75cff0;    
-    transform: translate(-50%, -50%); 
-    max-width: 700px;
-    padding: 10px; 
-    border: 3px solid #172b97;
-    border-radius: 10px; 
-    font-size: 1.5rem;
-    transition: 10s; 
-    opacity: .1;
-    transition: opacity: 100; 
+        position: fixed;
+        top: 50%; 
+        left: 50%;
+        background-color: #75cff0;    
+        transform: translate(-50%, -50%); 
+        max-width: 700px;
+        padding: 10px; 
+        border: 3px solid #172b97;
+        border-radius: 10px; 
+        font-size: 1.5rem;
+        animation: ${fadeIn} 1s; 
     `
     
     return(
