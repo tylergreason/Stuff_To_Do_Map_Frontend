@@ -17,7 +17,7 @@ class Map extends Component {
     state = {
         map:"",
         southWestBounds:'', 
-        northEastBounds:''
+        northEastBounds:'',
     }
 
     componentDidMount = () => {
@@ -119,7 +119,9 @@ class Map extends Component {
 
     showServerWarningCard = () => {
         if (!this.props.attractions.length >= 1 && !this.props.otmAttractions.length >=1){
-            return (<ServerWarning class='show'></ServerWarning>)
+            // check if the element with the id ServerWarning is on the map and if it's not then append it
+
+            return (<ServerWarning opacity="1"></ServerWarning>)
         }
     }
 

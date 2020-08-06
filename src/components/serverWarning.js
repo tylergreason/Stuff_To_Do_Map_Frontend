@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, {keyframes} from 'styled-components'
+import styled, {keyframes, css} from 'styled-components'
 
 const ServerWarning = (props) => {
     const fadeIn = keyframes`
@@ -23,12 +23,12 @@ const ServerWarning = (props) => {
         border: 3px solid #172b97;
         border-radius: 10px; 
         font-size: 1.5rem;
-        animation: ${fadeIn} 1s; 
+        opacity: ${props => props.opacity || "0"};
     `
     
     return(
         <div>
-            <WarningDiv class={props.class}>
+            <WarningDiv id="ServerWarning">
                 ✌️ Hey there! It looks like no attractions are available to view right now. You may need to wait around 10 seconds for the database to wake up (this app uses free Heroku servers that sleep when they haven't been used for long enough) or zoom into the map farther to see the attractions!
             </WarningDiv>
         </div>
