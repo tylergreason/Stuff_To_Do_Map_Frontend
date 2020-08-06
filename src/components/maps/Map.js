@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { iconWithCustomText, otmIcon } from '../../icons/Icons'
 import { getAttraction } from '../../store/actions/AttractionActions'
 import { toggleIconHoveredClass, toggleHoveredClass, scrollElementIntoView, scrollElementIntoViewById } from '../../generalFunctions'
+import ServerWarning from './../serverWarning'
 import { highlightAttraction } from '../../store/actions/MapActions'
 import { createFindLocationButton } from './mapFunctions'
 import { toggleAttractionListShow } from '../../generalFunctions'
@@ -106,7 +107,6 @@ class Map extends Component {
         if (this.props.attractions.length >= 1){
             console.log('there are attractions!')
         }else {
-            console.log('there are no attractions :(')
         }
     }
     
@@ -156,6 +156,7 @@ class Map extends Component {
         return (
             <div className="Map">
                 <div id='myMap' className="map"></div>
+                <ServerWarning></ServerWarning>
             </div>
         )
     }
